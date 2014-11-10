@@ -1,0 +1,124 @@
+/*
+
+ Blueprint CSS Framework 0.9
+ http://blueprintcss.org
+
+   * Copyright (c) 2007-Present. See LICENSE for more info.
+   * See README for instructions on how to use Blueprint.
+   * For credits and origins, see AUTHORS.
+   * This is a compressed file. See the sources in the 'src' directory.
+
+----------------------------------------------------------------------- */
+
+/* ie.css */
+* html .column, * html div.span-1, * html div.span-2, * html div.span-3, * html div.span-4, * html div.span-5, * html div.span-6, * html div.span-7, * html div.span-8, * html div.span-9, * html div.span-10, * html div.span-11, * html div.span-12, * html div.span-13, * html div.span-14, * html div.span-15, * html div.span-16, * html div.span-17, * html div.span-18, * html div.span-19, * html div.span-20, * html div.span-21, * html div.span-22, * html div.span-23, * html div.span-24 {display:inline;overflow-x:hidden;}
+* html legend {margin:0px -8px 16px 0;padding:0;}
+body{text-align:center;}
+.GHeader, .GArticle{text-align:left;}
+.container {text-align:left;}
+sup {vertical-align:text-top;}
+sub {vertical-align:text-bottom;}
+html>body p code {*white-space:normal;}
+hr {margin:-8px auto 11px;}
+img {-ms-interpolation-mode:bicubic;}
+.clearfix, .container {display:inline-block;}
+* html .clearfix, * html .container {height:1%;}
+fieldset {padding-top:0;}
+textarea {overflow:auto;}
+input.text, input.title, textarea {background-color:#fff;border:1px solid #bbb;}
+input.text:focus, input.title:focus {border-color:#666;}
+input.text, input.title, textarea, select {margin:0.5em 0;}
+input.checkbox, input.radio {position:relative;top:.25em;}
+form.inline div, form.inline p {vertical-align:middle;}
+form.inline label {position:relative;top:-0.25em;}
+form.inline input.checkbox, form.inline input.radio, form.inline input.button, form.inline button {margin:0.5em 0;}
+button, input.button {position:relative;top:0.25em;}
+
+
+.GHeader .GLink{float:left;}
+
+.GHeader .topNav{float:right;}
+
+.GArticle{border:1px solid #ccc;}
+
+#search-form input[type=checkbox] {
+    position: relative;
+    left: 0;
+    opacity: 100;
+    height: 16px;
+    width: 29px;
+    border:none !important;
+}
+#search-form input + label{
+    background-image: none;
+    padding-top: 0;
+}
+
+#search-form label{
+    padding-left: 13px;
+    background-image: none;
+}
+
+#search-form input[type=checkbox]:checked + label{
+    border: none;
+}
+
+.input{
+    color: #B0B0B0;
+    border:none;
+    text-transform: none;
+}
+
+.infoBack {
+    position:relative;
+}
+.infoBox {
+    position:relative;
+}
+.hlist li {
+    display: inline-block;
+    vertical-align: top;
+    zoom: 1;
+    display: inline;
+}
+.infoItem {
+    display: inline-block;
+    vertical-align: top;
+    zoom: 1;
+    display: inline;
+}
+
+
+#login-form .rememberMe *, #login-form .buttons input {
+    border:none;
+}
+
+
+.postList {
+    display:block;
+}
+
+.postTitle div {
+    margin-bottom: 0;
+    margin-top:0;
+}
+
+.topNav li{
+    display:inline-block;
+    float:left;
+}
+
+.topNav li a {
+    display:block;
+    height:20px;
+    padding: 12px 8px;
+}
+.topNav li ul {
+    top:70%;
+}
+
+
+#footerlinks li {
+    height: 35px;
+    width:43px;
+}

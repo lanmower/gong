@@ -1,0 +1,15 @@
+#!/usr/bin/env php
+<?php
+
+$__appId = null;
+for( $__i=1,$__max=count($argv); $__i<$__max; ++$__i ) {
+    if ( strpos($argv[$__i],'--appid',0) === 0 ) {
+        $__appId = substr($argv[$__i], 8);
+        unset($argv[$__i]);
+        unset($_SERVER['argv'][$__i]);
+        $argv = $_SERVER['argv'] = array_values($argv);
+    }
+}
+
+require_once(dirname(__FILE__).'/yiic.php');
+

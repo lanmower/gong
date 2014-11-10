@@ -1,0 +1,88 @@
+<?php
+
+class GScoreRankingTeam extends GTag {
+
+    public function init() {
+        parent::init();
+    }
+
+    public function run() {
+        $teams = GSubmission::forForm('Team')->findAll(array('order' => 'name'));
+        $players = GSubmission::forForm('Player')->findAll();
+        $scores = GSubmission::forForm('Score')->findAll();
+        $flags = GSubmission::forForm('Country')->findAll();
+        $data = array();
+        foreach ($teams as $team) {
+            $teamData = array();
+            $teamData['players'] = array();
+            $teamData['grossScore'] = 0;
+            $teamData['nettScore'] = 0;
+            $teamData['name'] = $team->name;
+            $recordedScores = 0;
+            foreach ($players as $player) {
+                if ($player->team == $team->id) {
+                    $playerData = array();
+                    $total = 0;
+                    foreach ($scores as $score) {
+                        if($score->playerId == $player->id) $total += $score->score;
+                    }
+                    $teamData['grossScore'] += $total;
+                    if(++$recordedScores <= 4) $teamData['nettScore'] += $total - $player->handicap;
+                    $playerData['grossScore'] = $total;
+                    $playerData['nettScore'] = $total - $player->handicap;
+                    $playerData['name'] = $player->name;
+                    if(isset($flags[$player->country])) $playerData['flag'] = $flags[$player->country]->flag;
+                    $teamData['players'][$player->id] = $playerData;
+                }
+            }
+            usort($teamData['players'], function($a, $b) {
+                        return $a['nettScore'] > $b['nettScore'];
+                    });
+            $data[$team->id] = $teamData;
+        }
+        usort($data, function($a, $b) {
+                    return $a['nettScore'] > $b['nettScore'];
+                });
+        $dataProvider = new CArrayDataProvider($data,
+                        array('sort' => array(
+                                'attributes' => array(
+                                    'nettScore',
+                                ),
+                            ), 'pagination' => array(
+                                'pageSize' => 999,
+                        )));
+
+        echo "<table class='table'>";
+        echo"<tr>";
+        echo "<th>POS</th>";
+        echo "<th>Team</th>";
+        echo "<th>Players</th>";
+        echo "<th>Gross Total</th>";
+        echo "<th>Nett Total</th>";
+        echo"</tr>";
+        $pos = 0;
+        foreach ($dataProvider->getData() as $teamId => $team) {
+            echo "<tr>";
+            echo "<td>".++$pos."</td>";
+            echo "<td>".$team['name']."</td>";
+            echo "<td>";
+            foreach($team['players'] as $playerId => $player) {
+                echo CHtml::openTag('div', array('class'=>'scorelistplayer'));
+                if(isset($player['flag'])) {
+                    echo CHtml::image($player['flag']);
+                }
+                echo $player['name'];
+                echo CHtml::closeTag('div');
+            }
+            echo "</td>";
+            echo CHtml::tag('td', array(), $team['grossScore']);
+            echo CHtml::tag('td', array(), $team['nettScore']);
+        }
+        echo "</tr>";
+        echo "</table>";
+        parent::run();
+    }
+
+}
+
+?>

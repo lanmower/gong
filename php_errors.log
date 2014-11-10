@@ -1,0 +1,49 @@
+[09-Mar-2014 23:24:28 UTC] PHP Notice:  Undefined index: HTTP_HOST in /common/haw-cms/protected/config/common.php on line 3
+[09-Mar-2014 23:24:28 UTC] PHP Warning:  include_once(.php): failed to open stream: No such file or directory in /common/haw-cms/protected/config/common.php on line 3
+[09-Mar-2014 23:24:28 UTC] PHP Warning:  include_once(): Failed opening '.php' for inclusion (include_path='.:/usr/lib/php') in /common/haw-cms/protected/config/common.php on line 3
+[09-Mar-2014 23:24:28 UTC] PHP Warning:  array_merge_recursive(): Argument #1 is not an array in /common/haw-cms/protected/config/common.php on line 130
+[09-Mar-2014 23:25:24 UTC] PHP Notice:  Undefined index: HTTP_HOST in /common/haw-cms/protected/config/common.php on line 3
+[09-Mar-2014 23:25:24 UTC] PHP Warning:  include_once(.php): failed to open stream: No such file or directory in /common/haw-cms/protected/config/common.php on line 3
+[09-Mar-2014 23:25:24 UTC] PHP Warning:  include_once(): Failed opening '.php' for inclusion (include_path='.:/usr/lib/php') in /common/haw-cms/protected/config/common.php on line 3
+[09-Mar-2014 23:25:24 UTC] PHP Warning:  array_merge_recursive(): Argument #1 is not an array in /common/haw-cms/protected/config/common.php on line 130
+[03-Oct-2014 13:09:22 UTC] PHP Notice:  Undefined index: HTTP_HOST in /usr/gong/protected/config/common.php on line 3
+[03-Oct-2014 13:09:22 UTC] PHP Warning:  include_once(.php): failed to open stream: No such file or directory in /usr/gong/protected/config/common.php on line 3
+[03-Oct-2014 13:09:22 UTC] PHP Warning:  include_once(): Failed opening '.php' for inclusion (include_path='.:/usr/lib/php') in /usr/gong/protected/config/common.php on line 3
+[03-Oct-2014 13:09:22 UTC] PHP Warning:  array_merge_recursive(): Argument #1 is not an array in /usr/gong/protected/config/common.php on line 134
+[03-Oct-2014 13:11:28 UTC] PHP Notice:  Undefined index: HTTP_HOST in /usr/gong/protected/config/common.php on line 3
+[03-Oct-2014 13:11:28 UTC] PHP Warning:  include_once(.php): failed to open stream: No such file or directory in /usr/gong/protected/config/common.php on line 3
+[03-Oct-2014 13:11:28 UTC] PHP Warning:  include_once(): Failed opening '.php' for inclusion (include_path='.:/usr/lib/php') in /usr/gong/protected/config/common.php on line 3
+[03-Oct-2014 13:11:28 UTC] PHP Warning:  array_merge_recursive(): Argument #1 is not an array in /usr/gong/protected/config/common.php on line 134
+[03-Oct-2014 13:12:43 UTC] PHP Notice:  Undefined index: HTTP_HOST in /usr/gong/protected/config/common.php on line 3
+[03-Oct-2014 13:12:43 UTC] PHP Warning:  include_once(.php): failed to open stream: No such file or directory in /usr/gong/protected/config/common.php on line 3
+[03-Oct-2014 13:12:43 UTC] PHP Warning:  include_once(): Failed opening '.php' for inclusion (include_path='.:/usr/lib/php') in /usr/gong/protected/config/common.php on line 3
+[03-Oct-2014 13:12:43 UTC] PHP Warning:  array_merge_recursive(): Argument #1 is not an array in /usr/gong/protected/config/common.php on line 134
+[03-Oct-2014 13:13:47 UTC] PHP Notice:  Undefined index: HTTP_HOST in /usr/gong/protected/config/common.php on line 3
+[03-Oct-2014 13:13:47 UTC] PHP Warning:  include_once(.php): failed to open stream: No such file or directory in /usr/gong/protected/config/common.php on line 3
+[03-Oct-2014 13:13:47 UTC] PHP Warning:  include_once(): Failed opening '.php' for inclusion (include_path='.:/usr/lib/php') in /usr/gong/protected/config/common.php on line 3
+[03-Oct-2014 13:13:47 UTC] PHP Warning:  array_merge_recursive(): Argument #1 is not an array in /usr/gong/protected/config/common.php on line 134
+[03-Oct-2014 13:14:37 UTC] PHP Notice:  Undefined index: HTTP_HOST in /usr/gong/protected/config/common.php on line 3
+[03-Oct-2014 13:14:37 UTC] PHP Warning:  include_once(.php): failed to open stream: No such file or directory in /usr/gong/protected/config/common.php on line 3
+[03-Oct-2014 13:14:37 UTC] PHP Warning:  include_once(): Failed opening '.php' for inclusion (include_path='.:/usr/lib/php') in /usr/gong/protected/config/common.php on line 3
+[03-Oct-2014 13:14:37 UTC] PHP Warning:  array_merge_recursive(): Argument #1 is not an array in /usr/gong/protected/config/common.php on line 134
+[03-Oct-2014 13:40:32 UTC] PHP Notice:  Undefined index: HTTP_HOST in /usr/gong/protected/config/common.php on line 3
+[03-Oct-2014 13:40:32 UTC] PHP Warning:  include_once(.php): failed to open stream: No such file or directory in /usr/gong/protected/config/common.php on line 3
+[03-Oct-2014 13:40:32 UTC] PHP Warning:  include_once(): Failed opening '.php' for inclusion (include_path='.:/usr/lib/php') in /usr/gong/protected/config/common.php on line 3
+[03-Oct-2014 13:40:32 UTC] PHP Warning:  array_merge_recursive(): Argument #1 is not an array in /usr/gong/protected/config/common.php on line 134
+[03-Oct-2014 13:41:20 UTC] PHP Notice:  Undefined index: HTTP_HOST in /usr/gong/protected/config/common.php on line 3
+[03-Oct-2014 13:41:20 UTC] PHP Warning:  include_once(.php): failed to open stream: No such file or directory in /usr/gong/protected/config/common.php on line 3
+[03-Oct-2014 13:41:20 UTC] PHP Warning:  include_once(): Failed opening '.php' for inclusion (include_path='.:/usr/lib/php') in /usr/gong/protected/config/common.php on line 3
+[03-Oct-2014 13:41:20 UTC] PHP Warning:  array_merge_recursive(): Argument #1 is not an array in /usr/gong/protected/config/common.php on line 134
+[03-Oct-2014 13:44:44 UTC] PHP Notice:  Undefined index: HTTP_HOST in /usr/gong/protected/config/common.php on line 3
+[03-Oct-2014 13:44:44 UTC] PHP Warning:  include_once(.php): failed to open stream: No such file or directory in /usr/gong/protected/config/common.php on line 3
+[03-Oct-2014 13:44:44 UTC] PHP Warning:  include_once(): Failed opening '.php' for inclusion (include_path='.:/usr/lib/php') in /usr/gong/protected/config/common.php on line 3
+[03-Oct-2014 13:44:44 UTC] PHP Warning:  array_merge_recursive(): Argument #1 is not an array in /usr/gong/protected/config/common.php on line 134
+[14-Oct-2014 07:39:55 UTC] PHP Notice:  Undefined variable: __appId in /usr/gong/protected/yiic.php on line 3
+[14-Oct-2014 07:40:07 UTC] PHP Notice:  Undefined offset: 2 in /usr/gong/protected/yiic on line 6
+[14-Oct-2014 07:41:41 UTC] PHP Warning:  require_once(/usr/gong/protected/../framework/yiic.php): failed to open stream: No such file or directory in /usr/gong/protected/yiic.php on line 8
+[14-Oct-2014 07:41:41 UTC] PHP Fatal error:  require_once(): Failed opening required '/usr/gong/protected/../framework/yiic.php' (include_path='.:/usr/lib/php') in /usr/gong/protected/yiic.php on line 8
+[14-Oct-2014 07:42:27 UTC] PHP Warning:  require_once(/usr/gong/protected/../../framework/yiic.php): failed to open stream: No such file or directory in /usr/gong/protected/yiic.php on line 8
+[14-Oct-2014 07:42:27 UTC] PHP Fatal error:  require_once(): Failed opening required '/usr/gong/protected/../../framework/yiic.php' (include_path='.:/usr/lib/php') in /usr/gong/protected/yiic.php on line 8
+[14-Oct-2014 07:48:06 UTC] PHP Notice:  Undefined variable: __appId in /usr/gong/protected/yiic.php on line 3
+[14-Oct-2014 07:53:54 UTC] PHP Notice:  Undefined variable: __appId in /usr/gong/protected/yiic.php on line 3
+[14-Oct-2014 07:55:28 UTC] PHP Notice:  Undefined variable: __appId in /usr/gong/protected/yiic.php on line 3

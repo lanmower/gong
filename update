@@ -1,0 +1,4 @@
+#!/bin/bash
+sudo -u flagship hg pull
+sudo -u flagship hg update
+

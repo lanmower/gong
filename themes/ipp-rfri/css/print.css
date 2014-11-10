@@ -1,0 +1,101 @@
+body{
+    color:#333;
+    font-family: Arial,Verdana,Helvetica,sans-serif !important;    
+}
+
+
+.printRow{
+    font-size:14px;
+}
+
+.printPageTitle{
+    font-size:24px;
+}
+
+.printSimplified h3{
+    font-size:13px;
+}
+
+
+.reset{
+    margin:0;padding:0;
+}
+.inlineBlock.printRow{
+    display:inline-block;
+    margin-right:5px;
+}
+
+.inlineClear{
+    display:block;
+    margin-bottom:10px;
+}
+
+.border {
+    border: 1px solid black;
+    padding:10px;
+}
+
+.gridOutput{
+    margin-bottom:10px;
+    padding:10px;
+    margin-left:10px;
+    width:45%;
+    float:left;
+    border:1px solid #ccc;
+}
+
+.gridOutput li:first-child{
+    margin-left:0;
+}
+
+.pageBreaker{
+    page-break-inside: avoid;
+}
+
+.children{
+    border-bottom: 2px dashed #ddd;
+    padding-bottom:10px;
+    margin-bottom:20px;
+}
+
+.GBillboard {
+min-height: 28px;
+padding: 30px 20px 10px;
+background-image: -moz-linear-gradient(top, #ADD9E4, #488B9C);
+background-image: -ms-linear-gradient(top, #ADD9E4, #488B9C);
+background-image: -o-linear-gradient(top, #ADD9E4, #488B9C);
+background-image: -webkit-linear-gradient(top, #ADD9E4, #488B9C);
+background-image: linear-gradient(top, #ADD9E4, #488B9C);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#add9e4', endColorstr='#488b9c', GradientType=0);
+}
+
+
+.input-xxlarge {
+width: 530px;
+display:block;
+}
+
+
+body .rfriForm.form-horizontal .control-label, .ui-dialog{        
+    display:none !important;
+}
+
+  /* style sheet for print goes here */
+  body .rfriForm.form-horizontal textarea{        
+    line-height:20px;
+}
+
+.inlineCollapse input{
+    width:90px;
+}
+
+.GBillboard h1{
+    color:black;
+}
+
+form fieldset{
+    border:0;
+}
+
+
+

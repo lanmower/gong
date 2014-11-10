@@ -1,0 +1,9 @@
+--2014-10-07 14:44:39--  http://www.google.com/
+Resolving www.google.com (www.google.com)... 64.233.166.99, 64.233.166.105, 64.233.166.106, ...
+Connecting to www.google.com (www.google.com)|64.233.166.99|:80... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: http://www.google.co.za/?gfe_rd=cr&ei=UOAzVMzUIdeDcNaGgZgD [following]
+--2014-10-07 14:44:43--  http://www.google.co.za/?gfe_rd=cr&ei=UOAzVMzUIdeDcNaGgZgD
+Resolving www.google.co.za (www.google.co.za)... 64.233.166.94, 2a00:1450:400c:c09::5e
+Connecting to www.google.co.za (www.google.co.za)|64.233.166.94|:80... connected.
+HTTP request sent, awaiting response... 
