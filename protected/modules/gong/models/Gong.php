@@ -63,7 +63,7 @@ class Gong {
 
     /** Fetch the translation string from db and cache when necessary */
     public static function t($string, $args = null, $category = 'gong', $language = 'en') {
-            $sqlString = mysql_real_escape_string($string);
+            $sqlString = $string;
             $sql = "SELECT translation FROM {{translation}} WHERE `message` = \"$sqlString\" AND `category` = \"$category\" AND `language` = \"$language\" LIMIT 1";
             //$dependency = new CDbCacheDependency('SELECT MAX(update_time) FROM tbl_post');
             $row = Yii::app()->db->cache(3600)->createCommand($sql)->query();
