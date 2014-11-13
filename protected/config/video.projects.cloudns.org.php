@@ -14,9 +14,9 @@ return array(
             ),
         ),
         'db' => array(
-            'connectionString' => 'mysql:host=localhost;dbname=ca_video',
-            'username' => 'ca_video',
-            'password' => 'almagest',
+            'connectionString' => 'mysql:host=localhost;dbname=video_projects_cloudns_org',
+            'username' => 'video',
+            'password' => 'Tonystark123',
             'tablePrefix' => 'video_',
         ),
     ),
