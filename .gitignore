@@ -1,8 +1,8 @@
-/protected/data
-/assets
-/protected/runtime
-/themes
-/protected/config
-/phpmyadmin
-/protected/toDo
-/convert
+protected/data
+assets
+protected/runtime
+themes
+protected/config
+phpmyadmin
+protected/toDo
+convert
