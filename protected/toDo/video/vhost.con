@@ -1,9 +1,0 @@
-<VirtualHost *:80>
-    ServerAdmin almagestfraternite@gmail.com
-    DocumentRoot "/common/haw-cms"
-    ServerName 192.168.1.17
-    ServerAlias www.video.local
-    ErrorLog "/var/log/httpd/ipp-error_log"
-    CustomLog "/var/log/httpd/ipp-access_log" common
-</VirtualHost>
-

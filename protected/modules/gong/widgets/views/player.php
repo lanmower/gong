@@ -1,9 +1,9 @@
 <?php
-echo CHtml::tag('div', array('id' => $containerId, 'class' => 'jp-container jp-type-playlist'));
+echo CHtml::openTag('div', array('id' => $containerId, 'class' => 'jp-container jp-type-playlist'));
 echo CHtml::tag('div', array('id' => $playerId, 'class' => 'jp-jplayer'));
 echo CHtml::closeTag('div');
-echo CHtml::tag('div', array('class' => 'deck jp-left'));
 ?>
+<div class='deck jp-left'>
 <ul class="jp-controls">
     <li><a href="javascript:;" class="jp-previous" tabindex="1"><i class="glyphicon glyphicon-backward glyphicon-2x"></i></a></li>
     <li><a href="javascript:;" class="jp-play" tabindex="1"><i class="glyphicon glyphicon-play glyphicon-2x"></i></a></li>
@@ -36,11 +36,7 @@ echo CHtml::tag('div', array('class' => 'deck jp-left'));
         <li></li>
     </ul>
 </div>
-
-<?
-echo CHtml::closeTag('div');
-echo CHtml::closeTag('div');
-?>
+</div>
 
 <!--div class='jp-middle'>
 </div>

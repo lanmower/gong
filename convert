@@ -1,9 +1,10 @@
 #!/bin/sh
+cd /var/www
 if ps -ef | grep -v grep | grep yiic ; then
 	echo "already running"
         exit 0
 else
-	sudo -u apache /usr/bin/php -c /etc/httpd/php.ini protected/yiic processFiles run $1 2>&1 &  
+	sudo -u www-data /usr/bin/php -c /etc/httpd/php.ini protected/yiic processFiles run $1 2>&1 &  
 	#sudo -u apache ./protected/run 
         exit 0
 fi
