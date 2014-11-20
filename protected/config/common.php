@@ -97,7 +97,7 @@ $config = array_merge_recursive($config, array(
                 ),
         'session' => array(
             'class' => 'CDbHttpSession',
-            'timeout' => 1 * 60 * 60,
+            'timeout' => 1 * 60 * 60 * 24,
             'connectionID' => 'db',
         ),
         'mail' => array(
