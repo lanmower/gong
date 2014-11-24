@@ -2,6 +2,7 @@ String.prototype.startsWith = function(needle)
     {
         return(this.indexOf(needle) == 0);
     }
+
 $.fn.selectText = function(){
 
     var range,
@@ -70,19 +71,6 @@ function processQueue(origInput, target, append, noprocessing) {
     $.alm.processing.contents().filter( function() {
         return $.trim($("<div />").append($(this).clone())) == '';
     }).remove();
-
-    /*console.log('origInput');
-    console.log(origInput);
-    console.log('input');
-    console.log(input);
-    console.log('processing');
-    console.log($.alm.processing);
-    console.log('processingReady');
-    console.log($.alm.processingReady);
-    console.log('processingEnd');
-    console.log($.alm.processingEnd);
-    console.log('liveHead');
-    console.log($.alm.liveHead);*/
 
     $.alm.liveHead.liveClasses($.alm.classes.liveHead);
     if(input.html() && input.html().trim().length > 0) {
@@ -230,6 +218,7 @@ $.alm.load = function (event, target, type, url, append) {
         url = '/'+hash;
     }
     if(url) {
+        $('.urlListener').trigger("changed", [url]);
         if($('.dirtyField')[0])
             $('<div>This section has been modified and is not yet submitted</div>').dialog({
                 modal: true,
@@ -393,7 +382,7 @@ function clearForm(form) {
         $.fn.processQueue = processQueue;
         $.fn.clearForm = clearForm;
         $.fn.showUrlInDialog = showUrlInDialog;
-        $.alm.defaultTarget = $(".GArticle");
+        $.alm.defaultTarget = $(".GContent");
 
         $(function(){
             /*window.onerror = function (err, file, line) {
