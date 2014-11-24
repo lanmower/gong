@@ -1,4 +1,4 @@
-<?
+<?php
 
 class GRole extends GActiveRecord {
 

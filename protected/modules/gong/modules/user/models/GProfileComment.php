@@ -1,4 +1,4 @@
-<?
+<?php
 
 class GProfileComment extends GActiveRecord{
 	public static function model($className=__CLASS__)

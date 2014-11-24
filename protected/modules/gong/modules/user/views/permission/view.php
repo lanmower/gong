@@ -1,4 +1,4 @@
-<?
+<?php
 
 if (isset($actions))
     foreach ($actions as $action) {

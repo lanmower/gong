@@ -1,10 +1,10 @@
-<? 
+<?php 
 $this->breadcrumbs = array(G::t('Membership'));?>
 
-<? $this->title = G::t('Membership'); ?>
+<?php $this->title = G::t('Membership'); ?>
 	
 	<div class="form">
-		<? $form=$this->beginWidget('CActiveForm', array(
+		<?php $form=$this->beginWidget('CActiveForm', array(
 		'id'=>'membership-has-company-form',
 			'enableAjaxValidation'=>true,
 			)); 
@@ -13,7 +13,7 @@ $this->breadcrumbs = array(G::t('Membership'));?>
 
 		<div class="row">
 		
-			<? echo CHtml::activeRadioButtonList($model, 'roleId', 
+			<?php echo CHtml::activeRadioButtonList($model, 'roleId', 
 			CHtml::listData(GRole::model()->findAll('price != 0'), 'id', 'description'),
 			array('template' => '<div style="float:left;margin-right:5px;">{input}</div>{label}'));
 			?>
@@ -21,16 +21,16 @@ $this->breadcrumbs = array(G::t('Membership'));?>
 		</div>
 		<br />
 		<div class="row">
-			<? echo $form->labelEx($model,'payment_id'); ?> <br />
-			<? echo CHtml::activeRadioButtonList($model, 'payment_id', 
+			<?php echo $form->labelEx($model,'payment_id'); ?> <br />
+			<?php echo CHtml::activeRadioButtonList($model, 'payment_id', 
 			CHtml::listData(GPayment::model()->findAll(), 'id', 'title'),
 			array('template' => '<div style="float:left;margin-right:5px;">{input}</div>{label}'));
 			?>
 			<div class="clear"></div>
 		</div>
-		<? echo $form->error($model,'roleId'); ?>
+		<?php echo $form->error($model,'roleId'); ?>
 
-	<?
+	<?php
 		echo CHtml::submitButton(G::t('Order membership'));
 		
 	?>
@@ -45,7 +45,7 @@ $this->breadcrumbs = array(G::t('Membership'));?>
 			<div class="membership-content"></div>
 		</div>
 	</div>
-	<?
+	<?php
     Yii::app()->clientScript->registerScript('toggle', "
 		$('#detail-information').hide();	  
 		$('#more-information').click(function() {
@@ -53,4 +53,4 @@ $this->breadcrumbs = array(G::t('Membership'));?>
 	   });
     ");
     ?>
-	<? $this->endWidget(); ?>
+	<?php $this->endWidget(); ?>

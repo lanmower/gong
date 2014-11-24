@@ -1,4 +1,4 @@
-<?
+<?php
 /**
  * GPasswordValidator validates that the attribute value is a valid password.
  *

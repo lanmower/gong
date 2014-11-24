@@ -1,4 +1,4 @@
-<?
+<?php
 
 class GProfile extends GActiveRecord
 {

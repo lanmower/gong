@@ -1,3 +1,0 @@
-[09-Mar-2014 23:38:34 UTC] PHP Parse error:  syntax error, unexpected '=' in /common/haw-cms/protected/commands/packCommand.php on line 21
-[04-Oct-2014 08:57:17 UTC] PHP Fatal error:  Call to undefined method GConsoleUser::init() in /usr/yii/framework/base/CModule.php on line 388
-[14-Oct-2014 07:53:42 UTC] PHP Notice:  Undefined variable: __appId in /usr/gong/protected/yiic.php on line 3

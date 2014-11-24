@@ -1,4 +1,4 @@
-<?
+<?php
 $this->title = G::t('Confirm deletion');
 
 $this->breadcrumbs = array(

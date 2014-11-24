@@ -1,4 +1,4 @@
-<?
+<?php
 /**
  * EPhotoValidator class file.
  *

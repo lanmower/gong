@@ -10,7 +10,7 @@ $imgDirectory = 'http://'.$_SERVER['SERVER_NAME'].$cs->getCoreScriptUrl() . '/im
 
     <body>
         
-<?
+<?php
 echo $content;
 ?>
 

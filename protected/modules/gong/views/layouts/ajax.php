@@ -7,6 +7,6 @@ if(isset($hashChange)) {
     unset(Yii::app()->session['hashChange']);
 }
 Yii::import('gong.models.*');
-echo GElementRenderer::render(GSiteTemplate::select("ajax"));
+echo G::renderFlash().$content;
 ?>
 </body></html>

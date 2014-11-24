@@ -1,4 +1,4 @@
-<? 
+<?php 
 $this->pageTitle = G::t('Password recovery');
 
 $this->breadcrumbs=array(
@@ -6,7 +6,7 @@ $this->breadcrumbs=array(
 	G::t('Restore'));
 
 ?>
-<? if(G::hasFlash()) {
+<?php if(G::hasFlash()) {
 echo '<div class="alert alert-success">';
 echo G::getFlash(); 
 echo '</div>';
@@ -15,20 +15,20 @@ echo '<h2>'.G::t('Password recovery').'</h2>';
 ?>
 
 <div class="form">
-<? echo CHtml::beginForm(); ?>
+<?php echo CHtml::beginForm(); ?>
 
-	<? echo CHtml::errorSummary($form); ?>
+	<?php echo CHtml::errorSummary($form); ?>
 	
 	<div class="row">
-		<? echo CHtml::activeLabel($form,'login_or_email'); ?>
-		<? echo CHtml::activeTextField($form,'login_or_email') ?>
-		<p class="hint"><? echo G::t("Please enter your user name or email address."); ?></p>
+		<?php echo CHtml::activeLabel($form,'login_or_email'); ?>
+		<?php echo CHtml::activeTextField($form,'login_or_email') ?>
+		<p class="hint"><?php echo G::t("Please enter your user name or email address."); ?></p>
 	</div>
 	
 	<div class="row submit">
-		<? echo CHtml::submitButton(G::t('Restore')); ?>
+		<?php echo CHtml::submitButton(G::t('Restore')); ?>
 	</div>
 
-<? echo CHtml::endForm(); ?>
+<?php echo CHtml::endForm(); ?>
 </div><!-- form -->
-<? } ?>
+<?php } ?>

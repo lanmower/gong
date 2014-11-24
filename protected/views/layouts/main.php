@@ -1,4 +1,4 @@
-<?
+<?php
 $startTime = microtime(true);
 ?>
 <!DOCTYPE html>

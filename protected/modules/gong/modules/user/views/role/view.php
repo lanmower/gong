@@ -1,4 +1,4 @@
-<?
+<?php
 echo '<h1>' . G::t('Role') . '</h1>';
 
 $this->breadcrumbs = array(

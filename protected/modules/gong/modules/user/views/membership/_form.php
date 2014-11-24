@@ -1,22 +1,22 @@
 <div class="form">
 <p class="note">
-<? echo G::t('app','Fields with');?> <span class="required">*</span> <? echo G::t('app','are required');?>.
+<?php echo G::t('app','Fields with');?> <span class="required">*</span> <?php echo G::t('app','are required');?>.
 </p>
 
-<? $form=$this->beginWidget('CActiveForm', array(
+<?php $form=$this->beginWidget('CActiveForm', array(
 'id'=>'membership-form',
 	'enableAjaxValidation'=>true,
 	)); 
 	echo $form->errorSummary($model);
 ?>
 	<div class="row">
-<? echo $form->labelEx($model,'type'); ?>
-<? echo CHtml::activeRadioButtonList($model, 'type', CHtml::listData(
+<?php echo $form->labelEx($model,'type'); ?>
+<?php echo CHtml::activeRadioButtonList($model, 'type', CHtml::listData(
 GRole::model()->findAll('price != 0'), 'id', 'title')); ?>
-<? echo $form->error($model,'type'); ?>
+<?php echo $form->error($model,'type'); ?>
 </div>
 
-<?
+<?php
 echo CHtml::Button(G::t('app', 'Cancel'), array(
 			'submit' => array('membership/index'))); 
 echo CHtml::submitButton(G::t('Buy membership')); 

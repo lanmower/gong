@@ -1,4 +1,4 @@
-<?
+<?php
 class GProfileCommentController extends GController
 {
 	public function accessRules()

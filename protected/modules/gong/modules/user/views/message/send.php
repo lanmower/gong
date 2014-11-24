@@ -1,4 +1,4 @@
-<?
+<?php
 echo '<h1>' . G::t('Create Message'). '</h1>';
 
 $this->breadcrumbs=array(
@@ -7,7 +7,7 @@ $this->breadcrumbs=array(
 
 ?>
 
-<?
+<?php
 $model = new $this->modelClassname;
 $form = $this->beginWidget('CActiveForm', array(
             'id' => 'messageSend',

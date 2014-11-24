@@ -1,4 +1,4 @@
-<?
+<?php
 
 Yii::import("gong.modules.user.models.GPrivacySetting");
 

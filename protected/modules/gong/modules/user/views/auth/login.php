@@ -1,5 +1,5 @@
 <div class="GContent">
-    <?
+    <?php
     if (!isset($model))
         $model = new GUserLogin();
 
@@ -15,23 +15,23 @@
     <h2>Sign in</h2>
     <div class="form inline-form">
         <p>
-<?
+<?php
 echo G::t(
         'Please fill out the following form with your login credentials:');
 ?>
         </p>
 
-        <? echo CHtml::beginForm(array('login'), 'post'); ?>
+        <?php echo CHtml::beginForm(array('login'), 'post'); ?>
 
-        <?
+        <?php
         if (isset($_GET['action']))
             echo CHtml::hiddenField('returnUrl', urldecode($_GET['action']));
         ?>
 
-        <? echo CHtml::errorSummary($model); ?>
+        <?php echo CHtml::errorSummary($model); ?>
 
         <div class="row">
-            <?
+            <?php
             $label = '';
             if ($module->loginType & GongModule::LOGIN_BY_USERNAME) {
                 $label = 'Username';
@@ -44,15 +44,15 @@ echo G::t(
         </div>
 
         <div class="row">
-            <? echo CHtml::activeLabelEx($model, 'password'); ?>
-            <? echo CHtml::activePasswordField($model, 'password');
+            <?php echo CHtml::activeLabelEx($model, 'password'); ?>
+            <?php echo CHtml::activePasswordField($model, 'password');
             ?>
 
         </div>
 
         <div class="row">
             <label></label><span class="hint">
-                <?
+                <?php
                 echo CHtml::link(G::t("Registration"), "registration/registration");
                 echo ' | ';
                 echo CHtml::link(G::t("Lost password?"), "registration/recovery");
@@ -61,16 +61,16 @@ echo G::t(
         </div>
 
         <div class="row rememberMe">
-            <?
+            <?php
                 echo CHtml::checkBox('GUserLogin[rememberMe]', false, array('style' => 'display: inline;'));
                 echo CHtml::label('Stay signed in', 'GUserLogin[rememberMe]');
             ?>
         </div>
 
         <div class="row submit">
-            <? echo CHtml::submitButton(G::t('Login')); ?>
+            <?php echo CHtml::submitButton(G::t('Login')); ?>
         </div>
 
-        <? echo CHtml::endForm(); ?>
+        <?php echo CHtml::endForm(); ?>
     </div> <!-- Form -->
 </div>

@@ -1,4 +1,4 @@
-<?
+<?php
 Yii::app()->clientScript->registerScript("formScript-$form->id",
         isset($_GET['scroll'])?'$("html, body").animate({scrollTop: $("#'.$_GET['scroll'].'").offset().top}, 250);':
                                 '$("html, body").animate({scrollTop: "0px"}, 250);');

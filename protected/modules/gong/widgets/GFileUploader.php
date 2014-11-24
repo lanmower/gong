@@ -15,7 +15,7 @@ class GFileUploader extends GTag {
         <!--[if (gte IE 8)&(lt IE 10)]>
         <script src="<?php echo $fileupload;?>/js/cors/jquery.xdr-transport.js"></script>
         <![endif]-->
-        <?
+        <?php
         if(isset($this->url)) $this->htmlOptions['data-url'] = $this->url;
         
         $this->script = "

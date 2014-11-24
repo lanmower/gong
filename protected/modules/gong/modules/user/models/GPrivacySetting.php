@@ -1,4 +1,4 @@
-<?
+<?php
 
 class GPrivacysetting extends GActiveRecord
 {

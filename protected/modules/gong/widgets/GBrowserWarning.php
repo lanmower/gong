@@ -37,7 +37,7 @@ class GBrowserWarning extends GTag {
                 <div>Opera</div>
             </div>
         </div>
-        <?
+        <?php
         echo CHtml::closeTag('div');
     }
 

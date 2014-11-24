@@ -1,8 +1,8 @@
 <div class="view">
 
-<h2> <? echo $data->role->description; ?> </h2>
+<h2> <?php echo $data->role->description; ?> </h2>
 
-<?
+<?php
 echo G::t('Order number'). ': '.$data->id . '<br />';
 if($data->role->price != 0)
 	if($data->payment_date == 0) 
@@ -17,26 +17,26 @@ if($data->role->price != 0)
 	}
 ?>
 
-<? if($data->role->price != 0) { ?>
+<?php if($data->role->price != 0) { ?>
 <br /> 
-<? echo G::t('Ordered at') . ': '; ?>
-<? echo date('d. m. Y', $data->order_date); ?> 
+<?php echo G::t('Ordered at') . ': '; ?>
+<?php echo date('d. m. Y', $data->order_date); ?> 
 <br /> 
-<? echo G::t('Payment type') . ': '; ?>
-<? if(isset($data->payment)) echo $data->payment->title . '<br />'; ?>
-<? } ?>
+<?php echo G::t('Payment type') . ': '; ?>
+<?php if(isset($data->payment)) echo $data->payment->title . '<br />'; ?>
+<?php } ?>
 
-<?
+<?php
 if($data->end_date != 0)
 	echo G::t('This membership is still active {days} days', array(
 				'{days}' => $data->daysLeft()));
 	?>
 
 
-<? if($data->isActive()) { ?>
-<?= CHtml::beginForm(array('//membership/membership/extend')); ?>
-<p> <?= G::t('When the membership expires'); ?>: </p>
-<?
+<?php if($data->isActive()) { ?>
+<?php= CHtml::beginForm(array('//membership/membership/extend')); ?>
+<p> <?php= G::t('When the membership expires'); ?>: </p>
+<?php
 $options = array(
 		0 => G::t('Automatically extend subscription'),
 		'cancel' => G::t('Cancel Subscription'));
@@ -50,6 +50,6 @@ echo CHtml::dropDownList('subscription',
 		$data->subscribed == -1 ? 'cancel' : $data->subscribed, $options); 
 echo CHtml::submitButton(G::t('Save'));
 ?>
-	<?= CHtml::endForm(); ?>
-<? } ?>
+	<?php= CHtml::endForm(); ?>
+<?php } ?>
 </div>
