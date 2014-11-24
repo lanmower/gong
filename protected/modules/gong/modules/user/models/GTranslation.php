@@ -1,4 +1,4 @@
-<?
+<?php
 
 class GTranslation extends GActiveRecord {
 

@@ -1,4 +1,4 @@
-<?
+<?php
 class GUserChangePassword extends GFormModel 
 {
 	public $password;

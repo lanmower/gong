@@ -37,7 +37,7 @@ echo CHtml::tag('div', array('class' => 'deck jp-left'));
     </ul>
 </div>
 
-<?
+<?php
 echo CHtml::closeTag('div');
 echo CHtml::closeTag('div');
 ?>

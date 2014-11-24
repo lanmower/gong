@@ -1,4 +1,4 @@
-<?
+<?php
 
 class GFieldsController extends GController
 {

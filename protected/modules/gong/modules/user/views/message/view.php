@@ -1,4 +1,4 @@
-<?
+<?php
 echo '<h2>' . G::t('View Message') . '</h2>';
 
 $this->breadcrumbs = array(

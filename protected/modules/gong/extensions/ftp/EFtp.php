@@ -1,4 +1,4 @@
-<?
+<?php
 
 Yii::import('gong.modules.haw.extensions.encoder.Encoder');
 

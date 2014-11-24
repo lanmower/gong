@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 protected/data
 assets
 protected/runtime
@@ -7,3 +8,14 @@ phpmyadmin
 protected/toDo
 convert
 nbprojcect
+=======
+protected/data
+assets
+protected/runtime
+themes
+protected/config
+phpmyadmin
+protected/toDo
+convert
+nbproject
+>>>>>>> d263c64f6cd6264cfc670b8a61d1c147c6efc630

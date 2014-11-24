@@ -1,4 +1,4 @@
-<?
+<?php
 
 class GRegistration extends GActiveRecord {
 	const REG_DISABLED = 0;

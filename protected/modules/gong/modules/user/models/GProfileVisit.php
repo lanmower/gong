@@ -1,4 +1,4 @@
-<?
+<?php
 class GProfileVisit extends GActiveRecord {
 
 	public static function model($className=__CLASS__) {

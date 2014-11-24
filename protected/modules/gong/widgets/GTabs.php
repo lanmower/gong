@@ -6,7 +6,6 @@ class GTabs extends GTag {
     public $tabsOptions = array();
 
     public function init() {
-        $this->script .= "";
         if(!isset($this->tabsOptions['htmlOptions'])) $this->tabsOptions['htmlOptions'] = array();
         $tabs = array();
         $setTab = true;
@@ -29,7 +28,6 @@ class GTabs extends GTag {
                 unset($tab['type']);
             }
             unset($tab['view']);
-            if($tab['url'] == Yii::app()->request->url) $tab['active'] = true;
             if(isset($tab['active']) && $tab['active'] == true) $setTab = false;
             $tabs[] = $tab;
         }

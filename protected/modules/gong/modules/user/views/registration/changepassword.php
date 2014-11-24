@@ -1,4 +1,4 @@
-<? 
+<?php 
 $this->pageTitle = G::t("change password");
 echo '<h2>'. G::t('change password') .'</h2>';
 
@@ -10,24 +10,24 @@ if(isset($expired) && $expired)
 ?>
 
 <div class="form">
-<? echo CHtml::beginForm(); ?>
-	<? echo G::requiredFieldNote(); ?>
-	<? echo CHtml::errorSummary($form); ?>
+<?php echo CHtml::beginForm(); ?>
+	<?php echo G::requiredFieldNote(); ?>
+	<?php echo CHtml::errorSummary($form); ?>
 
-	<? if(!Yii::app()->user->isGuest) {
+	<?php if(!Yii::app()->user->isGuest) {
 		echo '<div class="row">';
 		echo CHtml::activeLabelEx($form,'currentPassword'); 
 		echo CHtml::activePasswordField($form,'currentPassword'); 
 		echo '</div>';
 	} ?>
 
-<? $this->renderPartial(
+<?php $this->renderPartial(
 		'GongModule.modules.user.views.user.passwordfields', array(
 			'form'=>$form)); ?>
 
 	<div class="row submit">
-	<? echo CHtml::submitButton(G::t("Save")); ?>
+	<?php echo CHtml::submitButton(G::t("Save")); ?>
 	</div>
 
-<? echo CHtml::endForm(); ?>
+<?php echo CHtml::endForm(); ?>
 </div><!-- form -->

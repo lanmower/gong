@@ -1,4 +1,4 @@
-<?
+<?php
 if(empty($tabularIdx))
 {
 	$this->title=G::t('Update user')." ".$model->id;
