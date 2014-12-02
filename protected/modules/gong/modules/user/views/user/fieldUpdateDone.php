@@ -1,5 +1,6 @@
 <?php
-$summary = CHtml::errorSummary($model);
-if(!empty($summary)) G::setFlash('alert-info',$summary);
-$this->redirect($this->createUrl('/gong/user/user/list', GUserController::getSearchFlags()));
+$summary = CHtml::errorSummary ( $model );
+if (! empty ( $summary ))
+	G::setFlash ( 'alert-info', $summary );
+$this->redirect ( $this->createUrl ( '/gong/user/user/list', GUserController::getSearchFlags () ) );
 ?>

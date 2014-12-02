@@ -4,43 +4,48 @@
 <?php $this->breadcrumbs = array(G::t('Registration')); ?>
 
 <div class="form">
-<?php $activeform = $this->beginWidget('CActiveForm', array(
-			'id'=>'registration-form',
-			'enableAjaxValidation'=>true,
-			'enableClientValidation'=>true,
-			'focus'=>array($form,'username'),
-			));
+<?php
+
+$activeform = $this->beginWidget ( 'CActiveForm', array (
+		'id' => 'registration-form',
+		'enableAjaxValidation' => true,
+		'enableClientValidation' => true,
+		'focus' => array (
+				$form,
+				'username' 
+		) 
+) );
 ?>
 
 <?php echo G::requiredFieldNote(); ?>
 <?php echo CHtml::errorSummary(array($form, $profile)); ?>
 
 <div class="row"> <?php
-echo $activeform->labelEx($form,'username');
-echo $activeform->textField($form,'username');
+echo $activeform->labelEx ( $form, 'username' );
+echo $activeform->textField ( $form, 'username' );
 ?> </div>
 
-<div class="row"> <?php
-echo $activeform->labelEx($profile,'email');
-echo $activeform->textField($profile,'email');
-?> </div>  
+	<div class="row"> <?php
+	echo $activeform->labelEx ( $profile, 'email' );
+	echo $activeform->textField ( $profile, 'email' );
+	?> </div>
 
-<div class="row"> <?php
-echo $activeform->labelEx($profile,'firstname');
-echo $activeform->textField($profile,'firstname');
-?> </div>  
+	<div class="row"> <?php
+	echo $activeform->labelEx ( $profile, 'firstname' );
+	echo $activeform->textField ( $profile, 'firstname' );
+	?> </div>
 
-<div class="row"> <?php
-echo $activeform->labelEx($profile,'lastname');
-echo $activeform->textField($profile,'lastname');
-?> </div>  
+	<div class="row"> <?php
+	echo $activeform->labelEx ( $profile, 'lastname' );
+	echo $activeform->textField ( $profile, 'lastname' );
+	?> </div>
 
-<div class="row">
+	<div class="row">
 <?php echo $activeform->labelEx($form,'password'); ?>
 <?php echo $activeform->passwordField($form,'password'); ?>
 </div>
 
-<div class="row">
+	<div class="row">
 <?php echo $activeform->labelEx($form,'verifyPassword'); ?>
 <?php echo $activeform->passwordField($form,'verifyPassword'); ?>
 </div>
@@ -54,7 +59,7 @@ echo $activeform->textField($profile,'lastname');
 		</div>
 		<p class="hint">
 		<?php echo G::t('Please enter the letters as they are shown in the image above.'); ?>
-		<br/><?php echo G::t('Letters are not case-sensitive.'); ?></p>
+		<br /><?php echo G::t('Letters are not case-sensitive.'); ?></p>
 	</div>
 	<?php endif; ?>
 	
@@ -63,4 +68,5 @@ echo $activeform->textField($profile,'lastname');
 	</div>
 
 <?php $this->endWidget(); ?>
-</div><!-- form -->
+</div>
+<!-- form -->

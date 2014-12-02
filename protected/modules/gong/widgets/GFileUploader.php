@@ -1,24 +1,32 @@
 <?php
 class GFileUploader extends GTag {
-    public $form = true;
-    public $buttonOptions = array();
-    public $progressBar = true;
-    public $fileList = true;
-    
-    public function init() {
-        $fileupload = Yii::app()->assetManager->publish('protected/vendors/file-upload', false, -1, YII_DEBUG);
-        $this->core[] = array('name'=>'jquery');
-        $this->js[] = array('url' => $fileupload.'/js/vendor/jquery.ui.widget.js');
-        $this->js[] = array('url' => $fileupload.'/js/jquery.iframe-transport.js');
-        $this->js[] = array('url' => $fileupload.'/js/jquery.fileupload.js');
-        ?>
-        <!--[if (gte IE 8)&(lt IE 10)]>
+	public $form = true;
+	public $buttonOptions = array ();
+	public $progressBar = true;
+	public $fileList = true;
+	public function init() {
+		$fileupload = Yii::app ()->assetManager->publish ( 'protected/vendors/file-upload', false, - 1, YII_DEBUG );
+		$this->core [] = array (
+				'name' => 'jquery' 
+		);
+		$this->js [] = array (
+				'url' => $fileupload . '/js/vendor/jquery.ui.widget.js' 
+		);
+		$this->js [] = array (
+				'url' => $fileupload . '/js/jquery.iframe-transport.js' 
+		);
+		$this->js [] = array (
+				'url' => $fileupload . '/js/jquery.fileupload.js' 
+		);
+		?>
+<!--[if (gte IE 8)&(lt IE 10)]>
         <script src="<?php echo $fileupload;?>/js/cors/jquery.xdr-transport.js"></script>
         <![endif]-->
-        <?php
-        if(isset($this->url)) $this->htmlOptions['data-url'] = $this->url;
-        
-        $this->script = "
+<?php
+		if (isset ( $this->url ))
+			$this->htmlOptions ['data-url'] = $this->url;
+		
+		$this->script = "
         var local = $(\"#uploadinput\");
         var filelist = $(local.data('filelist'));
         var files=0;
@@ -58,30 +66,31 @@ class GFileUploader extends GTag {
             }
         });
         ";
-        parent::init();
-    }
-    
-    public function run() {
-        echo '<form style="width: 0px; height: 0px;" class="form-upload">';
-        if($this->fileList === true) {
-            $fileList = "$this->id-fileList";
-        } else $fileList = $this->fileList;
-        if($this->progressBar === true) {
-            $progressBar = "$this->id-progressBar";
-        } else $progressBar = $this->progressBar;
-        echo "<input id='uploadinput' style='height:0px;width:0px;' class='GFileUploader-uploadinput' data-filelist='.$fileList' data-progress='.$progressBar .bar' type='file' name='files[]'  multiple>";
-        echo '</form>';
-        echo '<div class="inner uploaderStatus">';
-        echo "  <div class='$progressBar progress_bar_wrapper progress-animated'>";
-        echo '      <div class="progress_context" style="margin:10px 0px; display:none;">'; 
-        echo "          <span class='cancelButton'>Cancel</span>";
-        echo "          <div class='progress-bar progress-bar-success' style='width:100px'><div style='width:0px;'><span></span></div></div>";
-        echo '          <div class="upload_file_name" style="margin-top:5px; margin-bottom:-5px; display:inline-block"></div>';
-        echo '      </div>';
-        echo "  </div>";
-        echo '</div>';
-        parent::run();
-    }
+		parent::init ();
+	}
+	public function run() {
+		echo '<form style="width: 0px; height: 0px;" class="form-upload">';
+		if ($this->fileList === true) {
+			$fileList = "$this->id-fileList";
+		} else
+			$fileList = $this->fileList;
+		if ($this->progressBar === true) {
+			$progressBar = "$this->id-progressBar";
+		} else
+			$progressBar = $this->progressBar;
+		echo "<input id='uploadinput' style='height:0px;width:0px;' class='GFileUploader-uploadinput' data-filelist='.$fileList' data-progress='.$progressBar .bar' type='file' name='files[]'  multiple>";
+		echo '</form>';
+		echo '<div class="inner uploaderStatus">';
+		echo "  <div class='$progressBar progress_bar_wrapper progress-animated'>";
+		echo '      <div class="progress_context" style="margin:10px 0px; display:none;">';
+		echo "          <span class='cancelButton'>Cancel</span>";
+		echo "          <div class='progress-bar progress-bar-success' style='width:100px'><div style='width:0px;'><span></span></div></div>";
+		echo '          <div class="upload_file_name" style="margin-top:5px; margin-bottom:-5px; display:inline-block"></div>';
+		echo '      </div>';
+		echo "  </div>";
+		echo '</div>';
+		parent::run ();
+	}
 }
 
 ?>

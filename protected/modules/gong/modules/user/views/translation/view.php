@@ -1,3 +1,5 @@
 <?php
-echo $this->widget('GTranslationEditor', array('model'=>$model), true);
+echo $this->widget ( 'GTranslationEditor', array (
+		'model' => $model 
+), true );
 ?>

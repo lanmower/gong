@@ -1,4 +1,6 @@
-<html><body><?php
+<html>
+<body><?php
 echo $content;
 ?>
-</body></html>
+</body>
+</html>

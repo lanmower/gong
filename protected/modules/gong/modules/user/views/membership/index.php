@@ -1,6 +1,6 @@
 <?php
-$cs = new CClientScript();
-Yii::app()->clientScript->registerScript("membership", "
+$cs = new CClientScript ();
+Yii::app ()->clientScript->registerScript ( "membership", "
             $('#membership').jtable({
 				title: 'Memberships',
 				actions: {
@@ -48,6 +48,6 @@ Yii::app()->clientScript->registerScript("membership", "
                                 }
 			});
 			$('#membership').jtable('load');
-", CClientScript::POS_READY);
+", CClientScript::POS_READY );
 ?>
 <div id="membership"></div>

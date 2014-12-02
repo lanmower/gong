@@ -1,6 +1,4 @@
 <?php
-abstract class GFormModel extends CFormModel
-{
-	
+abstract class GFormModel extends CFormModel {
 }
 ?>

@@ -31,7 +31,7 @@ $.fn.selectText = function(){
 
             range = obj.ownerDocument.createRange();
 
-            if(is(type.func, range.selectNodeContents)
+            if(is(type.func, range.selectNodefs)
                 && is(type.func, selection.removeAllRanges)
                 && is(type.func, selection.addRange)){
                 // Mozilla
@@ -56,7 +56,7 @@ $.fn.selectText = function(){
     return this;
 }
 
-function processQueue(origInput, target, append, noprocessing) {
+function processQueue(origInput, target, append) {
     input = $("<div></div>");
     var updateCount = 0;
    
@@ -382,7 +382,7 @@ function clearForm(form) {
         $.fn.processQueue = processQueue;
         $.fn.clearForm = clearForm;
         $.fn.showUrlInDialog = showUrlInDialog;
-        $.alm.defaultTarget = $(".GContent");
+        $.alm.defaultTarget = $(".article");
 
         $(function(){
             /*window.onerror = function (err, file, line) {

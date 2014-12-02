@@ -1,33 +1,37 @@
 <?php
-
 class GPlayer extends GTag {
-
-    public $audioFullscreen = 'false';
-    public $supplied = "mp3, oga, m4a, m4v";
-    public $wmode = "window";
-    public $smoothPlayBar = true;
-    public $keyEnabled = false;
-    public $width = '288px';
-    public $height = '216px';
-
-    public function addClass($class, $target = null) {
-        if ($target == null)
-            G::addClassToString($this->htmlOptions['class'], $class);
-        G::addClassToString($target, $class);
-    }
-
-    public function init() {
-        $this->tag = 'div';
-        $this->htmlOptions['id'] = "GPlayer-" . $this->hash;
-        $jplayer = Yii::app()->assetManager->publish('protected/vendors/jplayer', false, -1, YII_DEBUG);
-        $this->core[] = array('name' => 'jquery');
-        $this->js[] = array('url' => $jplayer . '/jquery.jplayer.min.js');
-        $this->js[] = array('url' => $jplayer . '/add-on/jplayer.playlist.js');
-        $this->css[] = array('url' => $jplayer . '/skin/m2m/jplayer.m2m.css');
-        $playerId = "GPlayer-player-" . $this->hash;
-        $containerId = "GPlayer-container-" . $this->hash;
-        $this->id = $containerId;
-        $this->script .= "
+	public $audioFullscreen = 'false';
+	public $supplied = "mp3, oga, m4a, m4v";
+	public $wmode = "window";
+	public $smoothPlayBar = true;
+	public $keyEnabled = false;
+	public $width = '288px';
+	public $height = '216px';
+	public function addClass($class, $target = null) {
+		if ($target == null)
+			G::addClassToString ( $this->htmlOptions ['class'], $class );
+		G::addClassToString ( $target, $class );
+	}
+	public function init() {
+		$this->tag = 'div';
+		$this->htmlOptions ['id'] = "GPlayer-" . $this->hash;
+		$jplayer = Yii::app ()->assetManager->publish ( 'protected/vendors/jplayer', false, - 1, YII_DEBUG );
+		$this->core [] = array (
+				'name' => 'jquery' 
+		);
+		$this->js [] = array (
+				'url' => $jplayer . '/jquery.jplayer.min.js' 
+		);
+		$this->js [] = array (
+				'url' => $jplayer . '/add-on/jplayer.playlist.js' 
+		);
+		$this->css [] = array (
+				'url' => $jplayer . '/skin/m2m/jplayer.m2m.css' 
+		);
+		$playerId = "GPlayer-player-" . $this->hash;
+		$containerId = "GPlayer-container-" . $this->hash;
+		$this->id = $containerId;
+		$this->script .= "
                 
         var hideclip= function() {
             $('#$playerId').jPlayer('option', 'size', {
@@ -79,10 +83,12 @@ class GPlayer extends GTag {
 
         //$('#$playerId').bind( $.jPlayer.event.ended, hideclip );
            ";
-        parent::init();
-        $this->render('player', array('containerId' => $containerId, 'playerId' => $playerId));
-    }
-
+		parent::init ();
+		$this->render ( 'player', array (
+				'containerId' => $containerId,
+				'playerId' => $playerId 
+		) );
+	}
 }
 
 ?>

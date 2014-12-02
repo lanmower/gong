@@ -39,6 +39,7 @@ $.alm.classes.processing.replace = {
         var targetSelector = $(this).attr('target');
         $(this).remove();
         $(targetSelector).each(function() {
+        	$.fn.processQueue(contents.clone(), $(this), false);
             $(this).replaceWith(contents.clone())
             });
         $(targetSelector).liveClasses($.alm.classes.processing);

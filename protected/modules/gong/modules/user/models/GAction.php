@@ -1,58 +1,69 @@
 <?php
-
 class GAction extends GActiveRecord {
-	public static function model($className=__CLASS__) {
-		return parent::model($className);
+	public static function model($className = __CLASS__) {
+		return parent::model ( $className );
 	}
-
-	public function tableName()
-	{
+	public function tableName() {
 		return '{{action}}';
 	}
-
 	public function rules() {
-		return array(
-			array('title', 'required'),
-			array('comment, subject', 'default', 'setOnEmpty' => true, 'value' => null),
-			array('title, subject', 'length', 'max'=>255),
-			array('comment', 'safe'),
-			array('id, title, comment, subject', 'safe', 'on'=>'search'),
+		return array (
+				array (
+						'title',
+						'required' 
+				),
+				array (
+						'comment, subject',
+						'default',
+						'setOnEmpty' => true,
+						'value' => null 
+				),
+				array (
+						'title, subject',
+						'length',
+						'max' => 255 
+				),
+				array (
+						'comment',
+						'safe' 
+				),
+				array (
+						'id, title, comment, subject',
+						'safe',
+						'on' => 'search' 
+				) 
 		);
 	}
-
-	public function relations()
-	{
-		return array(
-			'permissions' => array(self::HAS_MANY, 'GPermission', 'roleId')
+	public function relations() {
+		return array (
+				'permissions' => array (
+						self::HAS_MANY,
+						'GPermission',
+						'roleId' 
+				) 
 		);
 	}
-
-	public function attributeLabels()
-	{
-		return array(
-			'id' => G::t('ID'),
-			'title' => G::t('Title'),
-			'comment' => G::t('Comment'),
-			'subject' => G::t('Subject'),
+	public function attributeLabels() {
+		return array (
+				'id' => G::t ( 'ID' ),
+				'title' => G::t ( 'Title' ),
+				'comment' => G::t ( 'Comment' ),
+				'subject' => G::t ( 'Subject' ) 
 		);
 	}
-
 	public function __toString() {
 		return $this->title;
-
 	}
-
-	public function search()
-	{
-		$criteria=new CDbCriteria;
-
-		$criteria->compare('id', $this->id);
-		$criteria->compare('title', $this->title, true);
-		$criteria->compare('comment', $this->comment, true);
-		$criteria->compare('subject', $this->subject, true);
-
-		return new CActiveDataProvider(get_class($this), array(
-			'criteria'=>$criteria,
-		));
+	public function search() {
+		$criteria = new CDbCriteria ();
+		
+		$criteria->compare ( 'id', $this->id );
+		$criteria->compare ( 'title', $this->title, true );
+		$criteria->compare ( 'comment', $this->comment, true );
+		$criteria->compare ( 'subject', $this->subject, true );
+		
+		return new CActiveDataProvider ( get_class ( $this ), array (
+				'criteria' => $criteria 
+		) );
 	}
 }

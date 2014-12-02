@@ -1,5 +1,4 @@
 <?php
-class G extends Gong
-{ 
+class G extends Gong {
 }
 ?>

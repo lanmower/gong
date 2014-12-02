@@ -1,4 +1,4 @@
 <?php
-echo GElementRenderer::render(GSiteView::select("user","translation","admin"));
+echo GElementRenderer::render ( GSiteView::select ( "user", "translation", "admin" ) );
 
 ?>
