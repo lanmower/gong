@@ -15,9 +15,6 @@ class GTabs extends GTag {
 					if (Yii::app ()->user->isGuest) {
 						$tab ['url'] = '/gong/user/auth/login';
 					} else {
-						$tab ['linkOptions'] = array (
-								'class' => 'nohijack' 
-						);
 						$tab ['url'] = '/gong/user/auth/logout';
 					}
 				}

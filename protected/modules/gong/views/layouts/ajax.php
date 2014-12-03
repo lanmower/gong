@@ -11,9 +11,15 @@ if (isset ( $hashChange )) {
 	unset ( Yii::app ()->session ['hashChange'] );
 }
 //Yii::import ( 'gong.models.*' );
+$template = GSiteTemplate::select( "template" );
+$children = $template->children(array('condition'=> 'ajax = \'1\''));
 Yii::app()->controller->content = $content;
-echo GElementRenderer::render ( GSiteTemplate::select ( "ajax" ) );
-//echo $content;
+$ret = array();
+foreach ( $children as $element ) {
+	$ret[] = '<div class="replace" target=".'. $element->className . '-' . $element->hash .'">'.GElementRenderer::renderElement ( $element ).'</div>';
+}
+echo implode("\n", $ret);
+echo $content;
 ?>
 </body>
 </html>

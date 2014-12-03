@@ -9,7 +9,7 @@ class GElementRenderer {
 	}
 	public static function renderElement($model, $options = array()) {
 		$return = array ();
-		// set ur error handle
+		// set your error handle
 		/*
 		 * ob_start(function ($buffer) use ($model) {
 		 * $error = error_get_last();

@@ -382,7 +382,7 @@ function clearForm(form) {
         $.fn.processQueue = processQueue;
         $.fn.clearForm = clearForm;
         $.fn.showUrlInDialog = showUrlInDialog;
-        $.alm.defaultTarget = $(".article");
+        $.alm.defaultTarget = $(".content");
 
         $(function(){
             /*window.onerror = function (err, file, line) {

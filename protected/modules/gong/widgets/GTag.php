@@ -11,6 +11,7 @@ class GTag extends GBaseWidget {
 		G::addClassToString ( $target, $class );
 	}
 	public function init() {
+		$this->editContent = null;
 		$this->addClass ( get_class ( $this ) );
 		echo CHtml::openTag ( $this->tag, $this->htmlOptions );
 		parent::init ();
