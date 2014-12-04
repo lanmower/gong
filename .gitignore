@@ -1,9 +1,11 @@
 protected/data
 assets
-protected/runtime
+protected/runtime/application.log
 themes
-protected/config
+protected/config/
 phpmyadmin
-protected/toDo
+protected
 convert
 nbprojcect
+.buildpath
+.settings/
