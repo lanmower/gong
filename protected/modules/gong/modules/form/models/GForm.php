@@ -1,31 +1,40 @@
 <?php
 class GForm extends GActiveRecord {
 	public $childClass = 'GFormElement';
+
 	public static function model($className = __CLASS__) {
 		return parent::model ( $className );
 	}
+
 	public function getCreateRedirect() {
 		return Yii::app ()->controller->createUrl ( '/gong/form/admin/list' );
 	}
+
 	public function getDeleteRedirect() {
 		return Yii::app ()->controller->createUrl ( '/gong/form/admin/list' );
 	}
+
 	public function getChildModel() {
 		$childClass = $this->childClass;
 		return $childClass::model ();
 	}
+	
 	public function tableName() {
 		return '{{form}}';
 	}
+	
 	public function getModelLabel() {
 		return lcfirst ( str_replace ( 'G', '', get_class ( $this ) ) );
 	}
+	
 	public function getControllerId() {
 		return 'admin';
 	}
+	
 	public function getCustomUrl() {
 		return Yii::app ()->createUrl ( '/gong/form/submission/index/' );
 	}
+	
 	public function rules() {
 		return array (
 				array (
@@ -42,6 +51,10 @@ class GForm extends GActiveRecord {
 				),
 				array (
 						'name' => 'table',
+						'class' => 'GEditableColumn' 
+				),
+				array (
+						'name' => 'view',
 						'class' => 'GEditableColumn' 
 				),
 				array (
@@ -102,6 +115,21 @@ class GForm extends GActiveRecord {
 		}
 		return $rules;
 	}
+
+	public function getModelRelations() {
+		$relations = array ();
+		foreach ( $this->children as $field ) {
+			if (method_exists ( $field->className, 'getRelations' )) {
+				$fieldWidget = $field->widget;
+				$fieldRelations = $fieldWidget->getRelations();
+				foreach ( $fieldRelations as $fieldKey => $fieldRelation ) {
+					$relations[$fieldKey] = $fieldRelation;
+				}
+			}
+		}
+		return $relations;
+	}
+	
 	public function getModelBehaviors() {
 		$behaviors = array ();
 		foreach ( $this->children as $field ) {
@@ -115,6 +143,7 @@ class GForm extends GActiveRecord {
 		}
 		return $behaviors;
 	}
+	
 	public function getModelGridColumns() {
 		$gridColumns = array ();
 		foreach ( $this->children as $field ) {

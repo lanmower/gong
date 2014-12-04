@@ -8,7 +8,7 @@ class GActiveDropDown extends GField {
 	public $select = null;
 	public $listOptions = array ();
 	public $_items;
-	public $criteria;
+	public $criteria = array();
 	public function getItems() {
 		if (! isset ( $this->_items )) {
 			
@@ -40,11 +40,17 @@ class GActiveDropDown extends GField {
 		}
 		return $this->_items;
 	}
+	public function getRelations() {
+		if (!isset ( $this->formName )) return array();
+		return array(
+				$this->name => array('formName'=>$this->formName, 'type'=>CActiveRecord::BELONGS_TO)
+		);
+	}
 	public function run() {
 		if (isset ( $_POST [$this->name] ))
 			$this->select = $_POST [$this->name];
 		if (isset ( $this->submission )) {
-			echo CHtml::activeDropDownList ( $this->submission, $this->name, $this->getItems (), array_merge ( array (
+			echo CHtml::activeDropDownList ( $this->submission, $this->name, $this->getItems(), array_merge ( array (
 					'empty' => 'Please select' 
 			), $this->listOptions ) );
 		} else {

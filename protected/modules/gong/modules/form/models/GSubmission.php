@@ -6,12 +6,60 @@ class GSubmission extends GActiveRecord {
 	/**
 	 * Table meta-data.
 	 * Must redeclare, as parent::_md is private
-	 * 
+	 *
 	 * @var CActiveRecordMetaData
 	 */
 	protected $_md;
 	protected $_rules = array ();
 	protected $_form;
+	protected $_relations;
+	
+	/**
+	 * Constructor
+	 *
+	 * @param string $scenario
+	 *        	(defaults to 'insert')
+	 * @param string $tableName        	
+	 */
+	public function __construct($scenario = 'insert', $form = null) {
+		$gVarForm = Yii::app ()->controller->getVar ( 'form' );
+		if (is_string ( $form )) {
+			$this->_form = GForm::model ()->find ( 'name = :name', array (
+					':name' => $form 
+			) );
+		}
+		if (isset ( $gVarForm )) {
+			$this->_form = $gVarForm;
+		}
+		if (is_object ( $form )) {
+			$this->_form = $form;
+		}
+		if (is_object ( $this->_form )) {
+			foreach ( $this->_form->children as $child ) {
+				$child->submission = $this;
+			}
+			$this->_tableName = $this->_form->table;
+			$this->_behaviors = $this->_form->modelBehaviors;
+			$this->_rules = $this->_form->modelRules;
+			foreach($this->_form->modelRelations as $attribute => $data) {
+				$this->_relations[$attribute] = $data;
+			}
+		} else {
+			throw new CHttpException ( 500, CVarDumper::dumpAsString ( $this->_form, 3 ) );
+		}
+		parent::__construct ( $scenario );
+	}
+		
+	public function __get($name) {
+		if(isset($this->_relations[$name])){
+			if($this->_relations[$name]['type'] == CActiveRecord::BELONGS_TO)
+				return GSubmission::forForm($this->_relations[$name]['formName'])->find();
+			if($this->_relations[$name]['type'] == CActiveRecord::HAS_MANY)
+				return GSubmission::forForm($this->_relations[$name]['formName'])->findAll();
+		}
+		else return parent::__get($name);
+	}
+	
 	public function behaviors() {
 		if (empty ( $this->_behaviors )) {
 			$this->attachBehavior ( 'GOwnershipBehavior', array (
@@ -39,42 +87,7 @@ class GSubmission extends GActiveRecord {
 	public static function model($className = __CLASS__) {
 		return parent::model ( $className );
 	}
-	
-	/**
-	 * Constructor
-	 * 
-	 * @param string $scenario
-	 *        	(defaults to 'insert')
-	 * @param string $tableName        	
-	 */
-	public function __construct($scenario = 'insert', $form = null) {
-		$gVarForm = Yii::app ()->controller->getVar ( 'form' );
-		if (is_string ( $form )) {
-			$this->_form = GForm::model ()->find ( 'name = :name', array (
-					':name' => $form 
-			) );
-			CVarDumper::dump ( $this->_form, 1, true );
-		}
-		if (isset ( $gVarForm )) {
-			$this->_form = $gVarForm;
-		}
-		if (is_object ( $form )) {
-			$this->_form = $form;
-		}
-		if (is_object ( $this->_form )) {
-			foreach ( $this->_form->children as $child ) {
-				$child->submission = $this;
-			}
-			$this->_tableName = $this->_form->table;
-			$this->_behaviors = $this->_form->modelBehaviors;
-			$this->_rules = $this->_form->modelRules;
-		} else {
-			throw new CHttpException ( 500, CVarDumper::dumpAsString ( $this->_form, 3 ) );
-		}
-		parent::__construct ( $scenario );
-	}
 	public function getAttribute($attributeName) {
-		// die($attributeName);
 		if (isset ( $this->_form )) {
 			foreach ( $this->_form->children as $child ) {
 				if ($child->name == $attributeName) {
@@ -99,7 +112,7 @@ class GSubmission extends GActiveRecord {
 	/**
 	 * Overrides default instantiation logic.
 	 * Instantiates AR class by providing table name
-	 * 
+	 *
 	 * @see CActiveRecord::instantiate()
 	 * @return GSubmission
 	 */
@@ -109,7 +122,7 @@ class GSubmission extends GActiveRecord {
 	
 	/**
 	 * Returns meta-data for this DB table
-	 * 
+	 *
 	 * @see CActiveRecord::getMetaData()
 	 * @return CActiveRecordMetaData
 	 */
@@ -122,7 +135,7 @@ class GSubmission extends GActiveRecord {
 	
 	/**
 	 * Returns table name
-	 * 
+	 *
 	 * @see CActiveRecord::tableName()
 	 * @return string
 	 */
@@ -135,7 +148,7 @@ class GSubmission extends GActiveRecord {
 	
 	/**
 	 * Returns rules
-	 * 
+	 *
 	 * @see CActiveRecord::rules()
 	 * @return string
 	 */

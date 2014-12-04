@@ -10,7 +10,6 @@ if (isset ( $hashChange )) {
 	) );
 	unset ( Yii::app ()->session ['hashChange'] );
 }
-//Yii::import ( 'gong.models.*' );
 $template = GSiteTemplate::select( "template" );
 $children = $template->children(array('condition'=> 'ajax = \'1\''));
 Yii::app()->controller->content = $content;
