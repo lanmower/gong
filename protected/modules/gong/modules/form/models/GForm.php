@@ -158,7 +158,7 @@ class GForm extends GActiveRecord {
 		$gridColumns [] = array (
 				'header' => 'actions',
 				'class' => 'GSubmissionButtonColumn',
-				'template' => '{update}{{delete}' 
+				'template' => '{update}{delete}' 
 		);
 		return $gridColumns;
 	}

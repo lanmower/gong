@@ -1,17 +1,5 @@
 <?php
 class GGridView extends CGridView {
-	public $pager = array (
-			'htmlOptions' => array (
-					'class' => 'pagination' 
-			),
-			'firstPageCssClass' => false,
-			'lastPageCssClass' => false,
-			'previousPageCssClass' => false,
-			'nextPageCssClass' => false,
-			'internalPageCssClass' => false,
-			'selectedPageCssClass' => 'active',
-			'header' => '' 
-	);
 	public $sort = true;
 	public $sortUrl = 'reorder';
 	public $ajaxUpdate = false;
