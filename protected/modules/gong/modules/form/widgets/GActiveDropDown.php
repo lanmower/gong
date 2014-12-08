@@ -40,12 +40,14 @@ class GActiveDropDown extends GField {
 		}
 		return $this->_items;
 	}
+	
 	public function getRelations() {
 		if (!isset ( $this->formName )) return array();
-		return array(
+		$ret = array(
 				$this->name => array('formName'=>$this->formName, 'type'=>CActiveRecord::BELONGS_TO)
 		);
 	}
+	
 	public function run() {
 		if (isset ( $_POST [$this->name] ))
 			$this->select = $_POST [$this->name];
@@ -60,6 +62,7 @@ class GActiveDropDown extends GField {
 		}
 		parent::run ();
 	}
+	
 	public function getCell($value) {
 		if (isset ( $this->submission )) {
 			echo CHtml::form ( array (
@@ -76,11 +79,12 @@ class GActiveDropDown extends GField {
 		} else
 			throw new CHttpException ( 500, 'no submission set' );
 	}
+	
 	public function getGridColumns() {
 		return array (
 				array (
 						'name' => $this->name,
-						'class' => 'GActiveDropDownColumn' 
+						'class' => 'GDataColumn' 
 				) 
 		);
 	}

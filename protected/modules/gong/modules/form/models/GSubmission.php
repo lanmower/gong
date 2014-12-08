@@ -51,11 +51,12 @@ class GSubmission extends GActiveRecord {
 	}
 		
 	public function __get($name) {
+		//die(CVarDumper::dump($this->_relations));
 		if(isset($this->_relations[$name])){
 			if($this->_relations[$name]['type'] == CActiveRecord::BELONGS_TO)
 				return GSubmission::forForm($this->_relations[$name]['formName'])->find();
 			if($this->_relations[$name]['type'] == CActiveRecord::HAS_MANY)
-				return GSubmission::forForm($this->_relations[$name]['formName'])->findAll();
+				return GSubmission::forForm($this->_relations[$name]['formName'])->findAllByAttributes(array($this->_relations[$name]['foreignKey']=>$this->primaryKey));
 		}
 		else return parent::__get($name);
 	}
@@ -84,9 +85,11 @@ class GSubmission extends GActiveRecord {
 	public function getGridColumns() {
 		return $this->_form->modelGridColumns;
 	}
+	
 	public static function model($className = __CLASS__) {
 		return parent::model ( $className );
 	}
+	
 	public function getAttribute($attributeName) {
 		if (isset ( $this->_form )) {
 			foreach ( $this->_form->children as $child ) {
