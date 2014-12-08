@@ -37,8 +37,8 @@ if ($data->end_date != 0)
 
 
 <?php if($data->isActive()) { ?>
-<?php= CHtml::beginForm(array('//membership/membership/extend')); ?>
-<p> <?php= G::t('When the membership expires'); ?>: </p>
+<?php CHtml::beginForm(array('//membership/membership/extend')); ?>
+<p> <?php G::t('When the membership expires'); ?>: </p>
 <?php
 	$options = array (
 			0 => G::t ( 'Automatically extend subscription' ),
@@ -53,6 +53,6 @@ if ($data->end_date != 0)
 	echo CHtml::dropDownList ( 'subscription', $data->subscribed == - 1 ? 'cancel' : $data->subscribed, $options );
 	echo CHtml::submitButton ( G::t ( 'Save' ) );
 	?>
-	<?php= CHtml::endForm(); ?>
+	<?php CHtml::endForm(); ?>
 <?php } ?>
 </div>
