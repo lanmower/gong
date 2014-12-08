@@ -9,3 +9,5 @@ convert
 nbprojcect
 .buildpath
 .settings/
+.metadata
+protected/runtime/application.log
