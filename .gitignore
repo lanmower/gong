@@ -6,8 +6,7 @@ protected/config/
 phpmyadmin
 protected
 convert
-nbprojcect
+nbproject
 .buildpath
 .settings/
 .metadata
-protected/runtime/application.log
