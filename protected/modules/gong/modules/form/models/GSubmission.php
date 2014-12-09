@@ -22,13 +22,13 @@ class GSubmission extends GActiveRecord {
 	 * @param string $tableName        	
 	 */
 	public function __construct($scenario = 'insert', $form = null) {
-		$gVarForm = Yii::app ()->controller->getVar ( 'form' );
+		$gVarForm = Yii::app ()->controller->getVar ( 'tmpForm' );
 		if (is_string ( $form )) {
 			$this->_form = GForm::model ()->find ( 'name = :name', array (
 					':name' => $form 
 			) );
 		}
-		if (isset ( $gVarForm )) {
+		if (isset ( $gVarForm ) && !isset($form)) {
 			$this->_form = $gVarForm;
 		}
 		if (is_object ( $form )) {
@@ -51,7 +51,6 @@ class GSubmission extends GActiveRecord {
 	}
 		
 	public function __get($name) {
-		//die(CVarDumper::dump($this->_relations));
 		if(isset($this->_relations[$name])){
 			if($this->_relations[$name]['type'] == CActiveRecord::BELONGS_TO)
 				return GSubmission::forForm($this->_relations[$name]['formName'])->find();
@@ -177,7 +176,8 @@ class GSubmission extends GActiveRecord {
 		$form = GForm::model ()->find ( 'name = :name', array (
 				':name' => $formName 
 		) );
-		Yii::app ()->controller->setVar ( 'form', $form );
+		if(!isset($form) && isset($formName)) throw new CHttpException(500, 'Form '.$formName.' could not be found for submission. ' );
+		Yii::app ()->controller->setVar ( 'tmpForm', $form );
 		$submission = new GSubmission ( $scenario, $form );
 		
 		return $submission;
