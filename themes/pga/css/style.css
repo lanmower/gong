@@ -3,7 +3,7 @@ h1, .h1, h2, .h2, h3, .h3{
 	margin-top:0px;
 }
 
-.table-striped > tbody > tr:nth-child(odd) > td, .table-striped > tbody > tr:nth-child(odd) > th, .table-hover > tbody > tr:hover > td, .table-hover > tbody > tr:hover > th{
+.table-striped > tbody > tr:nth-child(odd) > td, .table-striped > tbody > tr:nth-child(odd) > td a, .table-striped > tbody > tr:nth-child(odd) > th, .table-hover > tbody > tr:hover > td, .table-hover > tbody > tr:hover > th{
 	color:black;
 }
 
@@ -859,7 +859,9 @@ button:before, a:before, span:before {font-family: 'Glyphicons Halflings' !impor
 
 .nav li a{
     color: white;
-    background-color: #555;
+    background-color: #A0A0A0;
+    margin:0 1px;
+    border:1px solid #333;
 }
 
 .hint{margin-bottom:25px;}
@@ -999,7 +1001,7 @@ input[name="GUserLogin[rememberMe]"]{
 }
 
 .GContent{
-	background-color: #555;
+	background-color: #6F6F6F;
 	color: white;
 	padding: 2%;
 }
