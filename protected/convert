@@ -1,3 +1,0 @@
-#!/bin/bash
-/usr/bin/php -c /etc/httpd/php.ini protected/yiic processFiles run $1
- 
