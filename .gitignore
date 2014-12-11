@@ -1,6 +1,7 @@
 protected/data
 
 assets
+<<<<<<< HEAD
 
 protected/runtime
 application.log
@@ -9,6 +10,11 @@ themes
 
 protected/config
 
+=======
+protected/runtime/application.log
+protected/config/
+phpmyadmin
+>>>>>>> 7bfd6bf13f93b07b3be378cbb04fae786fc34c84
 protected
 
 convert
