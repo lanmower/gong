@@ -8,7 +8,18 @@ class GActiveHasAll extends GField {
 		);
 		return $ret;
 	}
+	public function getCell($value) {
+		return "";
+	}
+	public function getSqlString() {
+		return "";
+	}
 	
+	public function getGridColumns() {
+		return array (
+		);
+	}
+		
 }
 
 ?>
