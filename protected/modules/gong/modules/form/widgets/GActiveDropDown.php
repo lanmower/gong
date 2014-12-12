@@ -9,6 +9,7 @@ class GActiveDropDown extends GField {
 	public $listOptions = array ();
 	public $_items;
 	public $criteria = array();
+	public $foreignKey;
 	public function getItems() {
 		if (! isset ( $this->_items )) {
 			
@@ -44,8 +45,9 @@ class GActiveDropDown extends GField {
 	public function getRelations() {
 		if (!isset ( $this->formName )) return array();
 		$ret = array(
-				$this->name => array('formName'=>$this->formName, 'type'=>CActiveRecord::BELONGS_TO)
+				$this->name => array('formName'=>$this->formName, 'type'=>CActiveRecord::BELONGS_TO, 'foreignKey'=>$this->foreignKey)
 		);
+		return $ret;
 	}
 	
 	public function run() {
