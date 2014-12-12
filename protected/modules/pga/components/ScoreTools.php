@@ -31,11 +31,12 @@ class ScoreTools {
         	$parComparison = $nett - $par;
         	
         	
+        	if($d) CVarDumper::dump("Par $par vs Nett $nett comparison:$parComparison\n", 1,true);
         	//find a matching score rule
         	foreach($score->rules as $rule) {
         		if($parComparison == $rule->parComparison) $points = $rule->point;
         	}
-        	if($d) CVarDumper::dump("A score of: $points has been calculated for this hole.\n", 3,true);
+        	if($d) CVarDumper::dump("A score of $points was loaded for this par comparison.\n", 1,true);
         	$ret += $points;
         	if($d) CVarDumper::dump("Player score is now: $ret.\n", 3,true);
         	if($d) CVarDumper::dump("\n", 1,true);
