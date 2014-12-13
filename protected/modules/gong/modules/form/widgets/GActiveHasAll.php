@@ -14,6 +14,9 @@ class GActiveHasAll extends GField {
 	public function getSqlString() {
 		return "";
 	}
+	public function getRules() {
+		return array();
+	}
 	
 	public function getGridColumns() {
 		return array (

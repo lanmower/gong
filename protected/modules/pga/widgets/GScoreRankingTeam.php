@@ -30,6 +30,9 @@ class GScoreRankingTeam extends GTag {
         	$rounds = ScoreTools::playerScore($team->players);
         	if($d) CVarDumper::dump($rounds, 4, true);
         	echo $rounds['total']['team'];
+        	foreach($team->players as $player) {
+	        	echo $player->name.':'.$rounds['total']['player'][$player->id];
+        	}
         	echo "<br/>";
         }
         $data = array();

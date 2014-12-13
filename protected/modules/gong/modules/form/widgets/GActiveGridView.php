@@ -27,6 +27,9 @@ class GActiveGridView extends GField {
 	  }
 	  return $this->columns;
 	}
+	public function getRules() {
+		return array();
+	}
 	
 	public function run() {
 		if (isset ( $_POST [$this->name] ))

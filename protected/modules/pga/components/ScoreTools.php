@@ -58,7 +58,7 @@ class ScoreTools {
 					'points'=>$points,
 					"total"=>$total,
 				);
-				$rounds['total']['player'][$player->id] += $total;
+				$rounds['total']['player'][$player->id] += $points;
 				if($holeNumber == 18) $holeNumber = 0;
 				$roundIndex++;
 			}
