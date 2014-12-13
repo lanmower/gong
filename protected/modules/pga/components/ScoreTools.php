@@ -2,6 +2,7 @@
 
 class ScoreTools {
 	public static function playerScore(array $players, $max = 2) {
+		$d = isset($_GET['debug']);
 		$rounds = array('player'=>array(), 'team'=>array(), 'total'=>array('player'=>array(), 'team'=>0));
 		$total = 0;
 		foreach ($players as $player) {
