@@ -26,7 +26,8 @@ class GScoreRankingPro extends GTag {
         $players = GSubmission::forForm('Player')->findAll();
         foreach($players as $player) {
         	echo $player->name.":";
-        	CVarDumper::dump(ScoreTools::playerScore(array($player)), 3, true);
+        	$rounds = ScoreTools::playerScore($team->players);
+        	echo $rounds['total']['player'];
         }
         $data = array();
     }
