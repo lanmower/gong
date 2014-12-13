@@ -91,7 +91,7 @@ class ScoreTools {
 				}
 				foreach($round as $roundPlayer) {
 					++$x;
-					$points += $roundPlayer['points'];
+					$points = $roundPlayer['points'];
 					$total += $points;
 					if($d) CVarDumper::dump("Added: {$roundPlayer['points']} from player {$roundPlayer['name']}, new team total: $total.\n", 3,true);
 					if($x = $max) continue;
