@@ -80,7 +80,7 @@ class ScoreTools {
 					CVarDumper::dump("Sorting team round:\n", 3,true);
 				}
 				usort ( $round, function ($a, $b) {
-					return $a ['points'] > $b ['points'];
+					return $a ['points'] < $b ['points'];
 				} );
 				$points = 0;
 				$x = 0;
@@ -94,7 +94,7 @@ class ScoreTools {
 					$points = $roundPlayer['points'];
 					$total += $points;
 					if($d) CVarDumper::dump("Added: {$roundPlayer['points']} from player {$roundPlayer['name']}, new team total: $total.\n", 3,true);
-					if($x = $max) break;
+					if($x > $max) break;
 				}
 				$rounds['team'][] = array(
 					'points'=>$points,
