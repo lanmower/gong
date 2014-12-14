@@ -609,7 +609,7 @@ html{
 
 body{
 	background-color:black;
-    min-width:400px;
+    min-width: 900px;
     padding-top:152px;
     font-family: 'Open Sans Condensed', sans-serif;
 }
@@ -747,7 +747,7 @@ a:focus{color:#9D8600}
 
 .GTag-hRveT{margin-top: 5px;}
 
-.SignIn{text-align:center;}
+.SignIn{text-align:center;margin-top: 35px;}
 
 .SignIn label{
     font-size: 24.5px;
