@@ -335,11 +335,6 @@ input.error {
 	
 }
 
-/* For Bottom Admin menu */
-.jsonEditor a {
-	margin-right: 5px;
-}
-
 /* File Uploader */
 .qq-upload-button {
 	font-weight: bold;
@@ -437,10 +432,21 @@ a.Block {
 	display: inline-block;
 }
 
+
+/* For Bottom Admin menu */
+.jsonEditor a {
+	margin-right: 5px;
+}
+
+
 .jsoneditor-contextmenu {
 	z-index: 1100;
 }
 
 .jsoneditor a {
 	margin: 0 20px;
+}
+
+.jsoneditor div.tree table.tree{
+	background-color: white;
 }
