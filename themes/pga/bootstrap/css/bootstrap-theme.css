@@ -2066,10 +2066,12 @@ th {
 .table > thead > tr > td,
 .table > tbody > tr > td,
 .table > tfoot > tr > td {
-  padding: 3px;
+  padding: 4px 10px 4px 5px;
   line-height: 1.42857143;
   vertical-align: middle;
-  border-top: 1px solid #dddddd;
+  border-top: 1px solid #B0AFAF;
+  border-right: 1px solid #000000;
+  border-left: 1px solid #5F5E5E;
 }
 .table > thead > tr > th {
   vertical-align: bottom;
