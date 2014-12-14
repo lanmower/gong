@@ -37,7 +37,7 @@ class GScoreRankingPro extends GTag {
 
 		echo "<table class='table'>";
 		echo "<tr>";
-		echo "<th class='th1'>Position</th>";
+		echo "<th class='th1'>POS</th>";
 		echo "<th class='th2'>Player</th>";
 		echo "<th class='th4'>Score</th>";
 		echo "</tr>";
