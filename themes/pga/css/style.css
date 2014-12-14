@@ -605,8 +605,8 @@ html{
 
 
 body{
+	background-color:black;
     min-width:400px;
-    padding: 0 25px;
     font-family: 'Open Sans Condensed', sans-serif;
 }
 
@@ -663,8 +663,13 @@ a{color:#fff;}
 a:hover{color:#F8D508;}
 
 .GHeader{
-   margin: 20px 0 30px;
+   padding: 20px 0 30px;
+   background-color:white;
 }
+
+.GHeader .logo{display:inline;}
+
+.sponsorLogos{float:right;}
 
 .logospan {
     font-size:45px;
@@ -1001,8 +1006,15 @@ input[name="GUserLogin[rememberMe]"]{
 }
 
 .GContent{
-	background-color: #6F6F6F;
 	color: white;
-	padding: 2%;
 }
 
+.blindLink{
+	
+    width: 167px;
+    height: 160px;
+    display: block;
+    position: absolute;
+    z-index: 999999;
+	
+}
