@@ -34,7 +34,7 @@ class GSiteController extends GController {
 	public function actionError() {
 		$error = Yii::app ()->errorHandler->error;
 		if ($error) {
-			$this->render ( 'error', $error );
+			$this->renderPartial ( 'error', $error );
 		}
 	}
 	public function actionLanding() {
