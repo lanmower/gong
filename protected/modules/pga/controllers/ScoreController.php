@@ -17,7 +17,9 @@ class ScoreController extends GController {
 						$score = GSubmission::forForm('Score');
 						$score->shots = $_GET['shots'];
 						$score->player = $_GET['player'];
-						$score->course = $player->group->course->id;
+						$group = $player->group;
+						
+						$score->course = $group->course->id;
 						if($score->save()) {
 							$json['status'] = 'Saved';
 						}
