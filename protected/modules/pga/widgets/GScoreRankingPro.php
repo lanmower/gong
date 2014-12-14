@@ -42,11 +42,16 @@ class GScoreRankingPro extends GTag {
 		echo "<th class='th4'>Score</th>";
 		echo "</tr>";
 		$pos = 0;
+		$lastTotal = 0;
 		foreach ( $data as $playerData ) {
 			$player = $playerData['player'];
 			$total = $playerData['total'];
 			echo "<tr>";
-			echo "<td>" . ++ $pos . "</td>";
+			echo "<td>";
+			++ $pos;
+			if($lastTotal != $playerData['total']) echo $pos;
+			$lastTotal = $playerData['total']; 
+			echo "</td>";
 			echo "<td>";
 			if (isset ( $player->country )) {
 				echo CHtml::image ( str_replace ( 'protected/data/form_uploads/GSubmission/', '/protected/data/form_uploads/GSubmission/', $player->country->flag ) );

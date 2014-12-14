@@ -52,11 +52,16 @@ class GScoreRankingTeam extends GTag {
 		echo "<th>Total</th>";
 		echo "</tr>";
 		$pos = 0;
+		$lastTotal = 0;
 		foreach ( $data as $team ) {
 			if ($team ['total'] == 0)
 				continue;
 			echo "<tr>";
-			echo "<td>" . ++ $pos . "</td>";
+			echo "<td>";
+			++ $pos;
+			if($lastTotal != $team['total']) echo $pos;
+			$lastTotal = $team['total']; 
+			echo "</td>";
 			echo "<td>" . $team ['team']->name . "</td>";
 			echo "<td>";
 			foreach ( $team ['players'] as $player ) {
