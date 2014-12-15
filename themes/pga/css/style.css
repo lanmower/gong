@@ -1036,7 +1036,14 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4c4c4c', end
 
 .GScoreRankingPro .table .th1, .GScoreRankingTeam .table .th1{width: 40px;}
 
-.GScoreRankingPro .table td, .GScoreRankingTeam .table td{background-image: url("/themes/pga/images/th-bg.png");background-repeat: repeat-x;text-indent: 5px;}
+.GScoreRankingPro .table td, .GScoreRankingTeam .table td{background: -moz-linear-gradient(top,  rgba(142,142,142,1) 0%, rgba(255,255,255,0) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(142,142,142,1)), color-stop(100%,rgba(255,255,255,0))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  rgba(142,142,142,1) 0%,rgba(255,255,255,0) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  rgba(142,142,142,1) 0%,rgba(255,255,255,0) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  rgba(142,142,142,1) 0%,rgba(255,255,255,0) 100%); /* IE10+ */
+background: linear-gradient(to bottom,  rgba(142,142,142,1) 0%,rgba(255,255,255,0) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8e8e8e', endColorstr='#00ffffff',GradientType=0 ); /* IE6-9 */
+	text-indent: 5px;}
 
 .GScoreRankingPro .table img, .GScoreRankingTeam .table img {height: 30px;margin-right: 11px;}
 
