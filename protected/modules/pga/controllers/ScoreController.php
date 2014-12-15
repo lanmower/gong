@@ -12,16 +12,32 @@ class ScoreController extends GController {
 		if(isset($_GET['team'])) {
 			if(isset($_GET['player'])) {
 				$player = GSubmission::forForm("Player")->findByPk($_GET['player']);
+				$scores = sizeof($player->scores);
+				$hole = $scores%18;
+				$team = $player->team;
+				$players = $team->players;
+				$dontStore = false;
+				foreach($team->players as $tPlayer) {
+					$tScores = sizeof($tPlayer->scores);
+					if($scores > $tScores) $dontStore = true;
+				}
 				if(isset($player)) {
 					if(isset($_GET['shots'])) {
 						$score = GSubmission::forForm('Score');
 						$score->shots = $_GET['shots'];
 						$score->player = $_GET['player'];
 						$group = $player->group;
-						
+
 						$score->course = $group->course->id;
-						if($score->save()) {
-							$json['status'] = 'Saved';
+						if($dontStore) {
+								$json['status'] = 'Not saved';
+								$json['message'] = 'Score has not been logged for: '.$player->name.' on hole '.($hole+1). ' player is ahead of team';
+						} else {
+							if($score->save()) {
+								$json['status'] = 'Saved';
+								$json['message'] = 'Score has been logged for: '.$player->name.' on hole '.($hole+1);
+							}
+
 						}
 					}
 				} else {
