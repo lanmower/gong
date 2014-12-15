@@ -45,7 +45,6 @@ class ScoreController extends GController {
 				}
 			}
 			GSubmission::clearCache();
-			$player = GSubmission::forForm("Player")->findByPk($_GET['player']);
 			$scores = sizeof($player->scores);
 			$hole = $scores%18;
 			$team = $player->team;
