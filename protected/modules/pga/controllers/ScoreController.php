@@ -30,8 +30,8 @@ class ScoreController extends GController {
 
 						$score->course = $group->course->id;
 						if($dontStore) {
-								$json['status'] = 'Not saved';
-								$json['message'] = 'Score has not been logged for: '.$player->name.' on hole '.($hole+1). ' player is ahead of team';
+							$json['status'] = 'Not saved';
+							$json['message'] = 'Score has not been logged for: '.$player->name.' on hole '.($hole+1). ' player is ahead of team';
 						} else {
 							if($score->save()) {
 								$json['status'] = 'Saved';
@@ -44,6 +44,13 @@ class ScoreController extends GController {
 					$json['status'] = 'Error: player not found';
 				}
 			}
+			GSubmission::clearCache();
+			$player = GSubmission::forForm("Player")->findByPk($_GET['player']);
+			$scores = sizeof($player->scores);
+			$hole = $scores%18;
+			$team = $player->team;
+			$players = $team->players;
+				
 			$team = GSubmission::forForm('Team')->findByPk($_GET['team']);
 			if(isset($team)) {
 				$rounds = ScoreTools::playerScore($team->players);
