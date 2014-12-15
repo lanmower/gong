@@ -19,7 +19,9 @@ class ScoreTools {
 				++$holeNumber;
 				//if($d) CVarDumper::dump($score->courseRelation, 1,true);
 				$course = $score->course;
-				$hole = $score->course->holes[$holeNumber-1];
+				foreach($course->holes as $tHole) {
+					if($tHole->number == $holeNumber) $hole = $tHole;
+				}
 				$gross = $score->shots;
 				if($d) CVarDumper::dump('Course stroke for hole: '.$hole->stroke."\n", 1,true);
 				if($d) CVarDumper::dump('Gross: '.$score->shots."\n", 1,true);
@@ -37,7 +39,7 @@ class ScoreTools {
 				$par = $hole->par;
 					
 				$parComparison = $nett - $par;
-				if($d) CVarDumper::dump("Gross adjustment:".$adjustment);
+				if($d) CVarDumper::dump("Gross adjustment:".$adjustment, 1, true);
 				if($d) CVarDumper::dump("Par $par vs Nett $nett comparison:$parComparison\n", 1,true);
 				//find a matching score rule
 				$strokes = 0;
