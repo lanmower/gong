@@ -5,13 +5,16 @@ class ScoreTools {
 		$d = isset($_GET['debug']);
 		$rounds = array('player'=>array(), 'team'=>array(), 'total'=>array('player'=>array(), 'team'=>0));
 		$total = 0;
+		$nettTotal = 0;
+		$grossTotal = 0;
+		$days = array();
 		foreach ($players as $player) {
 			$d = isset($_GET['debug']);
 			$holeNumber = 0;
 			if($d) CVarDumper::dump("Processing player {$player->name}\n", 1, true);
 			$total = 0;
 			$roundIndex = 0;
-			$rounds['total']['player'][$player->id] = 0;
+			$rounds['total']['player'][$player->id] = array('strokes'=>0, 'gross'=>0, 'nett'=>0, 'days'=>array());
 			foreach($player->scores as $score) {
 				++$holeNumber;
 				//if($d) CVarDumper::dump($score->courseRelation, 1,true);
@@ -38,10 +41,12 @@ class ScoreTools {
 				if($d) CVarDumper::dump("Par $par vs Nett $nett comparison:$parComparison\n", 1,true);
 				//find a matching score rule
 				foreach($score->rules as $rule) {
-					if($parComparison == $rule->parComparison) $points = $rule->point;
+					if($parComparison == $rule->parComparison) $strokes = $rule->point;
 				}
-				if($d) CVarDumper::dump("A score of $points was loaded for this par comparison.\n", 1,true);
-				$total += $points;
+				if($d) CVarDumper::dump("A score of $strokes was loaded for this par comparison.\n", 1,true);
+				$total += $strokes;
+				$nettTotal += $nett;
+				$grossTotal += $gross;
 				if($d) CVarDumper::dump("Player score is now: $total.\n", 3,true);
 				if($d) CVarDumper::dump("\n", 1,true);
 
@@ -56,21 +61,32 @@ class ScoreTools {
 					'nett'=>$nett,
 					"par"=>$par,
 					'parComparison'=>$parComparison,
-					'points'=>$points,
+					'strokes'=>$strokes,
 					"total"=>$total,
 				);
-				$rounds['total']['player'][$player->id] += $points;
-				if($holeNumber == 18) $holeNumber = 0;
+				$rounds['total']['player'][$player->id]['strokes'] += $strokes;
+				$rounds['total']['player'][$player->id]['nett'] += $nett;
+				$rounds['total']['player'][$player->id]['gross'] += $gross;
+				if($holeNumber == 18) {
+					$holeNumber = 0;
+					$rounds['total']['player'][$player->id]['days'][] = $total; 
+					$days = $rounds['total']['player'][$player->id]['days'];
+				}
 				$roundIndex++;
 			}
 		}
 		if(sizeof($players) == 1) {
-			$rounds['total']['player'] = $total;
+			$rounds['total']['player'] = array('strokes'=>$total, 'nett'=>$nettTotal, 'gross'=>$grossTotal, 'days'=>$days);
 		} else {
 			if($d) CVarDumper::dump("Processing team:\n", 3,true);
 			$total = 0;
+			$grossTotal = 0;
+			$nettTotal = 0;
 			$min = 0;
+			$holeNumber = 0;
+			$rounds['total']['team'] = array('strokes' => 0, 'days'=>array());
 			foreach ($rounds['player'] as $round) {
+				++$holeNumber;
 				if($min = 0) $min = sizeof($round);
 				if(sizeof($round) < $min) {
 					if($d) CVarDumper::dump("Skipping partial round.\n", 3,true);
@@ -80,28 +96,43 @@ class ScoreTools {
 					CVarDumper::dump("Sorting team round:\n", 3,true);
 				}
 				usort ( $round, function ($a, $b) {
-					return $a ['points'] < $b ['points'];
+					return $a ['strokes'] < $b ['strokes'];
 				} );
-				$points = 0;
+				$strokes = 0;
+				$gross = 0;
+				$nett = 0;
 				$x = 0;
 				if($d) {
 					foreach($round as $roundPlayer) {
-						CVarDumper::dump("{$roundPlayer['name']} with {$roundPlayer['points']}\n", 1,true);
+						CVarDumper::dump("{$roundPlayer['name']} with {$roundPlayer['strokes']}\n", 1,true);
 					}
 				}
 				foreach($round as $roundPlayer) {
 					if(++$x > $max) break;
-					$points = $roundPlayer['points'];
-					$total += $points;
-					if($d) CVarDumper::dump("Added: {$roundPlayer['points']} from player {$roundPlayer['name']}, new team total: $total.\n", 3,true);
+					$strokes = $roundPlayer['strokes'];
+					$total += $strokes;
+					if($d) CVarDumper::dump("Added: {$roundPlayer['strokes']} from player {$roundPlayer['name']}, new team total: $total.\n", 3,true);
+				}
+				foreach($round as $roundPlayer) {
+					$gross = $roundPlayer['gross'];
+					$nett = $roundPlayer['nett'];
+					$grossTotal += $gross;
+					$nettTotal += $nett;
 				}
 				$rounds['team'][] = array(
-					'points'=>$points,
-					'total'=>$total
+					'gross' =>$gross,
+					'nett'=>$nett,
+					'strokes'=>$total
 				);
 				$min = sizeof($round);
+				if($holeNumber == 18) {
+					$holeNumber = 0;
+					$rounds['total']['team']['days'][] = $total; 
+				}
 			}
-			$rounds['total']['team'] = $total;
+			$rounds['total']['team']['strokes'] = $total;
+			$rounds['total']['team']['strokes'] = $total;
+			$rounds['total']['team']['strokes'] = $total;
 		}
 
 		return $rounds;

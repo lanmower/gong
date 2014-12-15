@@ -39,18 +39,25 @@ class GScoreRankingPro extends GTag {
 		echo "<tr>";
 		echo "<th class='th1'>POS</th>";
 		echo "<th class='th2'>Player</th>";
-		echo "<th class='th4'>Score</th>";
+		echo "<th class='th4'>Gross</th>";
+		echo "<th class='th4'>Nett</th>";
+		echo "<th class='th4'>Day 1</th>";
+		echo "<th class='th4'>Day 2</th>";
+		echo "<th class='th4'>Day 3</th>";
+		echo "<th class='th4'>Day 4</th>";
+		echo "<th class='th4'>Day 5</th>";
+		echo "<th class='th4'>Strokes</th>";
 		echo "</tr>";
 		$pos = 0;
 		$lastTotal = 0;
 		foreach ( $data as $playerData ) {
 			$player = $playerData['player'];
-			$total = $playerData['total'];
+			$total = $playerData['total']['strokes'];
 			echo "<tr>";
 			echo "<td>";
 			++ $pos;
 			if($lastTotal != $playerData['total']) echo $pos;
-			$lastTotal = $playerData['total']; 
+			$lastTotal = $playerData['total'];
 			echo "</td>";
 			echo "<td>";
 			if (isset ( $player->country )) {
@@ -58,8 +65,14 @@ class GScoreRankingPro extends GTag {
 			}
 			echo $player ['name'];
 			echo "</td>";
+			echo CHtml::tag ( 'td', array (), $playerData['total']['gross'] );
+			echo CHtml::tag ( 'td', array (), $playerData['total']['nett'] );
+			echo CHtml::tag ( 'td', array (), isset($playerData['total']['days'][0])?$playerData['total']['days'][0]:"" );
+			echo CHtml::tag ( 'td', array (), isset($playerData['total']['days'][1])?$playerData['total']['days'][1]:"" );
+			echo CHtml::tag ( 'td', array (), isset($playerData['total']['days'][2])?$playerData['total']['days'][2]:"" );
+			echo CHtml::tag ( 'td', array (), isset($playerData['total']['days'][3])?$playerData['total']['days'][3]:"" );
+			echo CHtml::tag ( 'td', array (), isset($playerData['total']['days'][4])?$playerData['total']['days'][4]:"" );
 			echo CHtml::tag ( 'td', array (), $total );
-
 			echo "</tr>";
 		}
 		echo "</tr>";
