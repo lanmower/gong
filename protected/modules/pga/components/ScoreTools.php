@@ -37,7 +37,7 @@ class ScoreTools {
 				$par = $hole->par;
 					
 				$parComparison = $nett - $par;
-					
+				if($d) CVarDumper::dump("Gross adjustment:"+$adjustment);
 				if($d) CVarDumper::dump("Par $par vs Nett $nett comparison:$parComparison\n", 1,true);
 				//find a matching score rule
 				$strokes = 0;
