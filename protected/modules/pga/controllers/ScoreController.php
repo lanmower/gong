@@ -14,6 +14,7 @@ class ScoreController extends GController {
 				$player = GSubmission::forForm("Player")->findByPk($_GET['player']);
 				$scores = sizeof($player->scores);
 				$hole = $scores%18;
+				if($scores > 0 && $hole == 0) $hole = 18;
 				$team = $player->team;
 				$players = $team->players;
 				$dontStore = false;
@@ -36,7 +37,7 @@ class ScoreController extends GController {
 							if($score->save()) {
 								$json['status'] = 'Saved';
 								$json['message'] = 'Score has been logged for: '.$player->name.' on hole '.($hole+1);
-								if($scores > 0 && $hole == 0) $json['message'] .= '\nCourse complete for this player.';
+								if($hole == 18) $json['message'] .= '\nCourse complete for this player.';
 							}
 
 						}
@@ -56,7 +57,10 @@ class ScoreController extends GController {
 				$rounds = ScoreTools::playerScore($team->players);
 				if(!isset($json['status']))$json['status']="Select a player";
 				foreach($team->players as $player) {
-					$json['players'][$player->id] = array('id'=>$player->id, 'name'=>$player->name, 'total'=>$rounds['total']['player'][$player->id]['strokes'], 'nett'=>$rounds['total']['player'][$player->id]['nett'], 'gross'=>$rounds['total']['player'][$player->id]['gross']);
+					$scores = sizeof($player->scores);
+					$hole = sizeof($player->scores)%18;
+					if($scores > 0 && $hole == 0) $hole = 18;
+					$json['players'][$player->id] = array('id'=>$player->id, 'name'=>$player->name, 'hole'=>$hole, 'total'=>$rounds['total']['player'][$player->id]['strokes'], 'nett'=>$rounds['total']['player'][$player->id]['nett'], 'gross'=>$rounds['total']['player'][$player->id]['gross']);
 				}
 			}
 		} else {
