@@ -36,12 +36,12 @@ class GScoreRankingTeam extends GTag {
 				}
 			}
 			usort ( $data, function ($a, $b) {
-				return $a ['strokes'] > $b ['strokes'];
+				return $a ['strokes'] < $b ['strokes'];
 			} );
 			$data[] = array('team'=>$team, 'strokes'=>$rounds['total']['team']['strokes'], 'days'=>$rounds['total']['team']['days'], 'players'=>$players);
 		}
 		usort ( $data, function ($a, $b) {
-			return $a ['strokes'] > $b ['strokes'];
+			return $a ['strokes'] < $b ['strokes'];
 		} );
 
 		echo "<table class='table'>";

@@ -32,7 +32,7 @@ class GScoreRankingPro extends GTag {
 		}
 
 		usort ( $data, function ($a, $b) {
-			return $a ['total'] > $b ['total'];
+			return $a ['total'] < $b ['total'];
 		} );
 
 		echo "<table class='table'>";

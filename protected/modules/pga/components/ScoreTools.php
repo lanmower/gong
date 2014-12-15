@@ -40,6 +40,7 @@ class ScoreTools {
 					
 				if($d) CVarDumper::dump("Par $par vs Nett $nett comparison:$parComparison\n", 1,true);
 				//find a matching score rule
+				$strokes = 0;
 				foreach($score->rules as $rule) {
 					if($parComparison == $rule->parComparison) $strokes = $rule->point;
 				}
