@@ -43,12 +43,12 @@ class ScoreController extends GController {
 				} else {
 					$json['status'] = 'Error: player not found';
 				}
+				GSubmission::clearCache();
+				$scores = sizeof($player->scores);
+				$hole = $scores%18;
+				$team = $player->team;
+				$players = $team->players;
 			}
-			GSubmission::clearCache();
-			$scores = sizeof($player->scores);
-			$hole = $scores%18;
-			$team = $player->team;
-			$players = $team->players;
 				
 			$team = GSubmission::forForm('Team')->findByPk($_GET['team']);
 			if(isset($team)) {
