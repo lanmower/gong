@@ -28,6 +28,7 @@ class GScoreRankingTeam extends GTag {
 		$data = array();
 		foreach($teams as $team) {
 			$rounds = ScoreTools::playerScore($team->players);
+			GSubmission::clearCache();
 			$players = array();
 			foreach($rounds['total']['player'] as $playerId => $playerData) {
 				$player = null;
