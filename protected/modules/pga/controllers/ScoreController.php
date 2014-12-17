@@ -28,23 +28,16 @@ class ScoreController extends GController {
 						$score->shots = $_GET['shots'];
 						$score->player = $_GET['player'];
 						$group = $player->group;
-						$scoresOnCourse = 0;
+
 						$score->course = $group->course->id;
-						foreach($player->scores as $score) {
-							$course = $group->course;
-							if($score->course->id == $course->id) ++$scoresOnCourse;
-						}
-						if($scoresOnCourse == 18) {
-							$json['status'] = 'Not saved';
-							$json['message'] = 'Score has not been logged for: '.$player->name.' on hole '.($hole+1). ' player has completed this course';
-						} else 						if($dontStore) {
+						if($dontStore) {
 							$json['status'] = 'Not saved';
 							$json['message'] = 'Score has not been logged for: '.$player->name.' on hole '.($hole+1). ' player is ahead of team';
 						} else {
 							if($score->save()) {
 								$json['status'] = 'Saved';
-								$json['message'] = 'A score of '.$score->shots.' has been logged for: '.$player->name.' on hole '.($hole);
-								if($hole == 18) $json['message'] .= ' course complete for this player.';
+								$json['message'] = 'Score has been logged for: '.$player->name.' on hole '.($hole+1);
+								if($hole == 18) $json['message'] .= '\nCourse complete for this player.';
 							}
 
 						}
@@ -52,9 +45,13 @@ class ScoreController extends GController {
 				} else {
 					$json['status'] = 'Error: player not found';
 				}
+				GSubmission::clearCache();
+				$scores = sizeof($player->scores);
+				$hole = $scores%18;
+				$team = $player->team;
+				$players = $team->players;
 			}
-
-			GSubmission::clearCache();
+				
 			$team = GSubmission::forForm('Team')->findByPk($_GET['team']);
 			if(isset($team)) {
 				$rounds = ScoreTools::playerScore($team->players);
