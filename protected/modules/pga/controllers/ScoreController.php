@@ -28,8 +28,12 @@ class ScoreController extends GController {
 						$score->shots = $_GET['shots'];
 						$score->player = $_GET['player'];
 						$group = $player->group;
-
+						$scoresOnCourse = 0;
 						$score->course = $group->course->id;
+						foreach($player->scores as $score) {
+							$course = $group->course;
+							if($score->course->id == $course->id) ++$scoresOnCourse;
+						}
 						if($scoresOnCourse == 18) {
 							$json['status'] = 'Not saved';
 							$json['message'] = 'Score has not been logged for: '.$player->name.' on hole '.($hole). ' player has completed this course';
