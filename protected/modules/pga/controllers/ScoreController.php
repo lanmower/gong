@@ -57,7 +57,7 @@ class ScoreController extends GController {
 				$team = $player->team;
 				$players = $team->players;
 			}
-				
+
 			$team = GSubmission::forForm('Team')->findByPk($_GET['team']);
 			if(isset($team)) {
 				$rounds = ScoreTools::playerScore($team->players);
@@ -68,10 +68,14 @@ class ScoreController extends GController {
 						$course = $player->group->course;
 						if($score->course->id == $course->id) ++$scores;
 					}
-					$course = $player->group->course->name;
-					foreach($player->group->course->holes as $hole) {
-						if($hole->number == $scores) $holeText = "{$hole->number} (Par {$hole->par}, stroke {$hole->stroke})";
+					if($scores == 19) $holeText = "complete";
+					else {
+						$course = $player->group->course->name;
+						foreach($player->group->course->holes as $hole) {
+							if($hole->number == $scores) $holeText = "{$hole->number} (Par {$hole->par}, stroke {$hole->stroke})";
+						}
 					}
+						
 					if(!isset($holeText)) die($course.$scores);
 					$json['players'][$player->id] = array('course'=>$course, 'id'=>$player->id, 'name'=>$player->name, 'hole'=>$holeText, 'total'=>$rounds['total']['player'][$player->id]['strokes'], 'nett'=>$rounds['total']['player'][$player->id]['nett'], 'gross'=>$rounds['total']['player'][$player->id]['gross']);
 				}
