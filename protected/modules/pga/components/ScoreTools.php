@@ -8,20 +8,18 @@ class ScoreTools {
 		$nettTotal = 0;
 		$grossTotal = 0;
 		$days = array();
+		$holeNumber = 0;
 		foreach ($players as $player) {
 			$d = isset($_GET['debug']);
-			$holeNumber = 0;
 			if($d) CVarDumper::dump("Processing player {$player->name}\n", 1, true);
 			$total = 0;
+			$day = 0;
 			$roundIndex = 0;
 			$rounds['total']['player'][$player->id] = array('strokes'=>0, 'gross'=>0, 'nett'=>0, 'days'=>array());
 			foreach($player->scores as $score) {
-				++$holeNumber;
 				//if($d) CVarDumper::dump($score->courseRelation, 1,true);
 				$course = $score->course;
-				foreach($course->holes as $tHole) {
-					if($tHole->number == $holeNumber) $hole = $tHole;
-				}
+				$hole = $score->hole;
 				$gross = $score->shots;
 				if($d) CVarDumper::dump('Course stroke for hole: '.$hole->stroke."\n", 1,true);
 				if($d) CVarDumper::dump('Gross: '.$score->shots."\n", 1,true);
@@ -48,6 +46,7 @@ class ScoreTools {
 				}
 				if($d) CVarDumper::dump("A score of $strokes was loaded for this par comparison.\n", 1,true);
 				$total += $strokes;
+				$day += $strokes;
 				$nettTotal += $nett;
 				$grossTotal += $gross;
 				if($d) CVarDumper::dump("Player score is now: $total.\n", 3,true);
@@ -55,7 +54,6 @@ class ScoreTools {
 
 				$rounds['player'][$roundIndex][$player->id] =
 				array(
-					"holeNumber"=>$holeNumber,
 					"course"=>$course,
 					"handicap"=>$player->handicap,
 					"name"=>$player->name,
@@ -70,10 +68,11 @@ class ScoreTools {
 				$rounds['total']['player'][$player->id]['strokes'] += $strokes;
 				$rounds['total']['player'][$player->id]['nett'] += $nett;
 				$rounds['total']['player'][$player->id]['gross'] += $gross;
-				if($holeNumber == 18) {
+				if(++$holeNumber == 18) {
 					$holeNumber = 0;
-					$rounds['total']['player'][$player->id]['days'][] = $total; 
+					$rounds['total']['player'][$player->id]['days'][] = $day; 
 					$days = $rounds['total']['player'][$player->id]['days'];
+					$day = 0;
 				}
 				$roundIndex++;
 			}
@@ -83,13 +82,12 @@ class ScoreTools {
 		} else {
 			if($d) CVarDumper::dump("Processing team:\n", 3,true);
 			$total = 0;
+			$day = 0;
 			$grossTotal = 0;
 			$nettTotal = 0;
 			$min = 0;
-			$holeNumber = 0;
 			$rounds['total']['team'] = array('strokes' => 0, 'days'=>array());
 			foreach ($rounds['player'] as $round) {
-				++$holeNumber;
 				if($min = 0) $min = sizeof($round);
 				if(sizeof($round) < $min) {
 					if($d) CVarDumper::dump("Skipping partial round.\n", 3,true);
@@ -114,6 +112,7 @@ class ScoreTools {
 					if(++$x > $max) break;
 					$strokes = $roundPlayer['strokes'];
 					$total += $strokes;
+					$day += $strokes;
 					if($d) CVarDumper::dump("Added: {$roundPlayer['strokes']} from player {$roundPlayer['name']}, new team total: $total.\n", 3,true);
 				}
 				foreach($round as $roundPlayer) {
@@ -128,13 +127,11 @@ class ScoreTools {
 					'strokes'=>$total
 				);
 				$min = sizeof($round);
-				if($holeNumber == 18) {
-					$holeNumber = 0;
-					$rounds['total']['team']['days'][] = $total; 
+				if(++$holeNumber == 18) {
+					$rounds['total']['team']['days'][] = $day; 
+					$day = 0;
 				}
 			}
-			$rounds['total']['team']['strokes'] = $total;
-			$rounds['total']['team']['strokes'] = $total;
 			$rounds['total']['team']['strokes'] = $total;
 		}
 		unset($rounds['player']);
