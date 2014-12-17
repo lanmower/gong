@@ -68,9 +68,9 @@ class ScoreController extends GController {
 						$course = $player->group->course;
 						if($score->course->id == $course->id) ++$scores;
 					}
+					$course = $player->group->course->name;
 					if($scores == 19) $holeText = "complete";
 					else {
-						$course = $player->group->course->name;
 						foreach($player->group->course->holes as $hole) {
 							if($hole->number == $scores) $holeText = "{$hole->number} (Par {$hole->par}, stroke {$hole->stroke})";
 						}
