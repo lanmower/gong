@@ -64,9 +64,15 @@ class ScoreController extends GController {
 				if(!isset($json['status']))$json['status']="Select a player";
 				foreach($team->players as $player) {
 					$scores = sizeof($player->scores);
-					$hole = sizeof($player->scores)%18;
-					if($scores > 0 && $hole == 0) $hole = 18;
-					$json['players'][$player->id] = array('id'=>$player->id, 'name'=>$player->name, 'hole'=>$hole, 'total'=>$rounds['total']['player'][$player->id]['strokes'], 'nett'=>$rounds['total']['player'][$player->id]['nett'], 'gross'=>$rounds['total']['player'][$player->id]['gross']);
+					foreach($player->scores as $score) {
+						$course = $player->group->course;
+						if($score->course->id == $course->id) ++$scores;
+					}
+					$course = $player->group->course->name;
+					foreach($player->group->course->holes as $hole) {
+						if($hole->number == $scores) $holeText = "{$hole->number} (Par {$hole->par}, stroke {$hole->stroke})";
+					}
+					$json['players'][$player->id] = array('course'=>$course, 'id'=>$player->id, 'name'=>$player->name, 'hole'=>$holeText, 'total'=>$rounds['total']['player'][$player->id]['strokes'], 'nett'=>$rounds['total']['player'][$player->id]['nett'], 'gross'=>$rounds['total']['player'][$player->id]['gross']);
 				}
 			}
 		} else {
