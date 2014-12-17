@@ -42,7 +42,6 @@ class ScoreController extends GController {
 							$json['message'] = 'Score has not been logged for: '.$player->name.' on hole '.($hole+1). ' player has completed this course';
 						} else 						
 						if($dontStore) {
-						if($dontStore) {
 							$json['status'] = 'Not saved';
 							$json['message'] = 'Score has not been logged for: '.$player->name.' on hole '.($hole+1). ' player is ahead of team';
 						} else {
