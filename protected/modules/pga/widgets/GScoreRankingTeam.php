@@ -54,7 +54,7 @@ class GScoreRankingTeam extends GTag {
 		echo "<th>Day 3</th>";
 		echo "<th>Day 4</th>";
 		echo "<th>Day 5</th>";
-		echo "<th>Strokes</th>";
+		echo "<th>Score</th>";
 		echo "</tr>";
 		$pos = 0;
 		$lastTotal = 0;

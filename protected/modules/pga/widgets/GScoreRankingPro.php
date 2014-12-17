@@ -46,7 +46,7 @@ class GScoreRankingPro extends GTag {
 		echo "<th class='th4'>Day 3</th>";
 		echo "<th class='th4'>Day 4</th>";
 		echo "<th class='th4'>Day 5</th>";
-		echo "<th class='th4'>Strokes</th>";
+		echo "<th class='th4'>Score</th>";
 		echo "</tr>";
 		$pos = 0;
 		$lastTotal = 0;
