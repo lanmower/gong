@@ -72,6 +72,7 @@ class ScoreController extends GController {
 					foreach($player->group->course->holes as $hole) {
 						if($hole->number == $scores) $holeText = "{$hole->number} (Par {$hole->par}, stroke {$hole->stroke})";
 					}
+					die($course.$scores);
 					$json['players'][$player->id] = array('course'=>$course, 'id'=>$player->id, 'name'=>$player->name, 'hole'=>$holeText, 'total'=>$rounds['total']['player'][$player->id]['strokes'], 'nett'=>$rounds['total']['player'][$player->id]['nett'], 'gross'=>$rounds['total']['player'][$player->id]['gross']);
 				}
 			}
