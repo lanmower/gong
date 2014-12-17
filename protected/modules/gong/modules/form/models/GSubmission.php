@@ -20,7 +20,7 @@ class GSubmission extends GActiveRecord {
 		foreach(GSubmission::$_relationsCache as $key=>$item){
 			unset(GSubmission::$_relationsCache[$key]);
 		}
-		GSubmission::$_relationsCache = null;
+		GSubmission::$_relationsCache = array();
 	}
 	/**
 	 * Constructor
