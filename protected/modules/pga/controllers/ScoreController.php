@@ -36,16 +36,16 @@ class ScoreController extends GController {
 						$score->course = $player->group->course->id;
 						if($dontStore) {
 							$json['status'] = 'Not saved';
-							$json['message'] = 'Score has not been logged for: '.$player->name.' on hole '.($scores+1). ' player is ahead of team';
+							$json['message'] = 'Score has not been logged for: '.$player->name.' on course: '.$course->name.', hole: '.($scores+1). ' player is ahead of team';
 						} else if($scores < 18) {
 							if($score->save()) {
 								$json['status'] = 'Saved';
-								if($scores+1 == 18) $json['message'] = 'Course completed for player: '.$player->name;
-								else $json['message'] = 'Score has been logged for: '.$player->name.' on hole '.($scores+1);
+								if($scores+1 == 18) $json['message'] = 'Course: '.$course->name.' completed for player: '.$player->name;
+								else $json['message'] = 'Score has been logged for: '.$player->name.' on course: '.$course->name.', hole: '.($scores+1);
 							}
 						} else {
 							$json['status'] = 'Not saved';
-							$json['message'] = 'Score has not been logged for: '.$player->name.' course is complete for this player';
+							$json['message'] = 'Score has not been logged for: '.$player->name.' course '.$course->name.' is complete for this player';
 						}
 					}
 				} else {
