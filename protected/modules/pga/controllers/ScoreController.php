@@ -63,7 +63,7 @@ class ScoreController extends GController {
 				$rounds = ScoreTools::playerScore($team->players);
 				if(!isset($json['status']))$json['status']="Select a player";
 				foreach($team->players as $player) {
-					$scores = sizeof($player->scores);
+					$scores = 0;
 					foreach($player->scores as $score) {
 						$course = $player->group->course;
 						if($score->course->id == $course->id) ++$scores;
@@ -72,7 +72,7 @@ class ScoreController extends GController {
 					foreach($player->group->course->holes as $hole) {
 						if($hole->number == $scores) $holeText = "{$hole->number} (Par {$hole->par}, stroke {$hole->stroke})";
 					}
-					die($course.$scores);
+					if(!isset($holeText)) die($course.$scores);
 					$json['players'][$player->id] = array('course'=>$course, 'id'=>$player->id, 'name'=>$player->name, 'hole'=>$holeText, 'total'=>$rounds['total']['player'][$player->id]['strokes'], 'nett'=>$rounds['total']['player'][$player->id]['nett'], 'gross'=>$rounds['total']['player'][$player->id]['gross']);
 				}
 			}
