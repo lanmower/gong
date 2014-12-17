@@ -13,6 +13,11 @@ class ScoreController extends GController {
 			if(isset($_GET['player'])) {
 				$player = GSubmission::forForm("Player")->findByPk($_GET['player']);
 				$scores = sizeof($player->scores);
+				foreach($player->scores as $score) {
+					$course = $$player->group->course;
+					if($score->course->id == $course->id) ++$scores;
+				}
+				
 				$hole = $scores%18;
 				if($scores > 0 && $hole == 0) $hole = 18;
 				$team = $player->team;
@@ -27,20 +32,7 @@ class ScoreController extends GController {
 						$score = GSubmission::forForm('Score');
 						$score->shots = $_GET['shots'];
 						$score->player = $_GET['player'];
-						$group = $player->group;
-
-						$scoresOnCourse = 0;
-						
 						$score->course = $group->course->id;
-						foreach($player->scores as $score) {
-							$course = $group->course;
-							if($score->course->id == $course->id) ++$scoresOnCourse;
-						}
-						
-						if($scoresOnCourse == 18) {
-							$json['status'] = 'Not saved';
-							$json['message'] = 'Score has not been logged for: '.$player->name.' on hole '.($hole+1). ' player has completed this course';
-						} else 						
 						if($dontStore) {
 							$json['status'] = 'Not saved';
 							$json['message'] = 'Score has not been logged for: '.$player->name.' on hole '.($hole+1). ' player is ahead of team';
@@ -48,7 +40,7 @@ class ScoreController extends GController {
 							if($score->save()) {
 								$json['status'] = 'Saved';
 								$json['message'] = 'Score has been logged for: '.$player->name.' on hole '.($hole+1);
-								if($hole == 18) $json['message'] .= '\nCourse complete for this player.';
+								if($hole == 18) $json['message'] .= ', course complete for this player.';
 							}
 
 						}
