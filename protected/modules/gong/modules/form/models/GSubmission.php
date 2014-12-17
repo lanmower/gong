@@ -17,7 +17,9 @@ class GSubmission extends GActiveRecord {
 	protected static $_relationsCache = array();
 
 	public static function clearCache() {
-		GSubmission::$_relationsCache = array();
+		foreach($_relationsCache as $key=>$item){
+			unset($_relationsCache[$key]);
+		}
 	}
 	/**
 	 * Constructor

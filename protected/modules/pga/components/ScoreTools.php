@@ -137,7 +137,8 @@ class ScoreTools {
 			$rounds['total']['team']['strokes'] = $total;
 			$rounds['total']['team']['strokes'] = $total;
 		}
-
+		unset($rounds['player']);
+		unset($rounds['team']);
 		return $rounds;
 
 	}
