@@ -63,7 +63,7 @@ class ScoreController extends GController {
 				$rounds = ScoreTools::playerScore($team->players);
 				if(!isset($json['status']))$json['status']="Select a player";
 				foreach($team->players as $player) {
-					$scores = 0;
+					$scores = 1;
 					foreach($player->scores as $score) {
 						$course = $player->group->course;
 						if($score->course->id == $course->id) ++$scores;
