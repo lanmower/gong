@@ -54,7 +54,7 @@ class ScoreController extends GController {
 				}
 			}
 
-			GSubmission::clearCache();
+			//GSubmission::clearCache();
 			$team = GSubmission::forForm('Team')->findByPk($_GET['team']);
 			if(isset($team)) {
 				$rounds = ScoreTools::playerScore($team->players);
