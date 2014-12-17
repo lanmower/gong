@@ -29,8 +29,6 @@ class ScoreController extends GController {
 						$course = $player->group->course;
 						if($score->course->id == $course->id) ++$tScores;
 					}
-					echo $tPlayer->name;
-					echo $tScores;
 					if($scores > $tScores) $dontStore = true;
 				}
 				if(isset($player)) {
