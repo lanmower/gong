@@ -17,9 +17,6 @@ class ScoreController extends GController {
 					$course = $player->group->course;
 					if($score->course->id == $course->id) ++$scores;
 				}
-				
-				$hole = $scores%18;
-				if($scores > 0 && $hole == 0) $hole = 18;
 				$team = $player->team;
 				$players = $team->players;
 				$dontStore = false;
@@ -39,14 +36,16 @@ class ScoreController extends GController {
 						$score->course = $player->group->course->id;
 						if($dontStore) {
 							$json['status'] = 'Not saved';
-							$json['message'] = 'Score has not been logged for: '.$player->name.' on hole '.($hole+1). ' player is ahead of team';
-						} else {
+							$json['message'] = 'Score has not been logged for: '.$player->name.' on hole '.($scores+1). ' player is ahead of team';
+						} else if($scores < 18) {
 							if($score->save()) {
 								$json['status'] = 'Saved';
-								$json['message'] = 'Score has been logged for: '.$player->name.' on hole '.($hole+1);
+								$json['message'] = 'Score has been logged for: '.$player->name.' on hole '.($scores+1);
 								if($hole == 18) $json['message'] .= ', course complete for this player.';
 							}
-
+						} else {
+							$json['status'] = 'Not saved';
+							$json['message'] = 'Score has not been logged for: '.$player->name.' on hole '.($scores+1). ' course is complete for player';
 						}
 					}
 				} else {
