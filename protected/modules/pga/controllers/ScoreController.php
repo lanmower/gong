@@ -23,57 +23,54 @@ class ScoreController extends GController {
 					if($scores > $tScores) $dontStore = true;
 				}
 				if(isset($player)) {
-						
 					if(isset($_GET['shots'])) {
 						$score = GSubmission::forForm('Score');
 						$score->shots = $_GET['shots'];
 						$score->player = $_GET['player'];
 						$group = $player->group;
 
-						foreach($player->scores as $score) {
-							if($score->course->id == $player->group->course->id) ++$scoresOnCourse;
-						}
 						$score->course = $group->course->id;
 						if($scoresOnCourse == 18) {
 							$json['status'] = 'Not saved';
 							$json['message'] = 'Score has not been logged for: '.$player->name.' on hole '.($hole). ' player has completed this course';
-						} if($dontStore) {
+						} else 						if($dontStore) {
 							$json['status'] = 'Not saved';
 							$json['message'] = 'Score has not been logged for: '.$player->name.' on hole '.($hole). ' player is ahead of team';
 						} else {
 							if($score->save()) {
 								$json['status'] = 'Saved';
 								$json['message'] = 'Score has been logged for: '.$player->name.' on hole '.($hole);
-								if($hole == 18) $json['message'] .= ' course is complete for this player.';
+								if($hole == 18) $json['message'] .= ' course complete for this player.';
 							}
-						}
-					} else {
-						$json['status'] = 'Error: player not found';
-					}
-					GSubmission::clearCache();
-					$scores = sizeof($player->scores);
-					$hole = $scores%18;
-					$team = $player->team;
-					$players = $team->players;
-				}
 
-				$team = GSubmission::forForm('Team')->findByPk($_GET['team']);
-				if(isset($team)) {
-					$rounds = ScoreTools::playerScore($team->players);
-					if(!isset($json['status']))$json['status']="Select a player";
-					foreach($team->players as $player) {
-						$scores = sizeof($player->scores);
-						$hole = sizeof($player->scores)%18;
-						if($scores > 0 && $hole == 0) $hole = 18;
-						$json['players'][$player->id] = array('id'=>$player->id, 'name'=>$player->name, 'hole'=>$hole, 'total'=>$rounds['total']['player'][$player->id]['strokes'], 'nett'=>$rounds['total']['player'][$player->id]['nett'], 'gross'=>$rounds['total']['player'][$player->id]['gross']);
+						}
 					}
+				} else {
+					$json['status'] = 'Error: player not found';
 				}
-			} else {
-				$teams = GSubmission::forForm('Team')->findAll();
-				$json = array('teams'=>array(), 'status'=>'Select a team');
-				foreach($teams as $team) $json['teams'][$team->id] = array('id'=>$team->id, 'name'=>$team->name);
+				GSubmission::clearCache();
+				$scores = sizeof($player->scores);
+				$hole = $scores%18;
+				$team = $player->team;
+				$players = $team->players;
 			}
-			echo CJavaScript::jsonEncode ( $json );
+
+			$team = GSubmission::forForm('Team')->findByPk($_GET['team']);
+			if(isset($team)) {
+				$rounds = ScoreTools::playerScore($team->players);
+				if(!isset($json['status']))$json['status']="Select a player";
+				foreach($team->players as $player) {
+					$scores = sizeof($player->scores);
+					$hole = sizeof($player->scores)%18;
+					if($scores > 0 && $hole == 0) $hole = 18;
+					$json['players'][$player->id] = array('id'=>$player->id, 'name'=>$player->name, 'hole'=>$hole, 'total'=>$rounds['total']['player'][$player->id]['strokes'], 'nett'=>$rounds['total']['player'][$player->id]['nett'], 'gross'=>$rounds['total']['player'][$player->id]['gross']);
+				}
+			}
+		} else {
+			$teams = GSubmission::forForm('Team')->findAll();
+			$json = array('teams'=>array(), 'status'=>'Select a team');
+			foreach($teams as $team) $json['teams'][$team->id] = array('id'=>$team->id, 'name'=>$team->name);
 		}
+		echo CJavaScript::jsonEncode ( $json );
 	}
 }
