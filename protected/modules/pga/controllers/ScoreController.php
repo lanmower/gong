@@ -41,7 +41,7 @@ class ScoreController extends GController {
 						$score->shots = $_GET['shots'];
 						$score->player = $_GET['player'];
 						$score->course = $player->group->course->id;
-						$newHoleNumber = ($holeNumber + 1)%18;
+						$newHoleNumber = ($holeNumber)%18;
 						if($newHoleNumber == 0 && $holeNumber > 0) $newHoleNumber = 18;
 						foreach($player->group->course->holes as $tHole) {
 							if($tHole->number == $newHoleNumber) $score->hole = $tHole->id;
@@ -71,7 +71,7 @@ class ScoreController extends GController {
 				$rounds = ScoreTools::playerScore($team->players);
 				if(!isset($json['status']))$json['status']="Select a player";
 				foreach($team->players as $player) {
-					$holeCount = 1;
+				$holeCount = 1;
 				foreach($player->scores as $score) {
 					$course = $player->group->course;
 					if($score->course->id == $course->id) {
@@ -84,7 +84,7 @@ class ScoreController extends GController {
 
 					$course = $player->group->course->name;
 					if($holeCount > 18) $holeText = "complete";
-					$newHoleNumber = ($holeNumber + 1)%18;
+					$newHoleNumber = ($holeNumber)%18;
 					if($newHoleNumber == 0 && $holeNumber > 0) $newHoleNumber = 18;
 					else {
 						foreach($player->group->course->holes as $hole) {
