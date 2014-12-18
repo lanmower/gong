@@ -12,11 +12,13 @@ class ScoreController extends GController {
 		if(isset($_GET['team'])) {
 			if(isset($_GET['player'])) {
 				$player = GSubmission::forForm("Player")->findByPk($_GET['player']);
-				$holeCount = 0;
+				$holeCount = 1;
 				
 				foreach($player->scores as $score) {
 					$course = $player->group->course;
-					if($score->course->id == $course->id) ++$holeCount;
+					if($score->course->id == $course->id) {
+						++$holeCount;
+					}
 				}
 				
 				$holeNumber = (($holeCount + 1) + $player->holeOffset) % 18;
@@ -26,7 +28,7 @@ class ScoreController extends GController {
 				$players = $team->players;
 				$dontStore = false;
 				foreach($team->players as $tPlayer) {
-					$tHoleCount = 0;
+					$tHoleCount = 1;
 					foreach($tPlayer->scores as $score) {
 						$course = $tPlayer->group->course;
 						if($score->course->id == $course->id) ++$tHoleCount;
