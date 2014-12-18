@@ -53,7 +53,7 @@ class ScoreController extends GController {
 							if($score->save()) {
 								$json['status'] = 'Saved';
 								if($holeCount+1 == 18) $json['message'] = 'Course: '.$course->name.' completed for player: '.$player->name;
-								else $json['message'] = 'Score has been logged for: '.$player->name.' on course: '.$player->group->course->name.', hole: '.($newHoleNumber);
+								else $json['message'] = $score->shots+' shots have been logged for: '.$player->name.' on course: '.$player->group->course->name.', hole: '.($newHoleNumber);
 							}
 						} else {
 							$json['status'] = 'Not saved';
