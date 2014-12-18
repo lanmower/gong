@@ -12,18 +12,18 @@ class ScoreController extends GController {
 		if(isset($_GET['team'])) {
 			if(isset($_GET['player'])) {
 				$player = GSubmission::forForm("Player")->findByPk($_GET['player']);
-				$holeCount = 1;
-				
+				$holeCount = 0;
+
 				foreach($player->scores as $score) {
 					$course = $player->group->course;
 					if($score->course->id == $course->id) {
 						++$holeCount;
 					}
 				}
-				
+
 				$holeNumber = (($holeCount) + $player->holeOffset) % 18;
 				if($holeNumber == 0 && $holeCount > 0) $holeNumber = 18;
-				
+
 				$team = $player->team;
 				$players = $team->players;
 				$dontStore = false;
@@ -41,7 +41,7 @@ class ScoreController extends GController {
 						$score->shots = $_GET['shots'];
 						$score->player = $_GET['player'];
 						$score->course = $player->group->course->id;
-						$newHoleNumber = ($holeNumber)%18;
+						$newHoleNumber = ($holeNumber+1)%18;
 						if($newHoleNumber == 0 && $holeNumber > 0) $newHoleNumber = 18;
 						foreach($player->group->course->holes as $tHole) {
 							if($tHole->number == $newHoleNumber) $score->hole = $tHole->id;
@@ -71,27 +71,28 @@ class ScoreController extends GController {
 				$rounds = ScoreTools::playerScore($team->players);
 				if(!isset($json['status']))$json['status']="Select a player";
 				foreach($team->players as $player) {
-				$holeCount = 0;
-				foreach($player->scores as $score) {
-					$course = $player->group->course;
-					if($score->course->id == $course->id) {
-						++$holeCount;
+					$holeCount = 0;
+					foreach($player->scores as $score) {
+						$course = $player->group->course;
+						if($score->course->id == $course->id) {
+							++$holeCount;
+						}
 					}
-				}
-				
-				$holeNumber = (($holeCount) + $player->holeOffset) % 18;
-				if($holeNumber == 0 && $holeCount > 0) $holeNumber = 18;
+
+					$holeNumber = (($holeCount) + $player->holeOffset) % 18;
+					if($holeNumber == 0 && $holeCount > 0) $holeNumber = 18;
 
 					$course = $player->group->course->name;
-					if($holeCount = 18) $holeText = "complete";
 					$newHoleNumber = ($holeNumber+1)%18;
 					if($newHoleNumber == 0 && $holeNumber > 0) $newHoleNumber = 18;
+					
+					if($holeCount == 18) $holeText = "complete";
 					else {
 						foreach($player->group->course->holes as $hole) {
 							if($hole->number == $newHoleNumber) $holeText = "{$hole->number} (Par {$hole->par}, stroke {$hole->stroke})";
 						}
 					}
-						
+					
 					$json['players'][$player->id] = array('course'=>$course, 'id'=>$player->id, 'name'=>$player->name, 'hole'=>$holeText, 'total'=>$rounds['total']['player'][$player->id]['strokes'], 'nett'=>$rounds['total']['player'][$player->id]['nett'], 'gross'=>$rounds['total']['player'][$player->id]['gross']);
 				}
 			}
