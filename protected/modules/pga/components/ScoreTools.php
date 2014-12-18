@@ -86,6 +86,7 @@ class ScoreTools {
 			$grossTotal = 0;
 			$nettTotal = 0;
 			$min = 0;
+			$holeNumber = 0;
 			$rounds['total']['team'] = array('strokes' => 0, 'days'=>array());
 			foreach ($rounds['player'] as $round) {
 				if($min = 0) $min = sizeof($round);
@@ -128,6 +129,7 @@ class ScoreTools {
 				);
 				$min = sizeof($round);
 				if(++$holeNumber == 18) {
+					$holeNumber = 0;
 					$rounds['total']['team']['days'][] = $day; 
 					$day = 0;
 				}
