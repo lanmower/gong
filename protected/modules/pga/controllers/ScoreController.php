@@ -21,8 +21,8 @@ class ScoreController extends GController {
 					}
 				}
 				
-				$holeNumber = (($holeCount + 1) + $player->holeOffset) % 18;
-				if($holeNumber == 0 && $holeCount > 0) $holeNumber == 18;
+				$holeNumber = (($holeCount) + $player->holeOffset) % 18;
+				if($holeNumber == 0 && $holeCount > 0) $holeNumber = 18;
 				
 				$team = $player->team;
 				$players = $team->players;
@@ -41,17 +41,19 @@ class ScoreController extends GController {
 						$score->shots = $_GET['shots'];
 						$score->player = $_GET['player'];
 						$score->course = $player->group->course->id;
+						$newHoleNumber = ($holeNumber + 1)%18;
+						if($newHoleNumber == 0 && $holeNumber > 0) $newHoleNumber = 18;
 						foreach($player->group->course->holes as $tHole) {
-							if($tHole->number == $holeNumber) $score->hole = $tHole->id;
+							if($tHole->number == $newHoleNumber) $score->hole = $tHole->id;
 						}
 						if($dontStore) {
 							$json['status'] = 'Not saved';
-							$json['message'] = 'Score has not been logged for: '.$player->name.' on course: '.$course->name.', hole: '.($holeNumber+1). ' player is ahead of team';
+							$json['message'] = 'Score has not been logged for: '.$player->name.' on course: '.$course->name.', hole: '.($newHoleNumber). ' player is ahead of team';
 						} else if($holeCount < 18) {
 							if($score->save()) {
 								$json['status'] = 'Saved';
 								if($holeCount+1 == 18) $json['message'] = 'Course: '.$course->name.' completed for player: '.$player->name;
-								else $json['message'] = 'Score has been logged for: '.$player->name.' on course: '.$player->group->course->name.', hole: '.($holeNumber+1);
+								else $json['message'] = 'Score has been logged for: '.$player->name.' on course: '.$player->group->course->name.', hole: '.($newHoleNumber);
 							}
 						} else {
 							$json['status'] = 'Not saved';
@@ -70,15 +72,23 @@ class ScoreController extends GController {
 				if(!isset($json['status']))$json['status']="Select a player";
 				foreach($team->players as $player) {
 					$holeCount = 1;
-					foreach($player->scores as $score) {
-						$course = $player->group->course;
-						if($score->course->id == $course->id) ++$holeCount;
+				foreach($player->scores as $score) {
+					$course = $player->group->course;
+					if($score->course->id == $course->id) {
+						++$holeCount;
 					}
+				}
+				
+				$holeNumber = (($holeCount) + $player->holeOffset) % 18;
+				if($holeNumber == 0 && $holeCount > 0) $holeNumber = 18;
+
 					$course = $player->group->course->name;
 					if($holeCount > 18) $holeText = "complete";
+					$newHoleNumber = ($holeNumber + 1)%18;
+					if($newHoleNumber == 0 && $holeNumber > 0) $newHoleNumber = 18;
 					else {
 						foreach($player->group->course->holes as $hole) {
-							if($hole->number == $holeCount) $holeText = "{$hole->number} (Par {$hole->par}, stroke {$hole->stroke})";
+							if($hole->number == $newHoleNumber) $holeText = "{$hole->number} (Par {$hole->par}, stroke {$hole->stroke})";
 						}
 					}
 						
