@@ -78,6 +78,7 @@ class ScoreTools {
 			}
 		}
 		if(sizeof($players) == 1) {
+			$rounds['total']['player'][$player->id]['days'][] = $day; 
 			$rounds['total']['player'] = array('strokes'=>$total, 'nett'=>$nettTotal, 'gross'=>$grossTotal, 'days'=>$days);
 		} else {
 			if($d) CVarDumper::dump("Processing team:\n", 3,true);
@@ -135,6 +136,7 @@ class ScoreTools {
 				}
 			}
 			$rounds['total']['team']['strokes'] = $total;
+			$rounds['total']['team']['days'][] = $day; 
 		}
 		unset($rounds['player']);
 		unset($rounds['team']);
