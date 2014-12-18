@@ -28,7 +28,7 @@ class ScoreController extends GController {
 				$players = $team->players;
 				$dontStore = false;
 				foreach($team->players as $tPlayer) {
-					$tHoleCount = 1;
+					$tHoleCount = 0;
 					foreach($tPlayer->scores as $score) {
 						$course = $tPlayer->group->course;
 						if($score->course->id == $course->id) ++$tHoleCount;
