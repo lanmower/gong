@@ -21,7 +21,7 @@ class ScoreController extends GController {
 					}
 				}
 
-				$holeNumber = (($holeCount) + $player->holeOffset) % 18;
+				$holeNum\[leCount) + $player->holeOffset) % 18;
 				if($holeNumber == 0 && $holeCount > 0) $holeNumber = 18;
 
 				$team = $player->team;
