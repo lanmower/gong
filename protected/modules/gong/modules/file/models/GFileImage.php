@@ -18,7 +18,7 @@ class GFileImage extends GActiveRecord {
 		return '{{file_image}}';
 	}
 	public function getPath() {
-		return Yii::app ()->basePath . DIRECTORY_SEPARATOR . "data" . DIRECTORY_SEPARATOR . "files" . DIRECTORY_SEPARATOR . md5 ( $this->fileId ) . '-' . $this->type;
+		return Yii::app ()->basePath . DIRECTORY_SEPARATOR . "data" . DIRECTORY_SEPARATOR . "images" . DIRECTORY_SEPARATOR . md5 ( $this->fileId ) . '-' . $this->type;
 	}
 	public function getFilePath() {
 		return Yii::app ()->basePath . DIRECTORY_SEPARATOR . "data" . DIRECTORY_SEPARATOR . "files" . DIRECTORY_SEPARATOR . md5 ( $this->fileId );
