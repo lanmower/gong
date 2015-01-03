@@ -609,7 +609,7 @@ html{
 
 body{
 	background-color:black;
-    min-width: 900px;
+    min-width: 780px;
     padding-top:152px;
     font-family: 'Open Sans Condensed', sans-serif;
 }
@@ -1014,8 +1014,8 @@ input[name="GUserLogin[rememberMe]"]{
     display: block;
     position: absolute;
     top:0;
-    width: 167px;
-    height: 125px;
+    width: 189px;
+	height: 152px;
     z-index: 999999;
 	
 }
