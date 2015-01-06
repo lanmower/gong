@@ -269,7 +269,7 @@ abstract class GFileController extends GModelController {
 			throw new CHttpException ( 400, 'The requested file does not exist.' );
 		}
 		$file->file->user->addToAccount ( $file->file->size );
-		GDownloadHelper::download ( $file->file->video->path, $file->file->mime, $file->file->id . '.m4a' );
+		GDownloadHelper::download ( $file->file->video->path, $file->file->mime, $file->file->id . '.m4v' );
 	}
 	public function actionDownloadM4a($id) {
 		Yii::app ()->session->close ();
