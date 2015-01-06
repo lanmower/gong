@@ -52,8 +52,7 @@ $startTime = microtime(true);
         if (!isset($_GET['nolayout'])) {
             Yii::app()->controller->content = $content;
             echo GElementRenderer::render(GSiteTemplate::select("template"));
-        } else
-            echo '<div class="GArticle">'.$content.'</div>';
+        } else echo '<div class="GArticle">'.$content.'</div>';
 
         ?>
         <p id="processing" class="hidden"></p>
