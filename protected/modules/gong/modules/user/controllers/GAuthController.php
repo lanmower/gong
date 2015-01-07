@@ -33,6 +33,7 @@ class GAuthController extends GController {
 			$this->redirect ( Yii::app ()->user->returnUrl );
 		$this->redirect ( G::module ()->firstVisitUrl );
 	}
+	
 	public function loginByUsername() {
 		if (G::module ()->caseSensitiveUsers)
 			$user = GUser::model ()->find ( 'username = :username', array (
