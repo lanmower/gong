@@ -170,6 +170,7 @@ $.alm.classes.liveHead.loadscriptBegin = {
     callBack: function() {
         var task = $(this).remove();
         var url = task.attr('url');
+        console.log('loading: '+url);
         if($.inArray(url, $.alm.called) != -1) return false;
         $.alm.called.push(url);
         $.cachedScript(task.attr('url')).done(function(script, textStatus) {

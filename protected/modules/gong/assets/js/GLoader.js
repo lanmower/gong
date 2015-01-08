@@ -65,14 +65,13 @@ function processQueue(origInput, target, append) {
     input.store($.alm.classes.processingReady, $.alm.processingReady);
     input.store($.alm.classes.processingEnd, $.alm.processingEnd);
     input.store($.alm.classes.liveHead, $.alm.liveHead);
-
-    $.alm.processing.liveClasses($.alm.classes.processing);
     
     $.alm.processing.contents().filter( function() {
         return $.trim($("<div />").append($(this).clone())) == '';
     }).remove();
 
     $.alm.liveHead.liveClasses($.alm.classes.liveHead);
+    $.alm.processing.liveClasses($.alm.classes.processing);
     if(input.html() && input.html().trim().length > 0) {
         if(!append) target.empty();
         content = input.contents();
