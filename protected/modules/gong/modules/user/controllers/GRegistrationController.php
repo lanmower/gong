@@ -101,10 +101,9 @@ class GRegistrationController extends GController {
 								'form' => $passwordform 
 						) );
 					}
-					
-					//Yii::app ()->end ();
 				} else {
 					$form->addError ( 'login_or_email', G::t ( 'Invalid recovery key' ) );
+					$this->renderText('Invalid recovery key');
 					G::log ( G::t ( 'Someone tried to recover a password, but entered a wrong recovery key. Email is {email}, associated user is {username} (id: {uid})', array (
 							'{email}' => $email,
 							'{uid}' => $user->id,

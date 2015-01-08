@@ -21,12 +21,12 @@ class GTicketLogin extends GTag {
  				}
  				
  			}
- 			G::renderFlash();
 			echo CHtml::tag('span', array(), 'Ticket code:');
  			echo CHtml::beginForm('');
  			echo CHtml::textField ( "ticket" );
  			echo CHtml::endForm();
  		}
+ 		parent::run();
 	}
 	
 }

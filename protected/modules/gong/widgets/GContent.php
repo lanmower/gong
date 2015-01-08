@@ -1,7 +1,7 @@
 <?php
 class GContent extends GTag {
 	public function run() {
-		echo G::renderFlash();
+		$this->widget('GFlash');
 		echo Yii::app ()->controller->content;
 		parent::run ();
 	}

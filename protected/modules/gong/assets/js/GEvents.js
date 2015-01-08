@@ -30,7 +30,7 @@ $.alm.classes.live.GInlineEditable = {
     selector : '.GInlineEditable',
     callBack: function() {
         var local = $(this);
-        local.editable(local.data('url'), {//d
+        local.editable(local.data('url'), {
             type : local.data('type'),
             name : 'value',
             value: local.data('value'),

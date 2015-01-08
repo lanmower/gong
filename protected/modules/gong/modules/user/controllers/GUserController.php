@@ -72,6 +72,7 @@ class GUserController extends GModelController {
 				'model' => $model 
 		) );
 	}
+	
 	public function actionFieldUpdate($attribute, $value, $id = null) {
 		if ($id == null)
 			$id = Yii::app ()->user->hash;
