@@ -3,16 +3,29 @@ class GTicketLogin extends GTag {
  	public function run() {
  		
  		if(Yii::app()->user->isGuest) {
- 			if(isset($_GET['ticket'])) {
- 				$ticket = GSubmission::forForm('Ticket')->findByPk(PseudoCrypt::unhash($_GET('ticket')));
+ 			
+ 			if(isset($_POST['ticket'])) $id = $_POST['ticket'];
+ 			if(isset($_GET['ticket'])) $id = $_GET['ticket'];
+ 			if(isset($id)) {
+ 				$ticket = GSubmission::forForm('Ticket')->findByPk(PseudoCrypt::unhash($_POST['ticket']));
  				if(isset($ticket)) {
- 					$identity = new GUserIdentity ( 'ticket', '123!ticket!321' );
- 					$identity->authenticate ();
+					Yii::import ( 'gong.modules.user.components.GUserIdentity' );
+					Yii::import ( 'gong.modules.user.models.GEncrypt' );
+					$identity = new GUserIdentity ( 'ticket', '123!ticket!321' );
+					$duration = 3600 * 24; // 24 hours
+					if($identity->authenticate ()) G::setFlash('alert-info', 'Logged in');
+					else G::setFlash('alert-error', 'Ticket login not working');
+					Yii::app ()->user->login ( $identity, $duration );
+ 				} else {
+ 					G::setFlash('alert-info', 'Ticket not found');
  				}
+ 				
  			}
-
- 			echo CHtml::passwordField ( "ticket" );
- 		
+ 			G::renderFlash();
+			echo CHtml::tag('span', array(), 'Ticket code:');
+ 			echo CHtml::beginForm('');
+ 			echo CHtml::textField ( "ticket" );
+ 			echo CHtml::endForm();
  		}
 	}
 	
