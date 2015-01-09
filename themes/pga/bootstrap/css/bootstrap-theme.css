@@ -2069,9 +2069,7 @@ th {
   padding: 4px 10px 4px 5px;
   line-height: 1.42857143;
   vertical-align: middle;
-  border-top: 1px solid #B0AFAF;
   border-right: 1px solid #000000;
-  border-left: 1px solid #5F5E5E;
 }
 .table > thead > tr > th {
   vertical-align: bottom;
@@ -2116,11 +2114,11 @@ th {
 }
 .table-striped > tbody > tr:nth-child(odd) > td,
 .table-striped > tbody > tr:nth-child(odd) > th {
-  background-color: #D0D0D0;
+  background-color: rgba(66, 60, 60, 0.62);
 }
 .table-hover > tbody > tr:hover > td,
 .table-hover > tbody > tr:hover > th {
-  background-color: #6AAA86;
+  background-color: #376451;
 }
 table col[class*="col-"] {
   position: static;
@@ -6475,4 +6473,19 @@ label,
 }
 .modal .close {
   color: #222222;
+}
+
+.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+border-top: none;
+border-bottom: none;
+}
+
+
+#GGridView-U8J5M table{font-size:14px;}
+
+.button-column a{margin:0 10px 0 0;}
+
+#GGridView-U8J5M table td div:hover{
+	font-size:14px;
+	color:white;
 }

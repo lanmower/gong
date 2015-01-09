@@ -4,7 +4,7 @@ h1, .h1, h2, .h2, h3, .h3{
 }
 
 .table-striped > tbody > tr:nth-child(odd) > td, .table-striped > tbody > tr:nth-child(odd) > td a, .table-striped > tbody > tr:nth-child(odd) > th, .table-hover > tbody > tr:hover > td, .table-hover > tbody > tr:hover > th{
-	color:black;
+	color: rgb(106, 190, 143);
 }
 
 
@@ -610,7 +610,7 @@ html{
 body{
 	background-color:black;
     min-width: 780px;
-    padding-top:152px;
+    /*padding-top: 200px;*/
     font-family: 'Open Sans Condensed', sans-serif;
 }
 
@@ -664,7 +664,7 @@ a:focus{color:#9D8600}
 .GHeader{
    padding: 10px 0 15px;
    background-color:white;
-   position: fixed;
+   /*position: fixed;*/
 	top: 0;
 	width: 100%;
 }
@@ -959,6 +959,24 @@ input[name="GUserLogin[rememberMe]"]{
     li.active .icon-2x{
         font-size: 2.2em;
     }
+    
+
+	ul.yiiPager .selected a {
+		background: #FFC500 !important;
+	}
+	
+	ul.yiiPager a:link, ul.yiiPager a:visited {
+		border:none !important;
+		color: #B02D31 !important;
+	}
+	
+	ul.yiiPager {
+	font-size: 24px !important;
+	}
+	
+	.GInlineEditable{
+	cursor:pointer;
+	}
 
     .PostDetails .details{
         clear: both;
@@ -1007,7 +1025,17 @@ input[name="GUserLogin[rememberMe]"]{
 }
 
 .GContent{
+	margin: 20px;
 	color: white;
+}
+
+.GTicketLogin{
+	background-color: #818181;
+	display: inline-block;
+	padding: 20px;
+	color: rgb(240, 240, 240);
+	font-size: 20px;
+	font-weight: bold;
 }
 
 .blindLink{
@@ -1017,7 +1045,6 @@ input[name="GUserLogin[rememberMe]"]{
     width: 189px;
 	height: 152px;
     z-index: 999999;
-	
 }
 
 .flightingView, .TeamView, .login {margin:15px;display:inline-block;font-size:16px;}
