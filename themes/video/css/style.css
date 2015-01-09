@@ -899,7 +899,7 @@ input[name="GUserLogin[rememberMe]"]{
     overflow-y:hidden;
 }
 
-.GFileUploader .uploaderStatus  .progress-animated{margin-bottom: 15px;}
+.GFileUploader .uploaderStatus  .progress-animated{}
 
 
 .GFileUploader .uploadCancel{margin-left:15px;}
