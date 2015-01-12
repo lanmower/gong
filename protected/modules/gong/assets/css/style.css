@@ -168,8 +168,8 @@ a {
 /* GFileUploader */
 .GFileUploader {
 	position: fixed;
-	bottom: 0px;
-	width: 100%;
+	bottom: 32px;
+	right: 25px;
 	text-align: center;
 }
 
