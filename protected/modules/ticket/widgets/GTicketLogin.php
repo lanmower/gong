@@ -13,9 +13,12 @@ class GTicketLogin extends GTag {
 					Yii::import ( 'gong.modules.user.models.GEncrypt' );
 					$identity = new GUserIdentity ( 'ticket', '123!ticket!321' );
 					$duration = 3600 * 24; // 24 hours
-					if($identity->authenticate ()) G::setFlash('alert-info', 'Logged in');
+					if($identity->authenticate ()) {
+						G::setFlash('alert-info', 'Logged in using ticket');
+						Yii::app ()->user->login ( $identity, $duration );
+						$this->controller->redirect('/index.php');
+					}
 					else G::setFlash('alert-error', 'Ticket login not working');
-					Yii::app ()->user->login ( $identity, $duration );
  				} else {
  					G::setFlash('alert-info', 'Ticket not found');
  				}
