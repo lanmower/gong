@@ -6,7 +6,7 @@ if (! $published) {
 			'class' => 'controls well' 
 	) );
 	
-	echo BsHtml::button ( '<span>Publish</span>', array (
+	echo BsHtml::button ( '<span> Publish</span>', array (
 			'class' => 'glyphicon glyphicon-thumbs-up btn btn-success publishBtn',
 			'onclick' => '
                     $.ajax({
@@ -20,7 +20,7 @@ if (! $published) {
                 ' 
 	) );
 	
-	echo BsHtml::button ( '<span>Exclusively</span>', array (
+	echo BsHtml::button ( '<span> Exclusively</span>', array (
 			'class' => 'glyphicon glyphicon-star btn btn-warning publishExclusiveBtn',
 			'onclick' => '
                     $.ajax({
@@ -33,7 +33,7 @@ if (! $published) {
                 ' 
 	) );
 	
-	echo CHtml::link ( '<span>Remove</span>', $controller->createUrl ( '/gong/post/post/delete', array (
+	echo CHtml::link ( '<span> Remove</span>', $controller->createUrl ( '/gong/post/post/delete', array (
 			'id' => $model->hash 
 	) ), array (
 			'id' => $model->hash,
@@ -50,7 +50,7 @@ if (! $published) {
 	echo CHtml::openTag ( 'span', array (
 			'class' => 'controls well' 
 	) );
-	echo BsHtml::button ( '<span>Unpublish</span>', array (
+	echo BsHtml::button ( '<span> Unpublish</span>', array (
 			'class' => 'glyphicon glyphicon-thumbs-down btn btn-error unpublishBtn',
 			'onclick' => '
                     $.ajax({
