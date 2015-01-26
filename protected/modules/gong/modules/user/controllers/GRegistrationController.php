@@ -96,13 +96,14 @@ class GRegistrationController extends GController {
 							G::setFlash ( 'alert-info', G::t ( 'Your new password has been saved.' ) );
 							$this->redirect ( "/gong/user/auth/login" );
 						}
+					} else {
+						$this->render ( '/registration/changepassword', array (
+								'form' => $passwordform 
+						) );
 					}
-					$this->render ( '/registration/changepassword', array (
-							'form' => $passwordform 
-					) );
-					Yii::app ()->end ();
 				} else {
 					$form->addError ( 'login_or_email', G::t ( 'Invalid recovery key' ) );
+					$this->renderText('Invalid recovery key');
 					G::log ( G::t ( 'Someone tried to recover a password, but entered a wrong recovery key. Email is {email}, associated user is {username} (id: {uid})', array (
 							'{email}' => $email,
 							'{uid}' => $user->id,
@@ -163,10 +164,10 @@ class GRegistrationController extends GController {
 					$this->redirect ( "/gong/user/auth/login" );
 				}
 			}
+			$this->render ( "/registration/recovery", array (
+					'form' => $form 
+			) );
 		}
-		$this->render ( "/registration/recovery", array (
-				'form' => $form 
-		) );
 	}
 	
 	// Send the Email to the given user object.

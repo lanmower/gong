@@ -38,7 +38,7 @@ class GFileVideo extends GActiveRecord {
 		) ) );
 	}
 	protected function beforeSave() {
-		$line = 'nice -n 10 ffmpeg -i "' . $this->filePath . '" -y -strict experimental -acodec aac -b:a 64k -vcodec libx264 -vprofile baseline "' . $this->path . '" 2>&1 | tee -a ' . Yii::app ()->basePath . '/runtime/conversion.log';
+		$line = 'nice -n 10 /usr/local/bin/ffmpeg -i "' . $this->filePath . '" -y -strict experimental -acodec aac -b:a 64k -vcodec libx264 -vprofile baseline "' . $this->path . '" 2>&1 | tee -a ' . Yii::app ()->basePath . '/runtime/conversion.log';
 		$result = null;
 		$status = null;
 		exec ( $line, $result, $status );

@@ -17,4 +17,5 @@ if ($edit) {
 	echo CHtml::value ( $this->model, 'content' );
 	echo '</div>';
 }
+
 ?>

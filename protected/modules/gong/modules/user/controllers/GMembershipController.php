@@ -1,4 +1,4 @@
-<?php
+r<?php
 class GMembershipController extends GModelController {
 	public function actionOrder() {
 		$model = new GMembership ();

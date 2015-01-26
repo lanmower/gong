@@ -12,6 +12,7 @@ class GInlineEditable extends GTag {
 	public function init() {
 		if (! isset ( $this->name ))
 			throw new CHttpException ( 500, "name not defined" );
+
 		if (GInlineEditable::$_firstRun) {
 			$jeditable = Yii::app ()->assetManager->publish ( 'protected/vendors/jeditable', false, - 1, YII_DEBUG );
 			if (YII_DEBUG)

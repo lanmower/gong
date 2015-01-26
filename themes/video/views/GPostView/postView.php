@@ -5,11 +5,6 @@ $this->render ( 'postViewHeader', array (
 		'edit' => $edit,
 		'published' => $published 
 ) );
- $this->widget ( 'GPostFileList', array (
-		'post' => $model,
-		'type' => 'video' 
-) );
-
 $this->render ( 'postViewDetails', array (
 		'model' => $model,
 		'id' => $id,

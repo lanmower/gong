@@ -26,7 +26,7 @@ if (! Yii::app ()->user->isGuest) {
 	?>
 
 <?php
-
+ 
 $this->renderPartial ( 'GongModule.modules.user.views.user.passwordfields', array (
 		'form' => $form 
 ) );
@@ -36,6 +36,6 @@ $this->renderPartial ( 'GongModule.modules.user.views.user.passwordfields', arra
 	<?php echo CHtml::submitButton(G::t("Save")); ?>
 	</div>
 
-<?php echo CHtml::endForm(); ?>
+	<?php echo CHtml::endForm(); ?>
 </div>
 <!-- form -->

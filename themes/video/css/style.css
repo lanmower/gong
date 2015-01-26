@@ -227,6 +227,41 @@ input, button, select, textarea {
 
 .slick-cell a{margin: 0 15px;}
 
+
+.GTicketLogin{
+	background-color: #555;
+	display: inline-block;
+	padding: 20px;
+	color: rgb(240, 240, 240);
+	font-size: 20px;
+	font-weight: bold;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
+.GTicketLogin input{color:rgb(23, 23, 23);;}
+
+
+
+.GFileUploader .inner{   
+
+    max-height:150px;
+    overflow-y:auto;
+}
+
+.GFileUploader .fileList{
+    width:100%;
+    max-height: 114px;
+    overflow-y:hidden;
+}
+
+.GFileUploader .uploaderStatus  .progress-animated{}
+
+
+.GFileUploader .uploadCancel{margin-left:15px;}
+
+
 .GUserField .label, .GPostView .label{
     font-size: 16px;
     margin-right: 15px;
@@ -843,7 +878,7 @@ margin-bottom: 10px;
 
 .folderHeader:hover{cursor: pointer;}
 
-/* Ladning / Dashboard */
+/* Landing / Dashboard */
 
 .GMessageWidget, .GFriendshipWidget, .GUserWidget{
     margin: 0 10px;
@@ -884,25 +919,6 @@ input[name="GUserLogin[rememberMe]"]{
     display:none;
 }
 
-.GFileUploader { }
-
-
-.GFileUploader .inner{   
-
-    max-height:150px;
-    overflow-y:auto;
-}
-
-.GFileUploader .fileList{
-    width:100%;
-    max-height: 114px;
-    overflow-y:hidden;
-}
-
-.GFileUploader .uploaderStatus  .progress-animated{margin-bottom: 15px;}
-
-
-.GFileUploader .uploadCancel{margin-left:15px;}
 
 .GLink-2zoLn{background-color:#F02483;border:#F02483} .GLink-2zoLn:hover{background-color:#CC1F8A;border:#F02483}
 
@@ -910,7 +926,7 @@ input[name="GUserLogin[rememberMe]"]{
     color:#FFF;
 }
 
-.controls button.btn, .controls a.removeBtn{
+.controls button.btn span, .controls a.removeBtn span{
     font-size: 1.3em;
 }
 
@@ -1050,7 +1066,7 @@ and (max-width : 740px) {
 
 
 
-    .GFileUploader, .publishExclusiveBtn, .publishBtn, .removeBtn, .uploadBtn{width:100%;margin-bottom:10px}
+    .publishExclusiveBtn, .publishBtn, .removeBtn, .uploadBtn{width:100%;margin-bottom:10px}
    
     
     .headphones_image, .headphones_image img{float:none !important;text-align: center;}

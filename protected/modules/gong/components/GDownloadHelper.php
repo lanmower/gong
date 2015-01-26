@@ -1,8 +1,8 @@
 <?php
 
 // - turn off compression on the server
-@apache_setenv ( 'no-gzip', 1 );
-@ini_set ( 'zlib.output_compression', 'Off' );
+//@apache_setenv ( 'no-gzip', 1 );
+//@ini_set ( 'zlib.output_compression', 'Off' );
 class GDownloadHelper {
 	public static function download($location, $mimeType = 'application/octet-stream', $filename) {
 		if (! file_exists ( $location )) {

@@ -51,17 +51,12 @@ class Gong {
 		return '<p>' . G::t ( $string, $params ) . '</p>';
 	}
 	
-	/**
+/**
 	 * Fetch the translation string from db and cache when necessary
 	 */
 	public static function t($string, $args = null, $category = 'gong', $language = 'en') {
-		$sqlString = $string;
-		$sql = "SELECT translation FROM {{translation}} WHERE `message` = \"$sqlString\" AND `category` = \"$category\" AND `language` = \"$language\" LIMIT 1";
-		// $dependency = new CDbCacheDependency('SELECT MAX(update_time) FROM tbl_post');
-		$row = Yii::app ()->db->cache ( 3600 )->createCommand ( $sql )->query ();
+		$row = Yii::app ()->db->cache ( 3600 )->createCommand()->select('translation')->from('{{translation}}')->where('message = :message AND category = :category AND language = :language', array(':message'=>$string, 'language'=>$language, 'category'=>$category))->query ();
 		$data = $row->read ();
-		// CVarDumper::dump($string);
-		// die(CVarDumper::dump($data));
 		
 		if ($data != false) {
 			if (isset ( $data ['translation'] ))
