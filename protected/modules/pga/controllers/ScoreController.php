@@ -104,6 +104,7 @@ class ScoreController extends GController {
 					}
 					
 					$json['players'][$player->id] = array('course'=>$course, 'id'=>$player->id, 'name'=>$player->name, 'hole'=>$holeText, 'total'=>$rounds['total']['player'][$player->id]['strokes'], 'nett'=>$rounds['total']['player'][$player->id]['nett'], 'gross'=>$rounds['total']['player'][$player->id]['gross']);
+					$json['players'] = array_reverse($json['players'], true);
 				}
 			}
 		} else {
