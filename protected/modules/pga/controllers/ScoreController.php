@@ -42,8 +42,6 @@ class ScoreController extends GController {
 					
 					if($holeCount > $tHoleCount) $dontStore = true;
 				}
-				echo $lastPlayer+'\n';
-				echo $nextPlayer+'\n';
 
 				if(isset($player)) {
 					if(isset($_GET['shots'])) {
