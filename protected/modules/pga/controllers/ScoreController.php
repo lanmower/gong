@@ -35,8 +35,9 @@ class ScoreController extends GController {
 						$course = $tPlayer->group->course;
 						if($score->course->id == $course->id) ++$tHoleCount;
 					}
-					if(isset($lastPlayer) && !isset($nextPlayer)) $nextPlayer = $tPlayer->id;
+					//if(isset($lastPlayer) && !isset($nextPlayer)) $nextPlayer = $tPlayer->id;
 					if($tPlayer->id == $player->id) {
+						$nextPlayer = $lastPlayer;
 						$lastPlayer = $player->id;
 					}
 					
@@ -104,7 +105,6 @@ class ScoreController extends GController {
 					}
 					
 					$json['players'][$player->id] = array('course'=>$course, 'id'=>$player->id, 'name'=>$player->name, 'hole'=>$holeText, 'total'=>$rounds['total']['player'][$player->id]['strokes'], 'nett'=>$rounds['total']['player'][$player->id]['nett'], 'gross'=>$rounds['total']['player'][$player->id]['gross']);
-					$json['players'] = array_reverse($json['players'], true);
 				}
 			}
 		} else {
