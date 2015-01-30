@@ -115,19 +115,17 @@ class ScoreTools {
 					$strokes = $roundPlayer['strokes'];
 					$total += $strokes;
 					$day += $strokes;
-					if($d) CVarDumper::dump("Added: {$roundPlayer['strokes']} from player {$roundPlayer['name']}, new team total: $total.\n", 3,true);
-				}
-				foreach($round as $roundPlayer) {
 					$gross = $roundPlayer['gross'];
 					$nett = $roundPlayer['nett'];
 					$grossTotal += $gross;
 					$nettTotal += $nett;
+					if($d) CVarDumper::dump("Added: {$roundPlayer['strokes']} from player {$roundPlayer['name']}, new team total: $total.\n", 3,true);
 				}
-				$rounds['team'][] = array(
+				/*$rounds['team'][] = array(
 					'gross' =>$gross,
 					'nett'=>$nett,
 					'strokes'=>$total
-				);
+				);*/
 				$min = sizeof($round);
 				if(++$holeNumber == 18) {
 					$holeNumber = 0;
@@ -139,7 +137,7 @@ class ScoreTools {
 			$rounds['total']['team']['days'][] = $day; 
 		}
 		unset($rounds['player']);
-		unset($rounds['team']);
+		//unset($rounds['team']);
 		return $rounds;
 
 	}
