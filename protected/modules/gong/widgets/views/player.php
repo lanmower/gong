@@ -3,10 +3,13 @@ echo CHtml::openTag ( 'div', array (
 		'id' => $containerId,
 		'class' => 'jp-container jp-type-playlist' 
 ) );
-echo CHtml::tag ( 'div', array (
+echo CHtml::openTag ( 'div', array (
 		'id' => $playerId,
 		'class' => 'jp-jplayer' 
 ) );
+echo CHtml::closeTag ( 'div' );
+?>
+<?php 
 echo CHtml::closeTag ( 'div' );
 ?>
 <div class='deck jp-left'>
@@ -48,12 +51,20 @@ echo CHtml::closeTag ( 'div' );
 	</div>
 </div>
 
-<!--div class='jp-middle'>
+
+<br />
+<div class='jp-middle'>
+</div>
+<div class="jp-right">
+</div>
+<div class="jp-toggles">
+</div>
+<?php 
+/*
+<div class='jp-middle'>
 </div>
 <div class="jp-right">
 </div-->
-
-<br />
 <!--div class="jp-toggles">
         <ul>
             <li><a href="javascript:;" class="jp-shuffle" tabindex="1" title="shuffle"><i class="glyphicon glyphicon-random glyphicon-2x"></i></a></li>
@@ -63,11 +74,12 @@ echo CHtml::closeTag ( 'div' );
         </ul>
     </div>
     <a href="javascript:;" class="jp-mute" tabindex="1" title="mute"><i class="glyphicon glyphicon-volume-off glyphicon-2x"></i></a>
-    <a href="javascript:;" class="jp-unmute" tabindex="1" title="unmute"><i class="glyphicon glyphicon-volume-off glyphicon-2x active"></i></a-->
+    <a href="javascript:;" class="jp-unmute" tabindex="1" title="unmute"><i class="glyphicon glyphicon-volume-off glyphicon-2x active"></i></a>
 
 
 </div>
-
+*/
+?>
 
 <div class="jp-no-solution">
 	<span>Update Required</span> To play the media you will need to either

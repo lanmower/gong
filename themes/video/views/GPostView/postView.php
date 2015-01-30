@@ -5,12 +5,18 @@ $this->render ( 'postViewHeader', array (
 		'edit' => $edit,
 		'published' => $published 
 ) );
-$this->render ( 'postViewDetails', array (
+$this->render ( 'postViewVideoContent', array (
 		'model' => $model,
 		'id' => $id,
 		'edit' => $edit,
 		'published' => $published 
 ) );
+/*$this->render ( 'postViewDetails', array (
+		'model' => $model,
+		'id' => $id,
+		'edit' => $edit,
+		'published' => $published 
+) );*/
 $this->render ( 'postViewButtons', array (
 		'model' => $model,
 		'id' => $id,

@@ -9,10 +9,5 @@ echo GPostView::mediaIcon('audio', 'glyphicon glyphicon-music', $model);
 echo GPostView::mediaIcon('data', 'glyphicon glyphicon-file', $model);
 echo CHtml::closeTag('span');
 
-$this->widget ( 'GPostFileList', array (
-		'post' => $model,
-		'type' => 'video' 
-) );
-
 echo CHtml::closeTag('div');
 ?>

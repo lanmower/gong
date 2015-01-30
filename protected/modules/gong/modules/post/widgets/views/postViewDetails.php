@@ -11,5 +11,6 @@ echo GPostView::mediaIcon ( 'video', 'glyphicon glyphicon-facetime-video', $mode
 echo GPostView::mediaIcon ( 'audio', 'glyphicon glyphicon-music', $model );
 echo GPostView::mediaIcon ( 'data', 'glyphicon glyphicon-file', $model );
 echo CHtml::closeTag ( 'span' );
+
 echo CHtml::closeTag ( 'div' );
 ?>

@@ -23,4 +23,5 @@ $this->render ( 'postViewContent', array (
 		'edit' => $edit,
 		'published' => $published 
 ) );
+
 ?>

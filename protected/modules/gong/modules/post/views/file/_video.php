@@ -34,7 +34,7 @@ if ($post->coverImageId) {
 if ($file->processed) {
 	echo CHtml::tag ( 'td', array (), CHtml::link ( 'Play', "", array (
 			'class' => "nohijack playButton",
-			'onclick' => "$('.jp-volume, .jp-controls, .jp-progress, .jp-playlist').css({display:'inline-block'}); $.alm.player.add({" . implode ( "\n", $videoFile ) . "}, true); $.alm.player.play();" 
+			'onclick' => "$('html, body').animate({ scrollTop: 0 }, 'slow'); $('.ui-dialog-titlebar-close').click();$('.jp-volume, .jp-controls, .jp-progress, .jp-playlist').css({display:'inline-block'}); $.alm.player.add({" . implode ( "\n", $videoFile ) . "}, true); $.alm.player.play();" 
 	) ) );
 	echo CHtml::tag ( 'td', array (), CHtml::link ( 'Queue', "", array (
 			'class' => 'nohijack queueButton',

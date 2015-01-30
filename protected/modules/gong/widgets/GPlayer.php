@@ -42,7 +42,7 @@ class GPlayer extends GTag {
         }    
         $.alm.player = new jPlayerPlaylist(
             {
-                jPlayer: '#$playerId',
+                jPlayer: '#$containerId',
                 cssSelectorAncestor: '#{$this->htmlOptions['id']}'
             },
             [],
