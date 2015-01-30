@@ -36,10 +36,10 @@ class ScoreController extends GController {
 						if($score->course->id == $course->id) ++$tHoleCount;
 					}
 					//if(isset($lastPlayer) && !isset($nextPlayer)) $nextPlayer = $tPlayer->id;
-					$lastPlayer = $player->id;
 					if($tPlayer->id == $player->id) {
 						$nextPlayer = $lastPlayer;
 					}
+					$lastPlayer = $player->id;
 					
 					if($holeCount > $tHoleCount) $dontStore = true;
 				}
