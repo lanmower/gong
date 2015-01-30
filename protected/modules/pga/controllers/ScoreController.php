@@ -67,6 +67,8 @@ class ScoreController extends GController {
 								
 								if(isset($nextPlayer)) $json['select'] = $nextPlayer;
 								else if(isset($lastPlayer)) $json['select'] = $lastPlayer;
+								$json['nextPlayer'] = $nextPlayer;
+								$json['lastPlayer'] = $lastPlayer;
 							}
 						} else {
 							$json['status'] = 'Not saved';
