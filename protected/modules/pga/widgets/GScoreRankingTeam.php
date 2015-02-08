@@ -23,12 +23,21 @@ class GScoreRankingTeam extends GTag {
 	}
 
 	public function run() {
-		$d = isset($_GET['debug']);
+		$proGame = GSubmission::forForm("Game")->find('name = :name', array(":name"=>'Professional'));
+		$players = GSubmission::forForm('Player')->findAll('game = :game', array(":game"=>$proGame->id));
 		$teams = GSubmission::forForm('Team')->findAll();
+		$scores = GSubmission::forForm('Score')->findAll();
+		$countries = GSubmission::forForm('Country')->findAll();
+		$groups = GSubmission::forForm('Group')->findAll();
+		$courses = GSubmission::forForm('Course')->findAll();
+		$holes = GSubmission::forForm('Hole')->findAll();
+		$rules = GSubmission::forForm('Rules')->findAll();
+		
+		$d = isset($_GET['debug']);
 		$data = array();
 		foreach($teams as $team) {
-			$rounds = ScoreTools::playerScore($team->players);
-			GSubmission::clearCache();
+			$rounds = ScoreTools::playerScore($team->players, 2, $players, $teams, $scores, $courses, $holes, $rules);
+
 			//gc_collect_cycles();
 			$players = array();
 			foreach($rounds['total']['player'] as $playerId => $playerData) {

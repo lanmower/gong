@@ -25,9 +25,17 @@ class GScoreRankingPro extends GTag {
 	public function run() {
 		$proGame = GSubmission::forForm("Game")->find('name = :name', array(":name"=>'Professional'));
 		$players = GSubmission::forForm('Player')->findAll('game = :game', array(":game"=>$proGame->id));
+		$teams = GSubmission::forForm('Team')->findAll();
+		$scores = GSubmission::forForm('Score')->findAll();
+		$countries = GSubmission::forForm('Country')->findAll();
+		$groups = GSubmission::forForm('Group')->findAll();
+		$courses = GSubmission::forForm('Course')->findAll();
+		$holes = GSubmission::forForm('Hole')->findAll();
+		$rules = GSubmission::forForm('Rules')->findAll();
 		$data = array();
+		$x=0;
 		foreach($players as $player) {
-			$rounds = ScoreTools::playerScore(array($player));
+			$rounds = ScoreTools::playerScore(array($player), 2, $players, $teams, $scores, $courses, $holes, $rules);
 			$data[] = array('player'=>$player, 'total'=>$rounds['total']['player']);
 		}
 
