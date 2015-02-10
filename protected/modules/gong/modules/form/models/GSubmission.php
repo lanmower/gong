@@ -2,7 +2,7 @@
 class GSubmission extends GActiveRecord {
 	protected $_tableName;
 	public $actions;
-
+	
 	/**
 	 * Table meta-data.
 	 * Must redeclare, as parent::_md is private
@@ -14,20 +14,19 @@ class GSubmission extends GActiveRecord {
 	protected $_form;
 	protected $_relations;
 	public $cacheRelations = true;
-	protected static $_relationsCache = array();
-
+	protected static $_relationsCache = array ();
 	public static function clearCache() {
-		foreach(GSubmission::$_relationsCache as $key=>$item){
-			unset(GSubmission::$_relationsCache[$key]);
+		foreach ( GSubmission::$_relationsCache as $key => $item ) {
+			unset ( GSubmission::$_relationsCache [$key] );
 		}
-		GSubmission::$_relationsCache = array();
+		GSubmission::$_relationsCache = array ();
 	}
 	/**
 	 * Constructor
 	 *
 	 * @param string $scenario
 	 *        	(defaults to 'insert')
-	 * @param string $tableName
+	 * @param string $tableName        	
 	 */
 	public function __construct($scenario = 'insert', $form = null) {
 		$gVarForm = Yii::app ()->controller->getVar ( 'tmpForm' );
@@ -36,7 +35,7 @@ class GSubmission extends GActiveRecord {
 					':name' => $form 
 			) );
 		}
-		if (isset ( $gVarForm ) && !isset($form)) {
+		if (isset ( $gVarForm ) && ! isset ( $form )) {
 			$this->_form = $gVarForm;
 		}
 		if (is_object ( $form )) {
@@ -49,68 +48,72 @@ class GSubmission extends GActiveRecord {
 			$this->_tableName = $this->_form->table;
 			$this->_behaviors = $this->_form->modelBehaviors;
 			$this->_rules = $this->_form->modelRules;
-			foreach($this->_form->modelRelations as $attribute => $data) {
-				$this->_relations[$attribute] = $data;
+			foreach ( $this->_form->modelRelations as $attribute => $data ) {
+				$this->_relations [$attribute] = $data;
 			}
 		} else {
 			throw new CHttpException ( 500, CVarDumper::dumpAsString ( $this->_form, 3 ) );
 		}
 		parent::__construct ( $scenario );
 	}
-
 	public function __get($name) {
-		if(isset($this->_relations[$name])){
-			if(isset($this->_form) && $this->cacheRelations) {
-				if(!isset(GSubmission::$_relationsCache[$this->_form->name][$this->id])) GSubmission::$_relationsCache[$this->_form->name][$this->id] = array(); // create object data array if not set
-				else if(isset(GSubmission::$_relationsCache[$this->_form->name][$this->id][$name])) return GSubmission::$_relationsCache[$this->_form->name][$this->id][$name]; //if cached return cache
-			}
-			if($this->_relations[$name]['type'] == CActiveRecord::BELONGS_TO) 
-					$relation = GSubmission::forForm($this->_relations[$name]['formName'])->findByAttributes(array('id'=>$this->attributes[$name]));
+		if (isset ( $this->_relations [$name] )) {
 			
-			if($this->_relations[$name]['type'] == CActiveRecord::HAS_MANY)
-					$relation = GSubmission::forForm($this->_relations[$name]['formName'])->findAllByAttributes(array($this->_relations[$name]['foreignKey']=>$this->primaryKey));
-
-			if($this->_relations[$name]['type'] == "HasAllRelation")
-					$relation = GSubmission::forForm($this->_relations[$name]['formName'])->findAll();
+			if ($this->_relations [$name] ['type'] == CActiveRecord::BELONGS_TO) {
+				if (isset ( $this->_form ) && $this->cacheRelations) {
+					if (! isset ( GSubmission::$_relationsCache [$this->_relations [$name] ['formName']] ))
+						GSubmission::$_relationsCache [$this->_relations [$name] ['formName']] = array (); // create object data array if not set
 					
-			if(isset($this->_form) && $this->cacheRelations) {
-				GSubmission::$_relationsCache[$this->_form->name][$this->id][$name] = $relation;
+					if (isset ( GSubmission::$_relationsCache [$this->_relations [$name] ['formName']] [$this->attributes [$name]] ))
+						return GSubmission::$_relationsCache [$this->_relations [$name] ['formName']] [$this->attributes [$name]]; // if cached return cache
+				}
+				$relation = GSubmission::forForm ( $this->_relations [$name] ['formName'] )->findByAttributes ( array (
+						'id' => $this->attributes [$name] 
+				) );
+				if (isset ( $this->_form ) && $this->cacheRelations) {
+					GSubmission::$_relationsCache [$this->_relations [$name] ['formName']] [$this->attributes [$name]] = $relation;
+				}
 			}
+			if ($this->_relations [$name] ['type'] == CActiveRecord::HAS_MANY) {
+				$relation = GSubmission::forForm ( $this->_relations [$name] ['formName'] )->findAllByAttributes ( array (
+						$this->_relations [$name] ['foreignKey'] => $this->primaryKey 
+				) );
+			}
+			
+			if ($this->_relations [$name] ['type'] == "HasAllRelation")
+				$relation = GSubmission::forForm ( $this->_relations [$name] ['formName'] )->findAll ();
 			
 			return $relation;
-		}
-		else return parent::__get($name);
+		} else
+			return parent::__get ( $name );
 	}
-
 	public function behaviors() {
 		if (empty ( $this->_behaviors )) {
 			$this->attachBehavior ( 'GOwnershipBehavior', array (
 					'class' => 'GOwnershipBehavior',
 					'attributes' => array (
 							'userId' 
-							)
-							) );
-							$this->attachBehavior ( 'timestamp', array (
+					) 
+			) );
+			$this->attachBehavior ( 'timestamp', array (
 					'class' => 'zii.behaviors.CTimestampBehavior',
 					'createAttribute' => 'created',
 					'updateAttribute' => 'modified' 
-					) );
-						
-					if (isset ( $this->_form )) {
-						foreach ( $this->_form->modelBehaviors as $key => $value )
-						$this->attachBehavior ( $key, $value );
-					}
+			) );
+			
+			if (isset ( $this->_form )) {
+				foreach ( $this->_form->modelBehaviors as $key => $value )
+					$this->attachBehavior ( $key, $value );
+			}
 		}
 		return $this->_behaviors;
 	}
 	public function getGridColumns() {
 		return $this->_form->modelGridColumns;
 	}
-
 	public static function model($className = __CLASS__) {
 		return parent::model ( $className );
 	}
-
 	public function getAttribute($attributeName) {
 		if (isset ( $this->_form )) {
 			foreach ( $this->_form->children as $child ) {
@@ -119,9 +122,8 @@ class GSubmission extends GActiveRecord {
 				}
 			}
 		} else
-		throw new CHttpException ( 500, 'Form not defined' );
+			throw new CHttpException ( 500, 'Form not defined' );
 	}
-
 	public function getCell($attributeName) {
 		if (isset ( $this->_form )) {
 			foreach ( $this->_form->children as $child ) {
@@ -131,9 +133,9 @@ class GSubmission extends GActiveRecord {
 				}
 			}
 		} else
-		throw new CHttpException ( 500, 'Form not defined' );
+			throw new CHttpException ( 500, 'Form not defined' );
 	}
-
+	
 	/**
 	 * Overrides default instantiation logic.
 	 * Instantiates AR class by providing table name
@@ -144,7 +146,7 @@ class GSubmission extends GActiveRecord {
 	protected function instantiate($attributes) {
 		return new GSubmission ( null );
 	}
-
+	
 	/**
 	 * Returns meta-data for this DB table
 	 *
@@ -153,11 +155,11 @@ class GSubmission extends GActiveRecord {
 	 */
 	public function getMetaData() {
 		if ($this->_md !== null)
-		return $this->_md;
+			return $this->_md;
 		else
-		return $this->_md = new CActiveRecordMetaData ( $this );
+			return $this->_md = new CActiveRecordMetaData ( $this );
 	}
-
+	
 	/**
 	 * Returns table name
 	 *
@@ -170,7 +172,7 @@ class GSubmission extends GActiveRecord {
 	public function getForm() {
 		return $this->_form;
 	}
-
+	
 	/**
 	 * Returns rules
 	 *
@@ -190,19 +192,20 @@ class GSubmission extends GActiveRecord {
 				')',
 				',',
 				'.' 
-				);
-				if (! preg_match ( '/1?[0-9]{10}((ext|x)[0-9]{1,4})?/i', str_replace ( $replace, '', $this->getAttribute ( $attribute ) ) )) {
-					$this->addError ( $attribute, 'Please enter a valid phone number.' );
-				}
+		);
+		if (! preg_match ( '/1?[0-9]{10}((ext|x)[0-9]{1,4})?/i', str_replace ( $replace, '', $this->getAttribute ( $attribute ) ) )) {
+			$this->addError ( $attribute, 'Please enter a valid phone number.' );
+		}
 	}
 	public static function forForm($formName, $scenario = 'insert') {
 		$form = GForm::model ()->find ( 'name = :name', array (
 				':name' => $formName 
 		) );
-		if(!isset($form) && isset($formName)) throw new CHttpException(500, 'Form '.$formName.' could not be found for submission. ' );
+		if (! isset ( $form ) && isset ( $formName ))
+			throw new CHttpException ( 500, 'Form ' . $formName . ' could not be found for submission. ' );
 		Yii::app ()->controller->setVar ( 'tmpForm', $form );
 		$submission = new GSubmission ( $scenario, $form );
-
+		
 		return $submission;
 	}
 }
