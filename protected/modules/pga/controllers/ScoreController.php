@@ -83,7 +83,17 @@ class ScoreController extends GController {
 
 			$team = GSubmission::forForm('Team')->findByPk($_GET['team']);
 			if(isset($team)) {
-				$rounds = ScoreTools::playerScore($team->players);
+				$proGame = GSubmission::forForm("Game")->find('name = :name', array(":name"=>'Professional'));
+				$players = GSubmission::forForm('Player')->findAll('team = :team', array(":team"=>$team->id));
+				$teams = GSubmission::forForm('Team')->findAll('id = :team', array(":team"=>$team->id));
+				$scores = GSubmission::forForm('Score')->findAll();
+				$countries = GSubmission::forForm('Country')->findAll();
+				$groups = GSubmission::forForm('Group')->findAll();
+				$courses = GSubmission::forForm('Course')->findAll();
+				$holes = GSubmission::forForm('Hole')->findAll();
+				$rules = GSubmission::forForm('Rules')->findAll();
+				
+				$rounds = ScoreTools::playerScore($team->players, $max=2, $players, $teams, $scores, $courses, $holes, $rules);
 				if(!isset($json['status']))$json['status']="Select a player";
 				foreach($team->players as $player) {
 					$holeCount = 0;
