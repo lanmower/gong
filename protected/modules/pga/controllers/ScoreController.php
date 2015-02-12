@@ -18,6 +18,7 @@ class ScoreController extends GController {
 			foreach($team->players as $player) {
 				$holeCount = 0;
 				if($player->id == $playerId) {
+					$course = $player->group->course;
 					$score = GSubmission::forForm('Score');
 					$score->shots = $_GET['shots'][$index];
 					$score->player = $player->id;
@@ -67,8 +68,8 @@ class ScoreController extends GController {
 				$player = GSubmission::forForm("Player")->findByPk($_GET['player']);
 				$holeCount = 0;
 
+				$course = $player->group->course;
 				foreach($player->scores as $score) {
-					$course = $player->group->course;
 					if($score->course->id == $course->id) {
 						++$holeCount;
 					}
