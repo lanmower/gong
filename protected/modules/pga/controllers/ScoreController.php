@@ -51,6 +51,58 @@ class ScoreController extends GController {
 			}
 			++$index;
 		}
+			$team = GSubmission::forForm('Team')->findByPk($_GET['team']);
+			if(isset($team)) {
+				$proGame = GSubmission::forForm("Game")->find('name = :name', array(":name"=>'Professional'));
+				$players = GSubmission::forForm('Player')->findAll('team = :team', array(":team"=>$team->id)); //since players belong to a team, include only players from this team
+				$teams = GSubmission::forForm('Team')->findAll('id = :team', array(":team"=>$team->id)); //only include this team
+				$playerIds = array();
+				foreach($team->players as $player) {
+					$playerIds[] = $player->id;
+				}
+				//die(CVarDumper::dump(implode(' OR ', $playerIds)));
+				$scores = GSubmission::forForm('Score')->findAll('player = "'.implode('" OR player = "', $playerIds).'"');//ByAttributes(array('id'=>implode(' OR ', $playerIds))); //only include scores from the teams players
+				$countries = GSubmission::forForm('Country')->findAll();
+				$groups = GSubmission::forForm('Group')->findAll();
+				$courses = GSubmission::forForm('Course')->findAll();
+				$holes = GSubmission::forForm('Hole')->findAll();
+				$rules = GSubmission::forForm('Rules')->findAll();
+
+				$rounds = ScoreTools::playerScore($team->players, $max=2, $players, $teams, $scores, $courses, $holes, $rules);
+				if(!isset($json['status']))$json['status']="Select a player";
+				foreach($team->players as $player) {
+					$holeCount = 0;
+					foreach($player->scores as $score) {
+						$course = $player->group->course;
+						if($score->course->id == $course->id) {
+							++$holeCount;
+						}
+					}
+
+					$holeNumber = (($holeCount) + $player->holeOffset) % 18;
+					if($holeNumber == 0 && $holeCount > 0) $holeNumber = 18;
+
+					$course = $player->group->course->name;
+					$newHoleNumber = ($holeNumber+1)%18;
+					if($newHoleNumber == 0 && $holeNumber > 0) $newHoleNumber = 18;
+
+					if($holeCount == 18) $holeText = "complete";
+					else {
+						foreach($player->group->course->holes as $hole) {
+							if($hole->number == $newHoleNumber) $holeText = "{$hole->number} (Par {$hole->par}, stroke {$hole->stroke})";
+						}
+					}
+					$strokes = 0;
+					$nett = 0;
+					$gross = 0;
+					if(isset($rounds['total']['player'][$player->id])) {
+					$strokes = $rounds['total']['player'][$player->id]['strokes'];
+					$nett = $rounds['total']['player'][$player->id]['nett'];
+					$gross = $rounds['total']['player'][$player->id]['gross'];
+					}
+					$json['players'][$player->id] = array('course'=>$course, 'id'=>$player->id, 'name'=>$player->name, 'hole'=>$holeText, 'total'=>$strokes, 'nett'=>$nett, 'gross'=>$gross);
+				}
+			}
 		echo CJavaScript::jsonEncode ( $json );
 	}
 
