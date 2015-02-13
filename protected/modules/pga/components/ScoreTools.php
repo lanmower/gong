@@ -38,6 +38,22 @@ class ScoreTools {
 			$d = isset ( $_GET ['debug'] );
 			if ($d)
 				CVarDumper::dump ( "Processing player {$player->name}\n", 1, true );
+
+			$holeCount = 0;
+			foreach($player->scores as $score) {
+				$course = $player->group->course;
+				if($score->course->id == $course->id) {
+					++$holeCount;
+				}
+			}
+
+			$holeNumber = (($holeCount) + $player->holeOffset) % 18;
+			if($holeNumber == 0 && $holeCount > 0) $holeNumber = 18;
+
+			$course = $player->group->course->name;
+			$newHoleNumber = ($holeNumber+1)%18;
+			if($newHoleNumber == 0 && $holeNumber > 0) $newHoleNumber = 18;
+			
 			$total = 0;
 			$day = 0;
 			$roundIndex = 0;
@@ -45,12 +61,15 @@ class ScoreTools {
 					'strokes' => 0,
 					'gross' => 0,
 					'nett' => 0,
+					'par' => 0,
 					'days' => array () 
 			);
 			$player_scores = filter_all ( $scores, 'player', $player->id );
-
+			$parComparisonTotal = 0;
+			
 			foreach ( $player_scores as $score ) {
 				// if($d) CVarDumper::dump($score->courseRelation, 1,true);
+				$parComparisonTotal = 0;
 				$course = filter ( $courses, 'id', $score->attributes['course']  );
 				$hole = filter ( $holes, 'id', $score->attributes['hole'] );
 				$gross = $score->shots;
@@ -75,6 +94,7 @@ class ScoreTools {
 				$par = $hole->par;
 				
 				$parComparison = $nett - $par;
+				$parComparisonTotal += $parComparison;
 				if ($d)
 					CVarDumper::dump ( "Gross adjustment:" . $adjustment, 1, true );
 				if ($d)
@@ -111,6 +131,8 @@ class ScoreTools {
 				$rounds ['total'] ['player'] [$player->id] ['strokes'] += $strokes;
 				$rounds ['total'] ['player'] [$player->id] ['nett'] += $nett;
 				$rounds ['total'] ['player'] [$player->id] ['gross'] += $gross;
+				$rounds ['total'] ['player'] [$player->id] ['parComparison'] += $parComparison;
+				$rounds ['total'] ['player'] [$player->id] ['hole'] == $newHoleNumber;
 				if (++ $holeNumber == 18) {
 					$holeNumber = 0;
 					$rounds ['total'] ['player'] [$player->id] ['days'] [] = $day;
@@ -126,7 +148,9 @@ class ScoreTools {
 					'strokes' => $total,
 					'nett' => $nettTotal,
 					'gross' => $grossTotal,
-					'days' => $days 
+					'days' => $days, 
+					'hole' => $newHoleNumber,
+					'parComparison' => $parComparisonTotal
 			);
 		} else {
 			if ($d)
