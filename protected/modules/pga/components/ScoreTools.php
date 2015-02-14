@@ -62,7 +62,9 @@ class ScoreTools {
 					'gross' => 0,
 					'nett' => 0,
 					'par' => 0,
-					'days' => array () 
+					'hole' => 0,
+					'parComparison' => 0,
+			'days' => array () 
 			);
 			$player_scores = filter_all ( $scores, 'player', $player->id );
 			$parComparisonTotal = 0;
