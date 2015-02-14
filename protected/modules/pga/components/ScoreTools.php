@@ -47,12 +47,12 @@ class ScoreTools {
 				}
 			}
 
-			$holeNumber = (($holeCount) + $player->holeOffset) % 18;
-			if($holeNumber == 0 && $holeCount > 0) $holeNumber = 18;
+			$holeNumbert = (($holeCount) + $player->holeOffset) % 18;
+			if($holeNumbert == 0 && $holeCount > 0) $holeNumbert = 18;
 
 			$course = $player->group->course->name;
-			$newHoleNumber = ($holeNumber+1)%18;
-			if($newHoleNumber == 0 && $holeNumber > 0) $newHoleNumber = 18;
+			$newHoleNumber = ($holeNumbert+1)%18;
+			if($newHoleNumber == 0 && $holeNumbert > 0) $newHoleNumber = 18;
 			
 			$total = 0;
 			$day = 0;
