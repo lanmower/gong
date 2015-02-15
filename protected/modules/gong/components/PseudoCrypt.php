@@ -1,8 +1,6 @@
 <?php
-class PseudoCrypt {
+/*class PseudoCrypt {
 	
-	/* Key: Next prime greater than 62 ^ n / 1.618033988749894848 */
-	/* Value: modular multiplicative inverse */
 	private static $golden_primes = array (
 			'1' => '1',
 			'41' => '59',
@@ -17,8 +15,6 @@ class PseudoCrypt {
 			'518715534842869223' => '280042546585394647' 
 	);
 	
-	/* Ascii : 0 9, A Z, a z */
-	/* $chars = array_merge(range(48,57), range(65,90), range(97,122)) */
 	private static $chars62 = array (
 			0 => 48,
 			1 => 49,
@@ -117,4 +113,52 @@ class PseudoCrypt {
 		$dec = bcmod ( bcmul ( $num, $mmi ), $ceil );
 		return $dec;
 	}
+	
+}*/
+
+class PseudoCrypt {
+
+    //const $codeset = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    //readable character set excluded (0,O,1,l)
+    const codeset = "23456789abcdefghijkmnopqrstuvwxyzABCDEFGHIJKLMNPQRSTUVWXYZ";
+
+    static function hash($n){
+        $base = strlen(self::codeset);
+        $converted = '';
+
+        while ($n > 0) {
+            $converted = substr(self::codeset, bcmod($n,$base), 1) . $converted;
+            $n = self::bcFloor(bcdiv($n, $base));
+        }
+
+        return $converted ;
+    }
+
+    static function unhash($code){
+        $base = strlen(self::codeset);
+        $c = '0';
+        for ($i = strlen($code); $i; $i--) {
+            $c = bcadd($c,bcmul(strpos(self::codeset, substr($code, (-1 * ( $i - strlen($code) )),1))
+                    ,bcpow($base,$i-1)));
+        }
+
+        return bcmul($c, 1, 0);
+    }
+
+    static private function bcFloor($x)
+    {
+        return bcmul($x, '1', 0);
+    }
+
+    static private function bcCeil($x)
+    {
+        $floor = bcFloor($x);
+        return bcadd($floor, ceil(bcsub($x, $floor)));
+    }
+
+    static private function bcRound($x)
+    {
+        $floor = bcFloor($x);
+        return bcadd($floor, round(bcsub($x, $floor)));
+    }
 }

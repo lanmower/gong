@@ -4,8 +4,8 @@ class GSubmissionButtonColumn extends CButtonColumn {
 	public $updateButtonLabel = '<i class="glyphicon glyphicon-cog"></i>';
 	public $updateButtonImageUrl = false;
 	public $deleteButtonImageUrl = false;
-	public $updateButtonUrl = 'Yii::app()->controller->createUrl("update",array("id"=>$data->form->hash, "dataId"=>CHtml::value($data, "hash")))';
-	public $deleteButtonUrl = 'Yii::app()->controller->createUrl("delete",array("id"=>$data->form->hash, "dataId"=>CHtml::value($data, "hash")))';
+	public $updateButtonUrl = 'Yii::app()->controller->createUrl("update",array("id"=>$data->form->hash, "dataId"=>Chtml::encode(CHtml::value($data, "hash"))))';
+	public $deleteButtonUrl = 'Yii::app()->controller->createUrl("delete",array("id"=>$data->form->hash, "dataId"=>Chtml::encode(CHtml::value($data, "hash"))))';
 	public $deleteButtonOptions = array (
 			'class' => 'delete prompt',
 			'title' => 'Delete' 
