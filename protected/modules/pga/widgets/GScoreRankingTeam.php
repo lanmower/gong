@@ -74,8 +74,11 @@ class GScoreRankingTeam extends GTag {
 			continue;
 			echo "<tr>";
 			echo "<td>";
+			
 			++ $pos;
-			if($lastTotal != $team['strokes']) echo $pos;
+			if($lastTotal != $team['strokes']) {
+				echo $pos;
+			}
 			$lastTotal = $team['strokes'];
 			echo "</td>";
 			echo "<td>" . $team ['team']->name . "</td>";

@@ -63,9 +63,11 @@ class GScoreRankingPro extends GTag {
 			$total = $playerData['total']['strokes'];
 			echo "<tr>";
 			echo "<td>";
-			++ $pos;
-			if($lastTotal != $playerData['total']) echo $pos;
-			$lastTotal = $playerData['total'];
+			++$pos;
+			if($lastTotal != $playerData['total']['strokes']) {
+				echo $pos;
+			}
+			$lastTotal = $playerData['total']['strokes'];
 			echo "</td>";
 			echo "<td>";
 			if (isset ( $player->country )) {

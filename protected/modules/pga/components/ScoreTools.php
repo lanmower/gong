@@ -71,7 +71,6 @@ class ScoreTools {
 			
 			foreach ( $player_scores as $score ) {
 				// if($d) CVarDumper::dump($score->courseRelation, 1,true);
-				$parComparisonTotal = 0;
 				$course = filter ( $courses, 'id', $score->attributes['course']  );
 				$hole = filter ( $holes, 'id', $score->attributes['hole'] );
 				$gross = $score->shots;
