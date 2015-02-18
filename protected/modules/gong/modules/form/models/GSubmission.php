@@ -15,6 +15,7 @@ class GSubmission extends GActiveRecord {
 	protected $_relations;
 	public $cacheRelations = true;
 	protected static $_relationsCache = array ();
+	private static $_tForm = null;
 	public static function clearCache() {
 		foreach ( GSubmission::$_relationsCache as $key => $item ) {
 			unset ( GSubmission::$_relationsCache [$key] );
@@ -29,19 +30,17 @@ class GSubmission extends GActiveRecord {
 	 * @param string $tableName        	
 	 */
 	public function __construct($scenario = 'insert', $form = null) {
-		$gVarForm = Yii::app ()->controller->getVar ( 'tmpForm' );
 		if (is_string ( $form )) {
 			$this->_form = GForm::model ()->find ( 'name = :name', array (
 					':name' => $form 
 			) );
 		}
-		if (isset ( $gVarForm ) && ! isset ( $form )) {
-			$this->_form = $gVarForm;
+		if (is_object ( GSubmission::$_tForm ) && ! is_object ( $form )) {
+			$form = $this->_form = GSubmission::$_tForm;
 		}
 		if (is_object ( $form )) {
 			$this->_form = $form;
-		}
-		if (is_object ( $this->_form )) {
+			
 			foreach ( $this->_form->children as $child ) {
 				$child->submission = $this;
 			}
@@ -203,7 +202,7 @@ class GSubmission extends GActiveRecord {
 		) );
 		if (! isset ( $form ) && isset ( $formName ))
 			throw new CHttpException ( 500, 'Form ' . $formName . ' could not be found for submission. ' );
-		Yii::app ()->controller->setVar ( 'tmpForm', $form );
+		GSubmission::$_tForm =  $form ;
 		$submission = new GSubmission ( $scenario, $form );
 		
 		return $submission;

@@ -1,3 +1,12 @@
 <?php
-Yii::app ()->clientScript->registerScript ( 'postDelete', "$('.GPostView-$model->hash').remove();" );
+$list = GElementRenderer::renderElement ( $model, array (
+		'search' => '',
+		'publishedPosts' => false,
+		'action' => '/gong/post/post/searchUploads',
+		'searchInput' => false 
+) );
+echo CHtml::tag ( 'div', array (
+		'class' => 'replace',
+		'target' => '.searchList' 
+), $list );
 ?>

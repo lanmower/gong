@@ -1,13 +1,11 @@
 <?php
-
 class GScoreRankingTeam extends GTag {
-
 	public function init() {
 		$this->script = '
 						setTimeout("location.reload(true);", 240000);
 					';
-		if (isset($_GET ['scroll']))
-		$this->script .= '$("html, body").animate({ scrollTop: $(document).height() }, 120000, "linear");
+		if (isset ( $_GET ['scroll'] ))
+			$this->script .= '$("html, body").animate({ scrollTop: $(document).height() }, 120000, "linear");
     setTimeout(function() {
        $("html, body").animate({scrollTop:0}, 120000, "linear"); 
     },120000);
@@ -19,42 +17,15 @@ class GScoreRankingTeam extends GTag {
 
     },240000);
 ';
-		parent::init();
+		parent::init ();
 	}
-
 	public function run() {
-		$proGame = GSubmission::forForm("Game")->find('name = :name', array(":name"=>'Professional'));
-		$players = GSubmission::forForm('Player')->findAll('game = :game', array(":game"=>$proGame->id));
-		$teams = GSubmission::forForm('Team')->findAll();
-		$scores = GSubmission::forForm('Score')->findAll();
-		$countries = GSubmission::forForm('Country')->findAll();
-		$groups = GSubmission::forForm('Group')->findAll();
-		$courses = GSubmission::forForm('Course')->findAll();
-		$holes = GSubmission::forForm('Hole')->findAll();
-		$rules = GSubmission::forForm('Rules')->findAll();
-		
-		$d = isset($_GET['debug']);
-		$data = array();
-		foreach($teams as $team) {
-			$rounds = ScoreTools::playerScore($team->players, 2, $players, $teams, $scores, $courses, $holes, $rules);
-
-			//gc_collect_cycles();
-			$players = array();
-			foreach($rounds['total']['player'] as $playerId => $playerData) {
-				$player = null;
-				foreach($team->players as $tmpPlayer) {
-					if($playerId = $tmpPlayer->id) $players[$playerId] = array('player'=>$tmpPlayer, 'strokes'=>$playerData);
-				}
-			}
-			usort ( $data, function ($a, $b) {
-				return $a ['strokes'] < $b ['strokes'];
-			} );
-			$data[] = array('team'=>$team, 'strokes'=>$rounds['total']['team']['strokes'], 'days'=>$rounds['total']['team']['days'], 'players'=>$players);
+		$data = Yii::app ()->cache->get ( 'teamRankingData' );
+		if ($data === false) {
+			ScoreTools::processScores ();
+			$data = Yii::app ()->cache->get ( 'teamRankingData' );
 		}
-		usort ( $data, function ($a, $b) {
-			return $a ['strokes'] < $b ['strokes'];
-		} );
-
+		
 		echo "<table class='table'>";
 		echo "<tr>";
 		echo "<th>POS</th>";
@@ -71,41 +42,39 @@ class GScoreRankingTeam extends GTag {
 		$lastTotal = 0;
 		foreach ( $data as $team ) {
 			if ($team ['strokes'] == 0)
-			continue;
+				continue;
 			echo "<tr>";
 			echo "<td>";
 			
 			++ $pos;
-			if($lastTotal != $team['strokes']) {
+			if ($lastTotal != $team ['strokes']) {
 				echo $pos;
 			}
-			$lastTotal = $team['strokes'];
+			$lastTotal = $team ['strokes'];
 			echo "</td>";
 			echo "<td>" . $team ['team']->name . "</td>";
 			echo "<td>";
 			foreach ( $team ['players'] as $player ) {
 				echo CHtml::openTag ( 'div', array (
 						'class' => 'scorelistplayer' 
-						) );
-						if (isset ( $player->country )) {
-							echo CHtml::image ( str_replace ( 'protected/data/form_uploads/GSubmission/', '/protected/data/form_uploads/GSubmission//', $player->country->flag ) );
-						}
-						echo $player['player']->name;
-						echo CHtml::closeTag ( 'div' );
+				) );
+				if (isset ( $player->country )) {
+					echo CHtml::image ( str_replace ( 'protected/data/form_uploads/GSubmission/', '/protected/data/form_uploads/GSubmission//', $player->country->flag ) );
+				}
+				echo $player ['player']->name;
+				echo CHtml::closeTag ( 'div' );
 			}
-			echo CHtml::tag ( 'td', array (), isset($team['days'][0])?$team['days'][0]:"" );
-			echo CHtml::tag ( 'td', array (), isset($team['days'][1])?$team['days'][1]:"" );
-			echo CHtml::tag ( 'td', array (), isset($team['days'][2])?$team['days'][2]:"" );
-			echo CHtml::tag ( 'td', array (), isset($team['days'][3])?$team['days'][3]:"" );
-			echo CHtml::tag ( 'td', array (), isset($team['days'][4])?$team['days'][4]:"" );
+			echo CHtml::tag ( 'td', array (), isset ( $team ['days'] [0] ) ? $team ['days'] [0] : "" );
+			echo CHtml::tag ( 'td', array (), isset ( $team ['days'] [1] ) ? $team ['days'] [1] : "" );
+			echo CHtml::tag ( 'td', array (), isset ( $team ['days'] [2] ) ? $team ['days'] [2] : "" );
+			echo CHtml::tag ( 'td', array (), isset ( $team ['days'] [3] ) ? $team ['days'] [3] : "" );
+			echo CHtml::tag ( 'td', array (), isset ( $team ['days'] [4] ) ? $team ['days'] [4] : "" );
 			echo "</td>";
-			echo CHtml::tag ( 'td', array (), $team['strokes'] );
+			echo CHtml::tag ( 'td', array (), $team ['strokes'] );
 		}
 		echo "</tr>";
 		echo "</table>";
-
 	}
-
 }
 
 ?>

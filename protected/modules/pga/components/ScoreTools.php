@@ -223,6 +223,59 @@ class ScoreTools {
 		// unset($rounds['team']);
 		return $rounds;
 	}
+	
+	static function processScores() {
+		$proGame = GSubmission::forForm ( "Game" )->find ( 'name = :name', array (
+				":name" => 'Professional'
+		) );
+		$players = GSubmission::forForm ( 'Player' )->findAll ( 'game = :game', array (
+				":game" => $proGame->id
+		) );
+		$teams = GSubmission::forForm ( 'Team' )->findAll ();
+		$scores = GSubmission::forForm ( 'Score' )->findAll ();
+		$countries = GSubmission::forForm ( 'Country' )->findAll ();
+		$groups = GSubmission::forForm ( 'Group' )->findAll ();
+		$courses = GSubmission::forForm ( 'Course' )->findAll ();
+		$holes = GSubmission::forForm ( 'Hole' )->findAll ();
+		$rules = GSubmission::forForm ( 'Rules' )->findAll ();
+		$data = array ();
+		$x = 0;
+		foreach ( $players as $player ) {
+			$rounds = ScoreTools::playerScore ( array (
+					$player
+			), 2, $players, $teams, $scores, $courses, $holes, $rules );
+			$data [] = array (
+					'player' => $player,
+					'total' => $rounds ['total'] ['player']
+			);
+		}
+			
+		usort ( $data, function ($a, $b) {
+			return $a ['total'] < $b ['total'];
+		} );
+		Yii::app ()->cache->set ( 'proRankingData', $data );
+		$data = array();
+		foreach($teams as $team) {
+			$rounds = ScoreTools::playerScore($team->players, 2, $players, $teams, $scores, $courses, $holes, $rules);
+				
+			//gc_collect_cycles();
+			$players = array();
+			foreach($rounds['total']['player'] as $playerId => $playerData) {
+				$player = null;
+				foreach($team->players as $tmpPlayer) {
+					if($playerId = $tmpPlayer->id) $players[$playerId] = array('player'=>$tmpPlayer, 'strokes'=>$playerData);
+				}
+			}
+			usort ( $data, function ($a, $b) {
+				return $a ['strokes'] < $b ['strokes'];
+			} );
+			$data[] = array('team'=>$team, 'strokes'=>$rounds['total']['team']['strokes'], 'days'=>$rounds['total']['team']['days'], 'players'=>$players);
+		}
+		usort ( $data, function ($a, $b) {
+			return $a ['strokes'] < $b ['strokes'];
+		} );
+		Yii::app ()->cache->set ( 'teamRankingData', $data );
+	}
 }
 
 ?>

@@ -57,7 +57,7 @@ class GPostView extends GTag {
 		if (Yii::app ()->user->can ( $this->model->edit ) || ($this->model->edit == "P" && Yii::app ()->user->id == $this->model->userId))
 			$edit = true;
 		
-		$this->render ( 'postView', array (
+		if($edit) $this->render ( 'postView', array (
 				'model' => $this->model,
 				'id' => $this->id,
 				'edit' => $edit,

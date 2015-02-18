@@ -113,8 +113,15 @@ class GPostController extends GModelController {
 	public function actionPublish($id, $level) {
 		$model = $this->loadModel ( $id );
 		$model->view = $level;
+		
 		if (! $model->save ())
 			throw new CHttpException ( 'Cannot save post' . $model->errorSummary (), '400' );
+		else
+			$this->render ( 'publish', array (
+					'model' => $model,
+			) );
+				
+	
 	}
 }
 
