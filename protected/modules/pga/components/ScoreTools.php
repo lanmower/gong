@@ -253,6 +253,7 @@ class ScoreTools {
 		usort ( $data, function ($a, $b) {
 			return $a ['total'] < $b ['total'];
 		} );
+		Yii::app()->cache->delete('proRankingData');
 		Yii::app ()->cache->set ( 'proRankingData', $data );
 		$data = array();
 		foreach($teams as $team) {
@@ -274,6 +275,7 @@ class ScoreTools {
 		usort ( $data, function ($a, $b) {
 			return $a ['strokes'] < $b ['strokes'];
 		} );
+		Yii::app()->cache->delete('teamRankingData');
 		Yii::app ()->cache->set ( 'teamRankingData', $data );
 	}
 }
