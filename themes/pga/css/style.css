@@ -200,7 +200,7 @@ label{vertical-align: top;margin-right: 15px;}
 .nav-tabs .active{
     z-index: 999;
     position: relative;
-    box-shadow: -15px 2px 29px #eee;
+    box-shadow: none !important;
 }
 
 .UserHash {
@@ -951,10 +951,10 @@ input[name="GUserLogin[rememberMe]"]{
 
     .tabs-left > .nav-tabs .active > a, .tabs-left > .nav-tabs .active > a:hover, .tabs-left > .nav-tabs .active > a:focus {
         border-color: #CCC #CCC transparent #CCC;
-        padding-bottom: 17px;
+        
     }
 
-    li.active{top: -10px;}
+    
 
     li.active .icon-2x{
         font-size: 2.2em;
@@ -993,12 +993,15 @@ input[name="GUserLogin[rememberMe]"]{
     li.active .loginTab{
         background-color:#CC1F8A !important;
     }         
+	.searchTab{
+    	margin-top: 2px !important;
+	}
     
     .searchTab:hover{
         background-color:#50aac4 !important;
     }
     
-    li.active .searchTab{
+    li.active .searchTab{    	
         background-color:#5BC0DE !important;
     }         
     
@@ -1083,3 +1086,5 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4c4c4c', end
 .GScoreRankingPro .table tr td:FIRST-CHILD, .GScoreRankingTeam .table tr td:FIRST-CHILD {
 	text-indent:10px;border-left: none;
 }
+
+.GPlayer{display:none;}
