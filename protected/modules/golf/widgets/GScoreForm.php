@@ -22,7 +22,7 @@ class GScoreForm extends GTag {
         parent::init ();
     }
     public function run() {
-        ?><form action="/page/form" method="post"><?php
+        ?><form action="/page/form?debug=true" method="post"><?php
         $holes = [];
         $this->widget ( 'GActiveDropDown', array (
             'label' => 'Group',
