@@ -129,7 +129,6 @@ class GScoreForm extends GTag {
                         foreach($scores as $s) {
                             if($s->hole->id == $hole->id) {
                                 $score = $s->shots;
-                                CVarDumper::dump($s->shots, 2, true);
                             }
                         }
                         $holes[] = [
