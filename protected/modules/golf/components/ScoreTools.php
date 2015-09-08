@@ -131,7 +131,7 @@ class ScoreTools {
                     foreach($rules as $rule) {
                         if ($d)
                             CVarDumper::dump ( "Testing $day against $rule->min and $rule->max.\n", 1, true );
-                        if($day >= $rule->min && $day <= $rule->max) {
+                        if($nettTotal >= $rule->min && $nettTotal <= $rule->max) {
                             $handicap += $rule->point;
                             if ($d)
                                 CVarDumper::dump ( "Handicap adjusted to $handicap.\n", 1, true );
