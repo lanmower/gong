@@ -2,22 +2,18 @@
 <?php
 class GScoreForm extends GTag {
     public function init() {
-        $tablecloth = Yii::app ()->assetManager->publish ( 'protected/vendors/tablecloth/assets', false, - 1, YII_DEBUG );
-        // $this->js[] = array('url' => $tablecloth . "/js/jquery.metadata.js");
-        // $this->js[] = array('url' => $tablecloth . "/js/jquery.tablesorter.min.js");
+        $chosen = Yii::app ()->assetManager->publish ( 'protected/vendors/chosen', false, - 1, YII_DEBUG );
         $this->js [] = array (
-            'url' => $tablecloth . "/js/jquery.tablecloth.js"
+            'url' => $chosen . "/chosen.jquery.min.js"
         );
 
         $this->css [] = array (
-            'url' => $tablecloth . "/css/tablecloth.css"
+            'url' => $chosen . "/chosen.min.css"
         );
-        // $this->css[] = array('url' => $tablecloth . "/css/prettify.css");
         $this->script = "
-                    $('#$this->id table').tablecloth({
-                        theme: 'default',
-                        condensed: true
-                    });
+        $(document).ready(function(){
+            $('#search').chosen();
+        });
                     ";
         parent::init ();
     }
@@ -47,6 +43,7 @@ class GScoreForm extends GTag {
             $this->widget ( 'GActiveDropDown', array (
                 'label' => 'Player',
                 'formName' => 'Player',
+
                 'criteria' => array (
                     'condition' => '`group` = :group',
                     'params' => array (
@@ -54,97 +51,11 @@ class GScoreForm extends GTag {
                     )
                 ),
                 'listOptions' => array (
-                    'onchange' => '$(this.form).trigger("submit");'
+                    'onchange' => '$(this.form).trigger("submit");',
+                    'id'=>'search'
                 ),
                 'name' => 'player'
             ) );
-            ?>
-            <script>
-                /* Copyright (c) 2013. All Rights reserved.
-                 If you use this script, please email me and let me know, thanks!
-                 Andrew Hedges, andrew(at)hedges(dot)name
-                 */
-
-                (function (window, document, undefined) {
-                    'use strict'
-
-                    function Narrower(inp, sel, disp, list) {
-                        this.inp  = inp
-                        this.sel  = sel
-                        this.disp = disp
-                        this.list = list
-                        this.last = '' // last value on which we narrowed
-                    }
-                    Narrower.prototype = {
-                        init : function () {
-                            this.update('')
-                            this.addEvents()
-                        },
-                        addEvents : function () {
-                            var self
-                            self = this
-                            this.inp.addEventListener('keyup', function (e) {
-                                if (this.value !== self.last) {
-                                    self.last = this.value
-                                    self.update(this.value)
-                                }
-                            })
-                            this.inp.focus()
-                        },
-                        update : function (str) {
-                            var ulist, rgxp
-                            // optimization
-                            if (0 === str.length) {
-                                ulist = this.list
-                            }
-                            else {
-                                ulist = []
-                                // create rgxp
-                                rgxp = new RegExp(str, 'i') // note: not Unicode-safe!
-                                // keep items that match
-                                for (var i = this.list.length - 1; i > -1; --i) {
-                                    if (null !== this.list[i].match(rgxp)) {
-                                        ulist.push(this.list[i])
-                                    }
-                                }
-                            }
-                            this.updateSelect(ulist.sort())
-                            this.updateMatches(ulist.length)
-                        },
-                        updateSelect : function (arr) {
-                            var self, opts
-                            self = this
-                            this.sel.options.length = 0
-                            opts = this.buildOpts(arr)
-                            opts.forEach(function (opt, idx) {
-                                self.sel.options[idx] = opt
-                            })
-                        },
-                        buildOpts : function (arr) {
-                            var opts
-                            opts = []
-                            arr.forEach(function (val) {
-                                opts.push(new Option(val))
-                            })
-                            return opts
-                        },
-                        updateMatches : function (len) {
-                            this.disp.innerHTML = 1 === len ? '1 match' : len + ' matches'
-                        }
-                    }
-
-                    // initialization
-                    var inp  = document.querySelector('#nrwr')
-                    var sel  = document.querySelector('#names')
-                    var disp = document.querySelector('#matches')
-
-
-                    // kick it off
-                    var nrwr = new Narrower(inp, sel, disp, list)
-                    nrwr.init()
-                }(this, this.document));
-            </script>
-            <input id="search" type="text" value="" onpress="console.log(value);"/><?php
 
             if (isset ( $_POST ['player'] ) && is_numeric ( $_POST ['player'] )) {
                 $player = GSubmission::forForm ( 'Player' )->findByPk ( $_POST ['player'] );
