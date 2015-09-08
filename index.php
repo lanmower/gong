@@ -1,7 +1,6 @@
 <?php
 ini_set('display_errors',1);
 error_reporting(E_ALL|E_STRICT);
-define('WP_MEMORY_LIMIT', '64M');
 date_default_timezone_set("Africa/Johannesburg");
 function e_d()
 {
@@ -75,8 +74,8 @@ $yii=dirname(__FILE__).'/../yii/framework/yii.php';
 
 $config=dirname(__FILE__).'/protected/config/common.php';
 
-defined('YII_DEBUG') or define('YII_DEBUG',true);
-defined('YII_TRACE_LEVEL') or define('YII_TRACE_LEVEL',3);
+defined('YII_DEBUG') or define('YII_DEBUG',false);
+//#defined('YII_TRACE_LEVEL') or define('YII_TRACE_LEVEL',3);
 
 
 require_once($yii);

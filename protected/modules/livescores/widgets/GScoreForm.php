@@ -159,18 +159,6 @@ class GScoreForm extends GTag {
 				if ($player->newHandicap < 0)
 					$player->newHandicap = 0;
 				if (isset ( $_POST ['confirm'] )) {
-					
-					$newScore = GSubmission::forForm ( 'Score' );
-					$newScore->playerId = $_POST ['player'];
-					$newScore->course = $_POST ['Course'];
-					$newScore->hole = 0;
-					$newScore->score = - $player->handicap;
-					$newScore->save ();
-					
-					$newScore->setAttribute ( 'score', $score );
-					$newScore->save ();
-					if ($player->newHandicap < 0)
-						$player->newHandicap = 0;
 					$player->lock = 'lock';
 					if (! $player->save ()) {
 						throw new CHttpException ( 500, CHtml::errorSummary ( $player ) );

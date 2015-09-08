@@ -233,8 +233,6 @@ class ScoreTools {
 		) );
 		$teams = GSubmission::forForm ( 'Team' )->findAll ();
 		$scores = GSubmission::forForm ( 'Score' )->findAll ();
-		$countries = GSubmission::forForm ( 'Country' )->findAll ();
-		$groups = GSubmission::forForm ( 'Group' )->findAll ();
 		$courses = GSubmission::forForm ( 'Course' )->findAll ();
 		$holes = GSubmission::forForm ( 'Hole' )->findAll ();
 		$rules = GSubmission::forForm ( 'Rules' )->findAll ();
