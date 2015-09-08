@@ -152,10 +152,10 @@ class GElementRenderer {
 			} catch ( CException $e ) {
 				if (YII_DEBUG) {
 					G::addClassToString ( $options ['htmlOptions'] ['class'], 'errorElement' );
-					$options ['htmlOptions'] ['data-errorlinktext'] = 'Message:' . $e->getMessage () . "<br>";
-					$options ['htmlOptions'] ['data-errorlinktext'] .= 'File:' . $e->getFile () . "<br>";
-					$options ['htmlOptions'] ['data-errorlinktext'] .= 'Line:' . $e->getLine () . "<br>";
-					$options ['htmlOptions'] ['data-errorlinktext'] .= 'Trace:' . $e->getTraceAsString ();
+					$return = ['Message:' . $e->getMessage () . "<br>"];
+					$return[] = 'File:' . $e->getFile () . "<br>";
+                    $return[] = 'Line:' . $e->getLine () . "<br>";
+                    $return[] = 'Trace:' . $e->getTraceAsString ();
 					$return [] = CHtml::tag ( 'div', $options ['htmlOptions'], 'Exception in ' . $model->className . ' name ' . $model->name );
 				}
 			}
