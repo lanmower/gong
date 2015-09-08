@@ -68,10 +68,52 @@ class GScoreForm extends GTag {
                         ':player' => $player->id,
                         ':course' => $courseId
                     ));
-                    $allHoles = GSubmission::forForm ( 'Hole' )->findAll ();
-                    $rules = GSubmission::forForm ( 'Rules' )->findAll ();
-                    $rounds = ScoreTools::playerScore([$player], 2, [$course], $allHoles,$rules);
 
+                    if (isset ( $_POST ['Score'] ) && is_array ( $_POST ['Score'] ) && isset($_POST['submit'])) {
+                        foreach ( $_POST ['Score'] as $holeNum => $score ) {
+                            $scorePar = null;
+                            foreach ( $course->holes as $hole ) {
+                                if ($hole->number == $holeNum+1) {
+                                    $scorePar = $hole->par;
+                                }
+                            }
+                            if (is_numeric ( $score ) && isset ( $scorePar )) {
+                                $do = true;
+                                foreach ( $scores as $tscore ) {
+                                    if ($tscore->hole->number == $holeNum+1) {
+                                        $newScore = $tscore;
+                                        $do = false;
+                                    }
+                                }
+                                if ($do) {
+                                    $newScore = GSubmission::forForm ( 'Score' );
+                                    $newScore->player = $_POST ['player'];
+                                    $newScore->course = $group->course->id;
+                                    foreach ( $course->holes as $hole ) {
+                                        if ($hole->number == $holeNum+1) {
+                                            $newScore->hole = $hole->id;
+                                        }
+                                    }
+                                }
+                                if ($score > $scorePar + 4) {
+                                    $score = $scorePar + 4;
+                                }
+                                if ($score < 0)
+                                    $score = 0;
+
+                                $newScore->setAttribute ( 'shots', $score );
+                                if(!$newScore->save ()) print_r($newScore->errors);
+
+                            }
+                        }
+                        $scores = GSubmission::forForm('Score')->findAll('created = :created AND player = :player AND course = :course', array(
+                            'created' => date('Y-m-d'),
+                            ':player' => $player->id,
+                            ':course' => $courseId
+                        ));
+                    }
+
+                    $rounds = ScoreTools::playerScore([$player], 2, [$course], GSubmission::forForm ( 'Hole' )->findAll (),GSubmission::forForm ( 'Rules' )->findAll ());
                     $handicap = $rounds['total']['player']['handicap'];
                     foreach($course->holes as $hole) {
                         $x++;
@@ -85,7 +127,10 @@ class GScoreForm extends GTag {
                         }
                         $score = 0;
                         foreach($scores as $s) {
-                            if($s->hole->id == $hole->id) $score = $s->shots;
+                            if($s->hole->id == $hole->id) {
+                                $score = $s->shots;
+                                CVarDumper::dump($s->shots, 2, true);
+                            }
                         }
                         $holes[] = [
                             'par'=>$hole->par,
@@ -94,69 +139,10 @@ class GScoreForm extends GTag {
                             'score'=>$score
                         ];
                     }
-                    if ($player->modified != date ( 'Y-m-d' ) || $player->lock == 'unlock') {
-                        echo CHtml::tag ( 'div', array (), 'Flighting: ' . $player->flighting->name );
-                        echo CHtml::tag ( 'div', array (), 'Team: ' . $player->team->name );
+                    echo CHtml::tag ( 'div', array (), 'Flighting: ' . $player->flighting->name );
+                    echo CHtml::tag ( 'div', array (), 'Team: ' . $player->team->name );
 
-                        if (isset ( $_POST ['clear'] ) && $_POST ['clear']) {
-                            foreach ( $scores as $score )
-                                $score->delete ();
-                            $scores = GSubmission::forForm ( 'Score' )->findAll ( 'created = :created AND player = :player AND course = :course', array (
-                                'created' => date ( 'Y-m-d' ),
-                                ':player' => $player->id,
-                                ':course' => $courseId
-                            ) );
-                        } else if (sizeof ( $scores ) < 18) {
-                            if (isset ( $_POST ['Score'] ) && is_array ( $_POST ['Score'] )) {
-                                foreach ( $_POST ['Score'] as $holeNum => $score ) {
-                                    $scorePar = null;
-                                    foreach ( $course->holes as $hole ) {
-                                        if ($hole->number == $holeNum) {
-                                            $scorePar = $hole->par;
-                                        }
-                                    }
 
-                                    if (is_numeric ( $score ) && isset ( $scorePar )) {
-                                        $do = true;
-                                        foreach ( $scores as $tscore ) {
-                                            if ($tscore->hole->number == $holeNum) {
-                                                $do = false;
-                                            }
-                                        }
-                                        if ($do) {
-                                            $newScore = GSubmission::forForm ( 'Score' );
-                                            $newScore->player = $_POST ['player'];
-                                            $newScore->course = $group->course->id;
-                                            $newScore->hole = $holeNum;
-                                            if ($score > $scorePar + 4) {
-                                                $score = $scorePar + 4;
-                                            }
-                                            if ($score < 0)
-                                                $score = 0;
-                                            $newScore->setAttribute ( 'shots', $score );
-                                            if(!$newScore->save ()) print_r($newScore->errors);
-
-                                            // Gong::setFlash('alert-info', 'Scores have been set.');
-                                        }
-                                    }
-                                }
-                                $scores = GSubmission::forForm ( 'Score' )->findAll ( 'created = :created AND player = :player AND course = :course', array (
-                                    'created' => date ( 'Y-m-d' ),
-                                    ':player' => $player->id,
-                                    ':course' => $courseId
-                                ) );
-                            }
-                        }
-                    }
-
-                    if (isset ( $_POST ['confirm'] )) {
-                        $player->lock = 'lock';
-                        if (! $player->save ()) {
-                            throw new CHttpException ( 500, CHtml::errorSummary ( $player ) );
-                        }
-                        $player = GSubmission::forForm ( 'Player' )->findByPk ( $_POST ['player'] );
-                        $x = 0;
-                    }
                     ?>
                     <style>
                         table{border-collapse: collapse;border-color:grey;}
@@ -236,25 +222,14 @@ class GScoreForm extends GTag {
                     </table>
                     <?php
 
-                    if (sizeof ( $scores ) < 18) {
-                        echo CHtml::submitButton ( 'Submit', array (
-                            'class' => 'btn btn-default'
-                        ) );
-                    } else if ($player->modified != date ( 'Y-m-d' ) || $player->lock == 'unlock') {
-                        echo CHtml::tag ( 'div', array (), 'Gross total:' . $rounds['total']['player'][0]['gross'] );
+                    if (isset($rounds['total']['player']) && isset($rounds['total']['player'][0])) {
+                        echo CHtml::tag('div', array(), 'Gross total:' . $rounds['total']['player'][0]['gross']);
                         //echo CHtml::tag ( 'div', array (), 'Course par:' . $coursePar );
-                        echo CHtml::tag ( 'div', array (), 'Nett score:' . $rounds['total']['player'][0]['nett'] );
-                        //echo CHtml::tag ( 'div', array (), 'New Handicap:' . $newHandicap );
-                        echo CHtml::submitButton ( 'Confirm', array (
-                            'class' => 'btn btn-default',
-                            'name' => 'confirm'
-                        ) );
-                        echo CHtml::button ( 'Clear form', array (
-                            'class' => 'btn btn-default',
-                            'onclick' => '$(this.form).append("<input type=\'hidden\' name=\'clear\' value=\'true\'/>");this.form.submit(); '
-                        ) );
+                        echo CHtml::tag('div', array(), 'Nett score:' . $rounds['total']['player'][0]['nett']);
                     }
-
+                    echo CHtml::submitButton ( 'Submit', array (
+                        'class' => 'btn btn-default','name'=>'submit'
+                    ) );
                 }catch(Exception $e) {
                     echo $e->getMessage();
                     echo $e->getLine();

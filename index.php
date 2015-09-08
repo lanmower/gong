@@ -74,7 +74,7 @@ $yii=dirname(__FILE__).'/../yii/framework/yii.php';
 
 $config=dirname(__FILE__).'/protected/config/common.php';
 
-defined('YII_DEBUG') or define('YII_DEBUG',false);
+defined('YII_DEBUG') or define('YII_DEBUG',true);
 //#defined('YII_TRACE_LEVEL') or define('YII_TRACE_LEVEL',3);
 
 
