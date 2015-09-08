@@ -128,13 +128,15 @@ class ScoreTools {
                     $holeNumber = 0;
                     $rounds ['total'] ['player'] [$player->id] ['days'] [] = $day;
                     $days = $rounds ['total'] ['player'] [$player->id] ['days'];
-                    foreach($rules as $rule) {
-                        if ($d)
-                            CVarDumper::dump ( "Testing $day against $rule->min and $rule->max.\n", 1, true );
-                        if($nettTotal >= $rule->min && $nettTotal <= $rule->max) {
-                            $handicap += $rule->point;
+                    if($player->lock != 'lock') {
+                        foreach($rules as $rule) {
                             if ($d)
-                                CVarDumper::dump ( "Handicap adjusted to $handicap.\n", 1, true );
+                                CVarDumper::dump ( "Testing $day against $rule->min and $rule->max.\n", 1, true );
+                            if($nettTotal >= $rule->min && $nettTotal <= $rule->max) {
+                                $handicap += $rule->point;
+                                if ($d)
+                                    CVarDumper::dump ( "Handicap adjusted to $handicap.\n", 1, true );
+                            }
                         }
                     }
                     $day = 0;
@@ -249,8 +251,40 @@ class ScoreTools {
         usort ( $data, function ($a, $b) {
             return $a ['total'] < $b ['total'];
         } );
+
         Yii::app()->cache->delete('proRankingData');
         Yii::app ()->cache->set ( 'proRankingData', $data );
+
+        $flightings = GSubmission::forForm ( 'Flighting' )->findAll ();
+        $playerData = array ();
+        $flightingRankings = array ();
+        $x = 0;
+        foreach($flightings as $flighting) {
+            $players = GSubmission::forForm ( 'Player' )->findAll ( 'flighting = :flighting', array (
+                ":flighting" => $flighting->id
+            ) );
+            $flightingsData = [];
+            foreach ( $players as $player ) {
+                $rounds = ScoreTools::playerScore ( array (
+                    $player
+                ), 2,  $scores, $courses, $holes, $rules );
+                $flightingsData [] = $playerData [] = array (
+                    'player' => $player,
+                    'total' => $rounds ['total'] ['player']
+                );
+            }
+            usort ( $data, function ($a, $b) {
+                return $a ['total'] < $b ['total'];
+            } );
+            $flightingRankings[] = $flightingsData;
+        }
+
+
+        Yii::app()->cache->delete('flightingRankingData');
+        Yii::app ()->cache->set ( 'flightingRankingData', $flightingRankings );
+        Yii::app()->cache->delete('playerRankingData');
+        Yii::app ()->cache->set ( 'playerRankingData', $playerData);
+
         $data = array();
         foreach($teams as $team) {
             $rounds = ScoreTools::playerScore($team->players, 2, $scores, $courses, $holes, $rules);
