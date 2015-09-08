@@ -1,0 +1,3 @@
+#!/bin/bash
+nice -n 19 /home/golf.dedicated.co.za/public_html/protected/yiic processscores
+ 
