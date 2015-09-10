@@ -30,7 +30,6 @@ class GScoreRankingFlighting extends GTag {
         echo "<tr>";
         echo "<th class='th1'>POS</th>";
         echo "<th class='th2'>Player</th>";
-        echo "<th class='th4'>Hole</th>";
         echo "<th class='th4'>Day 1</th>";
         echo "<th class='th4'>Day 2</th>";
         echo "<th class='th4'>Day 3</th>";
@@ -43,7 +42,7 @@ class GScoreRankingFlighting extends GTag {
         $flightings = GSubmission::forForm ( 'Flighting' )->findAll ();
         foreach ($data as $key => $flightingData) {
             $flighting = $flightings[$key];
-            echo "<tr style='background:gray;'><td colspan='9'>Flighting: $flighting->name</td></tr>";
+            echo "<tr style='background:gray;'><th colspan='9'>Flighting: $flighting->name</th></tr>";
             foreach ($flightingData as $playerData) {
                 $player = $playerData ['player'];
                 $total = $playerData ['total'] ['shots'];
@@ -61,7 +60,6 @@ class GScoreRankingFlighting extends GTag {
                 }
                 echo $player ['name'];
                 echo "</td>";
-                echo CHtml::tag('td', array(), $playerData ['total'] ['hole']);
                 echo CHtml::tag('td', array(), isset ($playerData ['total'] ['days'] [0]) ? $playerData ['total'] ['days'] [0] : "");
                 echo CHtml::tag('td', array(), isset ($playerData ['total'] ['days'] [1]) ? $playerData ['total'] ['days'] [1] : "");
                 echo CHtml::tag('td', array(), isset ($playerData ['total'] ['days'] [2]) ? $playerData ['total'] ['days'] [2] : "");
@@ -71,8 +69,8 @@ class GScoreRankingFlighting extends GTag {
                 echo "</tr>";
             }
             echo "</tr>";
-            echo "</table>";
         }
+        echo "</table>";
     }
 }
 
