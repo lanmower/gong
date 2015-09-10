@@ -4,9 +4,7 @@
     <bookmark url="file://$PROJECT_DIR$/protected/modules/golf/widgets/GScoreRankingFlighting.php" line="47" mnemonic="9" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0da6ab35-60d6-431c-b983-fee9e043dcdc" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/modules/golf/components/ScoreTools.php" afterPath="$PROJECT_DIR$/protected/modules/golf/components/ScoreTools.php" />
-    </list>
+    <list default="true" id="0da6ab35-60d6-431c-b983-fee9e043dcdc" name="Default" comment="" />
     <ignored path="golf.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -93,8 +91,8 @@
       <file leaf-file-name="ScoreTools.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/protected/modules/golf/components/ScoreTools.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7174312" vertical-offset="0" max-vertical-offset="5763">
-              <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.74862385" vertical-offset="0" max-vertical-offset="5763">
+              <caret line="24" column="28" selection-start-line="24" selection-start-column="28" selection-end-line="24" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -975,8 +973,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/modules/golf/components/ScoreTools.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7174312" vertical-offset="0" max-vertical-offset="5763">
-          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.74862385" vertical-offset="0" max-vertical-offset="5763">
+          <caret line="24" column="28" selection-start-line="24" selection-start-column="28" selection-end-line="24" selection-end-column="28" />
           <folding />
         </state>
       </provider>
