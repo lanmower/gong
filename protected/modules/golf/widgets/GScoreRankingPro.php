@@ -42,7 +42,6 @@ class GScoreRankingPro extends GTag {
 		foreach ( $data as $playerData ) {
 			$player = $playerData ['player'];
 			$total = $playerData ['total'] ['shots'];
-            CVarDumper::dump($playerData['total'], 10, true);
 			echo "<tr>";
 			echo "<td>";
 			++ $pos;
