@@ -41,16 +41,16 @@ class GScoreRankingTeam extends GTag {
 		$pos = 0;
 		$lastTotal = 0;
 		foreach ( $data as $team ) {
-			if ($team ['score'] == 0)
+			if ($team ['shots'] == 0)
 				continue;
 			echo "<tr>";
 			echo "<td>";
 			
 			++ $pos;
-			if ($lastTotal != $team ['score']) {
+			if ($lastTotal != $team ['shots']) {
 				echo $pos;
 			}
-			$lastTotal = $team ['score'];
+			$lastTotal = $team ['shots'];
 			echo "</td>";
 			echo "<td>" . $team ['team']->name . "</td>";
 			echo "<td>";
@@ -70,7 +70,7 @@ class GScoreRankingTeam extends GTag {
 			echo CHtml::tag ( 'td', array (), isset ( $team ['days'] [3] ) ? $team ['days'] [3] : "" );
 			echo CHtml::tag ( 'td', array (), isset ( $team ['days'] [4] ) ? $team ['days'] [4] : "" );
 			echo "</td>";
-			echo CHtml::tag ( 'td', array (), $team ['score'] );
+			echo CHtml::tag ( 'td', array (), $team ['shots'] );
 		}
 		echo "</tr>";
 		echo "</table>";

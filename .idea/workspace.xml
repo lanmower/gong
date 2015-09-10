@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="0da6ab35-60d6-431c-b983-fee9e043dcdc" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/modules/golf/widgets/GScoreRankingTeam.php" afterPath="$PROJECT_DIR$/protected/modules/golf/widgets/GScoreRankingTeam.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/modules/golf/components/ScoreTools.php" afterPath="$PROJECT_DIR$/protected/modules/golf/components/ScoreTools.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="golf.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -95,8 +93,8 @@
       <file leaf-file-name="GScoreRankingTeam.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/protected/modules/golf/widgets/GScoreRankingTeam.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.36697248" vertical-offset="837" max-vertical-offset="1462">
-              <caret line="61" column="43" selection-start-line="61" selection-start-column="40" selection-end-line="61" selection-end-column="43" />
+            <state vertical-scroll-proportion="1.306422" vertical-offset="512" max-vertical-offset="1462">
+              <caret line="72" column="61" selection-start-line="72" selection-start-column="61" selection-end-line="72" selection-end-column="61" />
               <folding />
             </state>
           </provider>
@@ -1022,8 +1020,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/modules/golf/widgets/GScoreRankingTeam.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.36697248" vertical-offset="837" max-vertical-offset="1462">
-          <caret line="61" column="43" selection-start-line="61" selection-start-column="40" selection-end-line="61" selection-end-column="43" />
+        <state vertical-scroll-proportion="1.306422" vertical-offset="512" max-vertical-offset="1462">
+          <caret line="72" column="61" selection-start-line="72" selection-start-column="61" selection-end-line="72" selection-end-column="61" />
           <folding />
         </state>
       </provider>
