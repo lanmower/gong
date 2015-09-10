@@ -94,7 +94,7 @@
         <entry file="file://$PROJECT_DIR$/protected/modules/golf/components/ScoreTools.php">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.59266055" vertical-offset="2125" max-vertical-offset="5797">
-              <caret line="144" column="64" selection-start-line="144" selection-start-column="64" selection-end-line="144" selection-end-column="64" />
+              <caret line="144" column="63" selection-start-line="144" selection-start-column="63" selection-end-line="144" selection-end-column="63" />
               <folding />
             </state>
           </provider>
@@ -976,7 +976,7 @@
     <entry file="file://$PROJECT_DIR$/protected/modules/golf/components/ScoreTools.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.59266055" vertical-offset="2125" max-vertical-offset="5797">
-          <caret line="144" column="64" selection-start-line="144" selection-start-column="64" selection-end-line="144" selection-end-column="64" />
+          <caret line="144" column="63" selection-start-line="144" selection-start-column="63" selection-end-line="144" selection-end-column="63" />
           <folding />
         </state>
       </provider>
