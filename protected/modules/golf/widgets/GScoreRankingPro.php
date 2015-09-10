@@ -21,7 +21,7 @@ class GScoreRankingPro extends GTag {
 	}
 	public function run() {
 		$data = Yii::app ()->cache->get ( 'proRankingData' );
-		if ($data === false) {
+		if ($data === false || isset($_GET['nocache'])) {
 			ScoreTools::processScores ();
 			$data = Yii::app ()->cache->get ( 'proRankingData' );
 		}
@@ -30,7 +30,6 @@ class GScoreRankingPro extends GTag {
 		echo "<th class='th1'>POS</th>";
 		echo "<th class='th2'>Player</th>";
 		echo "<th class='th4'>Hole</th>";
-		echo "<th class='th4'>Par comparison</th>";
 		echo "<th class='th4'>Day 1</th>";
 		echo "<th class='th4'>Day 2</th>";
 		echo "<th class='th4'>Day 3</th>";
@@ -42,15 +41,15 @@ class GScoreRankingPro extends GTag {
 		$lastTotal = 0;
 		foreach ( $data as $playerData ) {
 			$player = $playerData ['player'];
-			CVarDumper::dump($playerData['total'], 10, true);
-			$total = $playerData ['total'] ['strokes'];
+			$total = $playerData ['total'] ['shots'];
+            CVarDumper::dump($playerData['total'], 10, true);
 			echo "<tr>";
 			echo "<td>";
 			++ $pos;
-			if ($lastTotal != $playerData ['total'] ['strokes']) {
+			if ($lastTotal != $playerData ['total'] ['shots']) {
 				echo $pos;
 			}
-			$lastTotal = $playerData ['total'] ['strokes'];
+			$lastTotal = $playerData ['total'] ['shots'];
 			echo "</td>";
 			echo "<td>";
 			if (isset ( $player->country )) {
@@ -59,7 +58,7 @@ class GScoreRankingPro extends GTag {
 			echo $player ['name'];
 			echo "</td>";
 			echo CHtml::tag ( 'td', array (), $playerData ['total'] ['hole'] );
-			echo CHtml::tag ( 'td', array (), $playerData ['total'] ['parComparison'] );
+			//echo CHtml::tag ( 'td', array (), $playerData ['total'] ['parComparison'] );
 			echo CHtml::tag ( 'td', array (), isset ( $playerData ['total'] ['days'] [0] ) ? $playerData ['total'] ['days'] [0] : "" );
 			echo CHtml::tag ( 'td', array (), isset ( $playerData ['total'] ['days'] [1] ) ? $playerData ['total'] ['days'] [1] : "" );
 			echo CHtml::tag ( 'td', array (), isset ( $playerData ['total'] ['days'] [2] ) ? $playerData ['total'] ['days'] [2] : "" );

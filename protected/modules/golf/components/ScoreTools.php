@@ -18,6 +18,18 @@ function filter_all($array, $attr, $compare) {
         return $obj->attributes [ $attr ] == $compare;
     } );
 }
+
+function parnett($par, $nett) {
+    $diff = $nett-$par;
+    ++ $diff;
+    if ($diff = 1) return 1;
+    if ($diff = 0) return 2;
+    if ($diff = -1) return 3;
+    if ($diff = -2) return 4;
+    if ($diff = -3) return 5;
+    if ($diff = -4) return 6;
+}
+
 class ScoreTools {
     public static function playerScore(array $calcPlayers, $max = 2, $courses, $holes, $rules) {
         $d = isset ( $_GET ['debug'] );
@@ -60,6 +72,7 @@ class ScoreTools {
             $rounds ['total'] ['player'] [$player->id] = array (
                 'shots' => 0,
                 'gross' => 0,
+                'parnett' => 0,
                 'nett' => 0,
                 'par' => 0,
                 'hole' => 0,
@@ -116,25 +129,29 @@ class ScoreTools {
                     "adjustment" => $adjustment,
                     'nett' => $nett,
                     "par" => $par,
+                    "parnett" => parnett($par, $nett),
                     'shots' => $shots,
                     "total" => $total
                 );
                 $rounds ['total'] ['player'] [$player->id] ['shots'] += $shots;
+                $rounds ['total'] ['player'] [$player->id] ['parnett'] += parnett($par, $nett);
                 $rounds ['total'] ['player'] [$player->id] ['nett'] += $nett;
                 $rounds ['total'] ['player'] [$player->id] ['gross'] += $gross;
-                $rounds ['total'] ['player'] [$player->id] ['hole'] == $newHoleNumber;
-                //$rounds ['total'] ['player'] [$player->id] ['handicap'] == $handicap;
+                $rounds ['total'] ['player'] [$player->id] ['hole'] = $newHoleNumber;
+                $rounds ['total'] ['player'] [$player->id] ['handicap'] = $handicap;
                 if (++ $holeNumber == 18) {
                     $holeNumber = 0;
                     $rounds ['total'] ['player'] [$player->id] ['days'] [] = $day;
                     $days = $rounds ['total'] ['player'] [$player->id] ['days'];
-                    foreach($rules as $rule) {
-                        if ($d)
-                            CVarDumper::dump ( "Testing $day against $rule->min and $rule->max.\n", 1, true );
-                        if($nettTotal >= $rule->min && $nettTotal <= $rule->max) {
-                            $handicap += $rule->point;
+                    if($player->lock != 'lock') {
+                        foreach($rules as $rule) {
                             if ($d)
-                                CVarDumper::dump ( "Handicap adjusted to $handicap.\n", 1, true );
+                                CVarDumper::dump ( "Testing $day against $rule->min and $rule->max.\n", 1, true );
+                            if($nettTotal >= $rule->min && $nettTotal <= $rule->max) {
+                                $handicap += $rule->point;
+                                if ($d)
+                                    CVarDumper::dump ( "Handicap adjusted to $handicap.\n", 1, true );
+                            }
                         }
                     }
                     $day = 0;
@@ -147,6 +164,7 @@ class ScoreTools {
             $rounds ['total'] ['player'] = array (
                 'shots' => $total,
                 'nett' => $nettTotal,
+                'parnett' => $rounds ['total'] ['player'] [$player->id] ['parnett'],
                 'gross' => $grossTotal,
                 'days' => $days,
                 'hole' => $newHoleNumber,
@@ -239,7 +257,7 @@ class ScoreTools {
         foreach ( $players as $player ) {
             $rounds = ScoreTools::playerScore ( array (
                 $player
-            ), 2,  $scores, $courses, $holes, $rules );
+            ), 2, $courses, $holes, $rules );
             $data [] = array (
                 'player' => $player,
                 'total' => $rounds ['total'] ['player']
@@ -249,11 +267,43 @@ class ScoreTools {
         usort ( $data, function ($a, $b) {
             return $a ['total'] < $b ['total'];
         } );
+
         Yii::app()->cache->delete('proRankingData');
         Yii::app ()->cache->set ( 'proRankingData', $data );
+
+        $flightings = GSubmission::forForm ( 'Flighting' )->findAll ();
+        $playerData = array ();
+        $flightingRankings = array ();
+        $x = 0;
+        foreach($flightings as $flighting) {
+            $players = GSubmission::forForm ( 'Player' )->findAll ( 'flighting = :flighting', array (
+                ":flighting" => $flighting->id
+            ) );
+            $flightingsData = [];
+            foreach ( $players as $player ) {
+                $rounds = ScoreTools::playerScore ( array (
+                    $player
+                ), 2,  $courses, $holes, $rules );
+                $flightingsData [] = $playerData [] = array (
+                    'player' => $player,
+                    'total' => $rounds ['total'] ['player']
+                );
+            }
+            usort ( $data, function ($a, $b) {
+                return $a ['total'] < $b ['total'];
+            } );
+            $flightingRankings[] = $flightingsData;
+        }
+
+
+        Yii::app()->cache->delete('flightingRankingData');
+        Yii::app ()->cache->set ( 'flightingRankingData', $flightingRankings );
+        Yii::app()->cache->delete('playerRankingData');
+        Yii::app ()->cache->set ( 'playerRankingData', $playerData);
+
         $data = array();
         foreach($teams as $team) {
-            $rounds = ScoreTools::playerScore($team->players, 2, $scores, $courses, $holes, $rules);
+            $rounds = ScoreTools::playerScore($team->players, 2, $courses, $holes, $rules);
 
             //gc_collect_cycles();
             $players = array();
