@@ -29,7 +29,6 @@ class GScoreRankingPro extends GTag {
 		echo "<tr>";
 		echo "<th class='th1'>POS</th>";
 		echo "<th class='th2'>Player</th>";
-		echo "<th class='th4'>Hole</th>";
 		echo "<th class='th4'>Day 1</th>";
 		echo "<th class='th4'>Day 2</th>";
 		echo "<th class='th4'>Day 3</th>";
@@ -54,7 +53,6 @@ class GScoreRankingPro extends GTag {
 			}
 			echo $player ['name'];
 			echo "</td>";
-			echo CHtml::tag ( 'td', array (), $playerData ['total'] ['hole'] );
 			//echo CHtml::tag ( 'td', array (), $playerData ['total'] ['parComparison'] );
 			echo CHtml::tag ( 'td', array (), isset ( $playerData ['total'] ['days'] [0] ) ? $playerData ['total'] ['days'] [0] : "" );
 			echo CHtml::tag ( 'td', array (), isset ( $playerData ['total'] ['days'] [1] ) ? $playerData ['total'] ['days'] [1] : "" );
