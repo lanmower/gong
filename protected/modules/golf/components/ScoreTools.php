@@ -298,7 +298,7 @@ class ScoreTools {
             $flightingRankings[] = $flightingsData;
         }
         usort ( $flightingRankings, function ($a, $b) {
-            return $a ['total'] < $b ['total'];
+            return $a ['total']['shots'] < $b ['total']['shots'];
         } );
 
 
