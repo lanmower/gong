@@ -5,6 +5,7 @@ h1, .h1, h2, .h2, h3, .h3{
 
 .table-striped > tbody > tr:nth-child(odd) > td, .table-striped > tbody > tr:nth-child(odd) > td a, .table-striped > tbody > tr:nth-child(odd) > th, .table-hover > tbody > tr:hover > td, .table-hover > tbody > tr:hover > th{
 	color: rgb(106, 190, 143);
+    background-color: #0F1F0A;
 }
 
 
