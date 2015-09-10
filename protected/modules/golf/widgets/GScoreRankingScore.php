@@ -40,6 +40,7 @@ class GScoreRankingScore extends GTag {
         foreach ( $data as $playerData ) {
             $player = $playerData ['player'];
             $total = $playerData ['total'] ['parnett'];
+            if($total == 0) continue;
             echo "<tr>";
             echo "<td>";
             ++ $pos;

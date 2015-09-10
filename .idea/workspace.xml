@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0da6ab35-60d6-431c-b983-fee9e043dcdc" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/modules/golf/widgets/GScoreRankingFlighting.php" afterPath="$PROJECT_DIR$/protected/modules/golf/widgets/GScoreRankingFlighting.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/modules/golf/widgets/GScoreRankingPro.php" afterPath="$PROJECT_DIR$/protected/modules/golf/widgets/GScoreRankingPro.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/modules/golf/widgets/GScoreRankingScore.php" afterPath="$PROJECT_DIR$/protected/modules/golf/widgets/GScoreRankingScore.php" />
     </list>
     <ignored path="golf.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -93,8 +95,8 @@
       <file leaf-file-name="GScoreRankingTeam.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/protected/modules/golf/widgets/GScoreRankingTeam.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.230769" vertical-offset="476" max-vertical-offset="1394">
-              <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+            <state vertical-scroll-proportion="-15.730769" vertical-offset="339" max-vertical-offset="1394">
+              <caret line="44" column="18" selection-start-line="44" selection-start-column="18" selection-end-line="44" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -103,38 +105,38 @@
       <file leaf-file-name="GScoreRankingScore.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/protected/modules/golf/widgets/GScoreRankingScore.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.269231" vertical-offset="339" max-vertical-offset="1224">
-              <caret line="28" column="57" selection-start-line="28" selection-start-column="57" selection-end-line="28" selection-end-column="57" />
+            <state vertical-scroll-proportion="-15.076923" vertical-offset="339" max-vertical-offset="1241">
+              <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
               <folding>
-                <marker date="1441921844398" expanded="true" signature="1157:1184" placeholder="..." />
-                <marker date="1441921844398" expanded="true" signature="1561:1871" placeholder="..." />
-                <marker date="1441921844398" expanded="true" signature="1586:1747" placeholder="..." />
-                <marker date="1441921844398" expanded="true" signature="1772:1871" placeholder="..." />
+                <marker date="1441924506080" expanded="true" signature="1157:1184" placeholder="..." />
+                <marker date="1441924506080" expanded="true" signature="1599:1909" placeholder="..." />
+                <marker date="1441924506080" expanded="true" signature="1624:1785" placeholder="..." />
+                <marker date="1441924506080" expanded="true" signature="1810:1909" placeholder="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GScoreRankingPro.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="GScoreRankingPro.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/protected/modules/golf/widgets/GScoreRankingPro.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.21834862" vertical-offset="408" max-vertical-offset="1258">
-              <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+            <state vertical-scroll-proportion="-9.076923" vertical-offset="478" max-vertical-offset="1275">
+              <caret line="42" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GScoreRankingFlighting.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="GScoreRankingFlighting.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/protected/modules/golf/widgets/GScoreRankingFlighting.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.6923075" vertical-offset="684" max-vertical-offset="1377">
-              <caret line="52" column="56" selection-start-line="52" selection-start-column="54" selection-end-line="52" selection-end-column="56" />
+            <state vertical-scroll-proportion="0.21100917" vertical-offset="684" max-vertical-offset="1394">
+              <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
               <folding>
-                <marker date="1441923762293" expanded="true" signature="1539:1555" placeholder="..." />
-                <marker date="1441923762293" expanded="true" signature="1799:1902" placeholder="..." />
-                <marker date="1441923762293" expanded="true" signature="1828:1902" placeholder="..." />
-                <marker date="1441923762293" expanded="true" signature="2091:2192" placeholder="..." />
+                <marker date="1441924541751" expanded="true" signature="1539:1555" placeholder="..." />
+                <marker date="1441924541751" expanded="true" signature="1841:1944" placeholder="..." />
+                <marker date="1441924541751" expanded="true" signature="1870:1944" placeholder="..." />
+                <marker date="1441924541751" expanded="true" signature="2133:2234" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -165,11 +167,11 @@
         <option value="$PROJECT_DIR$/protected/vendors/chosen/chosen.jquery.min.js" />
         <option value="$PROJECT_DIR$/protected/modules/golf/widgets/GScoreForm.php" />
         <option value="$PROJECT_DIR$/protected/modules/golf/widgets/GScoreFormScores.php" />
-        <option value="$PROJECT_DIR$/protected/modules/golf/widgets/GScoreRankingScore.php" />
-        <option value="$PROJECT_DIR$/protected/modules/golf/widgets/GScoreRankingFlighting.php" />
         <option value="$PROJECT_DIR$/protected/modules/golf/widgets/GScoreRankingTeam.php" />
         <option value="$PROJECT_DIR$/protected/modules/golf/components/ScoreTools.php" />
         <option value="$PROJECT_DIR$/protected/modules/golf/widgets/GScoreRankingPro.php" />
+        <option value="$PROJECT_DIR$/protected/modules/golf/widgets/GScoreRankingScore.php" />
+        <option value="$PROJECT_DIR$/protected/modules/golf/widgets/GScoreRankingFlighting.php" />
       </list>
     </option>
   </component>
@@ -638,10 +640,10 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1445">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1441923762293" expanded="true" signature="1539:1555" placeholder="..." />
-            <marker date="1441923762293" expanded="true" signature="1799:1902" placeholder="..." />
-            <marker date="1441923762293" expanded="true" signature="1828:1902" placeholder="..." />
-            <marker date="1441923762293" expanded="true" signature="2091:2192" placeholder="..." />
+            <marker date="1441924541751" expanded="true" signature="1539:1555" placeholder="..." />
+            <marker date="1441924541751" expanded="true" signature="1841:1944" placeholder="..." />
+            <marker date="1441924541751" expanded="true" signature="1870:1944" placeholder="..." />
+            <marker date="1441924541751" expanded="true" signature="2133:2234" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -721,10 +723,10 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1445">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1441923762293" expanded="true" signature="1539:1555" placeholder="..." />
-            <marker date="1441923762293" expanded="true" signature="1799:1902" placeholder="..." />
-            <marker date="1441923762293" expanded="true" signature="1828:1902" placeholder="..." />
-            <marker date="1441923762293" expanded="true" signature="2091:2192" placeholder="..." />
+            <marker date="1441924541751" expanded="true" signature="1539:1555" placeholder="..." />
+            <marker date="1441924541751" expanded="true" signature="1841:1944" placeholder="..." />
+            <marker date="1441924541751" expanded="true" signature="1870:1944" placeholder="..." />
+            <marker date="1441924541751" expanded="true" signature="2133:2234" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -804,10 +806,10 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1445">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1441923762293" expanded="true" signature="1539:1555" placeholder="..." />
-            <marker date="1441923762293" expanded="true" signature="1799:1902" placeholder="..." />
-            <marker date="1441923762293" expanded="true" signature="1828:1902" placeholder="..." />
-            <marker date="1441923762293" expanded="true" signature="2091:2192" placeholder="..." />
+            <marker date="1441924541751" expanded="true" signature="1539:1555" placeholder="..." />
+            <marker date="1441924541751" expanded="true" signature="1841:1944" placeholder="..." />
+            <marker date="1441924541751" expanded="true" signature="1870:1944" placeholder="..." />
+            <marker date="1441924541751" expanded="true" signature="2133:2234" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -991,27 +993,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/protected/modules/golf/widgets/GScoreRankingScore.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.269231" vertical-offset="339" max-vertical-offset="1224">
-          <caret line="28" column="57" selection-start-line="28" selection-start-column="57" selection-end-line="28" selection-end-column="57" />
-          <folding>
-            <marker date="1441921844398" expanded="true" signature="1157:1184" placeholder="..." />
-            <marker date="1441921844398" expanded="true" signature="1561:1871" placeholder="..." />
-            <marker date="1441921844398" expanded="true" signature="1586:1747" placeholder="..." />
-            <marker date="1441921844398" expanded="true" signature="1772:1871" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/protected/modules/golf/widgets/GScoreRankingTeam.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.230769" vertical-offset="476" max-vertical-offset="1394">
-          <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/protected/modules/golf/components/ScoreTools.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-13.076923" vertical-offset="4726" max-vertical-offset="5797">
@@ -1020,24 +1001,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/protected/modules/golf/widgets/GScoreRankingFlighting.php">
+    <entry file="file://$PROJECT_DIR$/protected/modules/golf/widgets/GScoreRankingTeam.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.6923075" vertical-offset="684" max-vertical-offset="1377">
-          <caret line="52" column="56" selection-start-line="52" selection-start-column="54" selection-end-line="52" selection-end-column="56" />
+        <state vertical-scroll-proportion="-15.730769" vertical-offset="339" max-vertical-offset="1394">
+          <caret line="44" column="18" selection-start-line="44" selection-start-column="18" selection-end-line="44" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/modules/golf/widgets/GScoreRankingScore.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-15.076923" vertical-offset="339" max-vertical-offset="1241">
+          <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
           <folding>
-            <marker date="1441923762293" expanded="true" signature="1539:1555" placeholder="..." />
-            <marker date="1441923762293" expanded="true" signature="1799:1902" placeholder="..." />
-            <marker date="1441923762293" expanded="true" signature="1828:1902" placeholder="..." />
-            <marker date="1441923762293" expanded="true" signature="2091:2192" placeholder="..." />
+            <marker date="1441924506080" expanded="true" signature="1157:1184" placeholder="..." />
+            <marker date="1441924506080" expanded="true" signature="1599:1909" placeholder="..." />
+            <marker date="1441924506080" expanded="true" signature="1624:1785" placeholder="..." />
+            <marker date="1441924506080" expanded="true" signature="1810:1909" placeholder="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/modules/golf/widgets/GScoreRankingPro.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.21834862" vertical-offset="408" max-vertical-offset="1258">
-          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+        <state vertical-scroll-proportion="-9.076923" vertical-offset="478" max-vertical-offset="1275">
+          <caret line="42" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/modules/golf/widgets/GScoreRankingFlighting.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.21100917" vertical-offset="684" max-vertical-offset="1394">
+          <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+          <folding>
+            <marker date="1441924541751" expanded="true" signature="1539:1555" placeholder="..." />
+            <marker date="1441924541751" expanded="true" signature="1841:1944" placeholder="..." />
+            <marker date="1441924541751" expanded="true" signature="1870:1944" placeholder="..." />
+            <marker date="1441924541751" expanded="true" signature="2133:2234" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
