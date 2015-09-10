@@ -142,7 +142,7 @@ class ScoreTools {
                 $rounds ['total'] ['player'] [$player->id] ['hole'] = $newHoleNumber;
                 $rounds ['total'] ['player'] [$player->id] ['handicap'] = $handicap;
                 if ($d)
-                    CVarDumper::dump ( "Parnett for this round ".parnett($par, $nett), 1, true );
+                    CVarDumper::dump ( "Parnett for this round ".parnett($par, $nett)." from par of $par and nett of $nett", 1, true );
 
                 if (++ $holeNumber == 18) {
                     $holeNumber = 0;
