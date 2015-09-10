@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0da6ab35-60d6-431c-b983-fee9e043dcdc" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/modules/golf/widgets/GScoreRankingPro.php" afterPath="$PROJECT_DIR$/protected/modules/golf/widgets/GScoreRankingPro.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/modules/golf/widgets/GScoreRankingTeam.php" afterPath="$PROJECT_DIR$/protected/modules/golf/widgets/GScoreRankingTeam.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/modules/golf/components/ScoreTools.php" afterPath="$PROJECT_DIR$/protected/modules/golf/components/ScoreTools.php" />
     </list>
     <ignored path="golf.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -81,11 +80,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ScoreTools.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ScoreTools.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/protected/modules/golf/components/ScoreTools.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-15.692307" vertical-offset="4726" max-vertical-offset="5797">
-              <caret line="302" column="0" selection-start-line="302" selection-start-column="0" selection-end-line="302" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.6238532" vertical-offset="4726" max-vertical-offset="5797">
+              <caret line="298" column="46" selection-start-line="298" selection-start-column="46" selection-end-line="298" selection-end-column="46" />
               <folding />
             </state>
           </provider>
@@ -116,11 +115,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GScoreRankingPro.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="GScoreRankingPro.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/protected/modules/golf/widgets/GScoreRankingPro.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.8422018" vertical-offset="578" max-vertical-offset="1292">
-              <caret line="61" column="0" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
+            <state vertical-scroll-proportion="-15.038462" vertical-offset="578" max-vertical-offset="1292">
+              <caret line="57" column="25" selection-start-line="57" selection-start-column="25" selection-end-line="57" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -168,9 +167,9 @@
         <option value="$PROJECT_DIR$/protected/modules/golf/widgets/GScoreFormScores.php" />
         <option value="$PROJECT_DIR$/protected/modules/golf/widgets/GScoreRankingScore.php" />
         <option value="$PROJECT_DIR$/protected/modules/golf/widgets/GScoreRankingFlighting.php" />
-        <option value="$PROJECT_DIR$/protected/modules/golf/components/ScoreTools.php" />
         <option value="$PROJECT_DIR$/protected/modules/golf/widgets/GScoreRankingTeam.php" />
         <option value="$PROJECT_DIR$/protected/modules/golf/widgets/GScoreRankingPro.php" />
+        <option value="$PROJECT_DIR$/protected/modules/golf/components/ScoreTools.php" />
       </list>
     </option>
   </component>
@@ -1005,6 +1004,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/protected/modules/golf/widgets/GScoreRankingTeam.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.230769" vertical-offset="476" max-vertical-offset="1394">
+          <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/modules/golf/widgets/GScoreRankingPro.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-15.038462" vertical-offset="578" max-vertical-offset="1292">
+          <caret line="57" column="25" selection-start-line="57" selection-start-column="25" selection-end-line="57" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/protected/modules/golf/widgets/GScoreRankingFlighting.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-19.0" vertical-offset="662" max-vertical-offset="1377">
@@ -1020,24 +1035,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/modules/golf/components/ScoreTools.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.692307" vertical-offset="4726" max-vertical-offset="5797">
-          <caret line="302" column="0" selection-start-line="302" selection-start-column="0" selection-end-line="302" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/protected/modules/golf/widgets/GScoreRankingTeam.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.230769" vertical-offset="476" max-vertical-offset="1394">
-          <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/protected/modules/golf/widgets/GScoreRankingPro.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8422018" vertical-offset="578" max-vertical-offset="1292">
-          <caret line="61" column="0" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.6238532" vertical-offset="4726" max-vertical-offset="5797">
+          <caret line="298" column="46" selection-start-line="298" selection-start-column="46" selection-end-line="298" selection-end-column="46" />
           <folding />
         </state>
       </provider>
