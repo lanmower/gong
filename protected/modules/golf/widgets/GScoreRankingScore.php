@@ -1,5 +1,5 @@
 <?php
-class GScoreRankingScores extends GTag {
+class GScoreRankingScore extends GTag {
     public function init() {
         $this->script = '
 						setTimeout("location.reload(true);", 240000);
