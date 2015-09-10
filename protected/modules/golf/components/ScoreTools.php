@@ -20,7 +20,7 @@ function filter_all($array, $attr, $compare) {
 }
 
 function parnett($par, $nett) {
-    $diff = $nett-$par;
+    $diff = $par-$nett;
 
     if ($diff >= 1) return 1;
     if ($diff == 0) return 2;
