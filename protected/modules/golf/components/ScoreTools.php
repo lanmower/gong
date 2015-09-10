@@ -32,7 +32,7 @@ function parnett($par, $nett) {
 }
 
 class ScoreTools {
-    public static function playerScore(array $calcPlayers, $max = 2, $courses, $holes, $rules) {
+    public static function playerScore(array $calcPlayers, $max = 4, $courses, $holes, $rules) {
         $d = isset ( $_GET ['debug'] );
         $rounds = array (
             'player' => array (),
