@@ -295,11 +295,11 @@ class ScoreTools {
                     'total' => $rounds ['total'] ['player']
                 );
             }
+            usort ( $flightingsData, function ($a, $b) {
+                return $a ['total']['shots'] < $b ['total']['shots'];
+            } );
             $flightingRankings[] = $flightingsData;
         }
-        usort ( $flightingRankings, function ($a, $b) {
-            return $a ['total']['shots'] < $b ['total']['shots'];
-        } );
 
 
         Yii::app()->cache->delete('flightingRankingData');

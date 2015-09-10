@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="0da6ab35-60d6-431c-b983-fee9e043dcdc" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/modules/golf/components/ScoreTools.php" afterPath="$PROJECT_DIR$/protected/modules/golf/components/ScoreTools.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="golf.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -83,8 +84,8 @@
       <file leaf-file-name="ScoreTools.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/protected/modules/golf/components/ScoreTools.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5614679" vertical-offset="4794" max-vertical-offset="5797">
-              <caret line="300" column="64" selection-start-line="300" selection-start-column="64" selection-end-line="300" selection-end-column="64" />
+            <state vertical-scroll-proportion="0.74862385" vertical-offset="4726" max-vertical-offset="5797">
+              <caret line="302" column="0" selection-start-line="302" selection-start-column="0" selection-end-line="302" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -1035,8 +1036,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/modules/golf/components/ScoreTools.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5614679" vertical-offset="4794" max-vertical-offset="5797">
-          <caret line="300" column="64" selection-start-line="300" selection-start-column="64" selection-end-line="300" selection-end-column="64" />
+        <state vertical-scroll-proportion="0.74862385" vertical-offset="4726" max-vertical-offset="5797">
+          <caret line="302" column="0" selection-start-line="302" selection-start-column="0" selection-end-line="302" selection-end-column="0" />
           <folding />
         </state>
       </provider>
