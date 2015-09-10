@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="0da6ab35-60d6-431c-b983-fee9e043dcdc" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/modules/golf/widgets/GScoreRankingFlighting.php" afterPath="$PROJECT_DIR$/protected/modules/golf/widgets/GScoreRankingFlighting.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/modules/golf/widgets/GScoreRankingPro.php" afterPath="$PROJECT_DIR$/protected/modules/golf/widgets/GScoreRankingPro.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/modules/golf/widgets/GScoreRankingScore.php" afterPath="$PROJECT_DIR$/protected/modules/golf/widgets/GScoreRankingScore.php" />
     </list>
     <ignored path="golf.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -130,13 +128,13 @@
       <file leaf-file-name="GScoreRankingFlighting.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/protected/modules/golf/widgets/GScoreRankingFlighting.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.21100917" vertical-offset="684" max-vertical-offset="1394">
-              <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.81100917" vertical-offset="289" max-vertical-offset="1394">
+              <caret line="43" column="31" selection-start-line="43" selection-start-column="31" selection-end-line="43" selection-end-column="31" />
               <folding>
-                <marker date="1441924541751" expanded="true" signature="1539:1555" placeholder="..." />
-                <marker date="1441924541751" expanded="true" signature="1841:1944" placeholder="..." />
-                <marker date="1441924541751" expanded="true" signature="1870:1944" placeholder="..." />
-                <marker date="1441924541751" expanded="true" signature="2133:2234" placeholder="..." />
+                <marker date="1441926713447" expanded="true" signature="1541:1557" placeholder="..." />
+                <marker date="1441926713447" expanded="true" signature="1839:1942" placeholder="..." />
+                <marker date="1441926713447" expanded="true" signature="1868:1942" placeholder="..." />
+                <marker date="1441926713447" expanded="true" signature="2131:2232" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -640,10 +638,10 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1445">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1441924541751" expanded="true" signature="1539:1555" placeholder="..." />
-            <marker date="1441924541751" expanded="true" signature="1841:1944" placeholder="..." />
-            <marker date="1441924541751" expanded="true" signature="1870:1944" placeholder="..." />
-            <marker date="1441924541751" expanded="true" signature="2133:2234" placeholder="..." />
+            <marker date="1441926713447" expanded="true" signature="1541:1557" placeholder="..." />
+            <marker date="1441926713447" expanded="true" signature="1839:1942" placeholder="..." />
+            <marker date="1441926713447" expanded="true" signature="1868:1942" placeholder="..." />
+            <marker date="1441926713447" expanded="true" signature="2131:2232" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -723,10 +721,10 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1445">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1441924541751" expanded="true" signature="1539:1555" placeholder="..." />
-            <marker date="1441924541751" expanded="true" signature="1841:1944" placeholder="..." />
-            <marker date="1441924541751" expanded="true" signature="1870:1944" placeholder="..." />
-            <marker date="1441924541751" expanded="true" signature="2133:2234" placeholder="..." />
+            <marker date="1441926713447" expanded="true" signature="1541:1557" placeholder="..." />
+            <marker date="1441926713447" expanded="true" signature="1839:1942" placeholder="..." />
+            <marker date="1441926713447" expanded="true" signature="1868:1942" placeholder="..." />
+            <marker date="1441926713447" expanded="true" signature="2131:2232" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -806,10 +804,10 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1445">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1441924541751" expanded="true" signature="1539:1555" placeholder="..." />
-            <marker date="1441924541751" expanded="true" signature="1841:1944" placeholder="..." />
-            <marker date="1441924541751" expanded="true" signature="1870:1944" placeholder="..." />
-            <marker date="1441924541751" expanded="true" signature="2133:2234" placeholder="..." />
+            <marker date="1441926713447" expanded="true" signature="1541:1557" placeholder="..." />
+            <marker date="1441926713447" expanded="true" signature="1839:1942" placeholder="..." />
+            <marker date="1441926713447" expanded="true" signature="1868:1942" placeholder="..." />
+            <marker date="1441926713447" expanded="true" signature="2131:2232" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -1032,13 +1030,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/modules/golf/widgets/GScoreRankingFlighting.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.21100917" vertical-offset="684" max-vertical-offset="1394">
-          <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.81100917" vertical-offset="289" max-vertical-offset="1394">
+          <caret line="43" column="31" selection-start-line="43" selection-start-column="31" selection-end-line="43" selection-end-column="31" />
           <folding>
-            <marker date="1441924541751" expanded="true" signature="1539:1555" placeholder="..." />
-            <marker date="1441924541751" expanded="true" signature="1841:1944" placeholder="..." />
-            <marker date="1441924541751" expanded="true" signature="1870:1944" placeholder="..." />
-            <marker date="1441924541751" expanded="true" signature="2133:2234" placeholder="..." />
+            <marker date="1441926713447" expanded="true" signature="1541:1557" placeholder="..." />
+            <marker date="1441926713447" expanded="true" signature="1839:1942" placeholder="..." />
+            <marker date="1441926713447" expanded="true" signature="1868:1942" placeholder="..." />
+            <marker date="1441926713447" expanded="true" signature="2131:2232" placeholder="..." />
           </folding>
         </state>
       </provider>
