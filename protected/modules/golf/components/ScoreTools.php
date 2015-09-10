@@ -22,6 +22,7 @@ function filter_all($array, $attr, $compare) {
 function parnett($par, $nett) {
     $diff = $nett-$par;
     ++ $diff;
+
     if ($diff = 1) return 1;
     if ($diff = 0) return 2;
     if ($diff = -1) return 3;
@@ -80,6 +81,7 @@ class ScoreTools {
             );
             $player_scores = $player->scores;
             $handicap = $player->handicap;
+            $dayParnett = 0;
             foreach ( $player_scores as $score ) {
                 // if($d) CVarDumper::dump($score->courseRelation, 1,true);
                 $course = filter ( $courses, 'id', $score->attributes['course']  );
@@ -134,13 +136,17 @@ class ScoreTools {
                     "total" => $total
                 );
                 $rounds ['total'] ['player'] [$player->id] ['shots'] += $shots;
-                $rounds ['total'] ['player'] [$player->id] ['parnett'] += parnett($par, $nett);
+                $dayParnett += $rounds ['total'] ['player'] [$player->id] ['parnett'] += parnett($par, $nett);
                 $rounds ['total'] ['player'] [$player->id] ['nett'] += $nett;
                 $rounds ['total'] ['player'] [$player->id] ['gross'] += $gross;
                 $rounds ['total'] ['player'] [$player->id] ['hole'] = $newHoleNumber;
                 $rounds ['total'] ['player'] [$player->id] ['handicap'] = $handicap;
+                if ($d)
+                    CVarDumper::dump ( "Parnett for this round"+parnett($par, $nett), 1, true );
+
                 if (++ $holeNumber == 18) {
                     $holeNumber = 0;
+                    $rounds ['total'] ['player'] [$player->id] ['days'] [] = $day;
                     $rounds ['total'] ['player'] [$player->id] ['days'] [] = $day;
                     $days = $rounds ['total'] ['player'] [$player->id] ['days'];
                     if($player->lock != 'lock') {
