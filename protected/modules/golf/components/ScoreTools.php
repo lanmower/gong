@@ -18,6 +18,18 @@ function filter_all($array, $attr, $compare) {
         return $obj->attributes [ $attr ] == $compare;
     } );
 }
+
+function parnett($par, $nett) {
+    $diff = $nett-$par;
+    ++ $diff;
+    if ($diff = 1) return 1;
+    if ($diff = 0) return 2;
+    if ($diff = -1) return 3;
+    if ($diff = -2) return 4;
+    if ($diff = -3) return 5;
+    if ($diff = -4) return 6;
+}
+
 class ScoreTools {
     public static function playerScore(array $calcPlayers, $max = 2, $courses, $holes, $rules) {
         $d = isset ( $_GET ['debug'] );
@@ -116,10 +128,12 @@ class ScoreTools {
                     "adjustment" => $adjustment,
                     'nett' => $nett,
                     "par" => $par,
+                    "parnett" => parnett($par, $nett),
                     'shots' => $shots,
                     "total" => $total
                 );
                 $rounds ['total'] ['player'] [$player->id] ['shots'] += $shots;
+                $rounds ['total'] ['player'] [$player->id] ['parnett'] += parnett($par, $nett);
                 $rounds ['total'] ['player'] [$player->id] ['nett'] += $nett;
                 $rounds ['total'] ['player'] [$player->id] ['gross'] += $gross;
                 $rounds ['total'] ['player'] [$player->id] ['hole'] == $newHoleNumber;
@@ -149,6 +163,7 @@ class ScoreTools {
             $rounds ['total'] ['player'] = array (
                 'shots' => $total,
                 'nett' => $nettTotal,
+                'parnett' => $rounds ['total'] ['player'] [$player->id] ['parnett'],
                 'gross' => $grossTotal,
                 'days' => $days,
                 'hole' => $newHoleNumber,
@@ -213,6 +228,7 @@ class ScoreTools {
                 if (++ $holeNumber == 18) {
                     $holeNumber = 0;
                     $rounds ['total'] ['team'] ['days'] [] = $day;
+                    $rounds ['total'] ['team'] ['daysParnett'] [] = $day;
                     $day = 0;
                 }
             }
@@ -224,7 +240,7 @@ class ScoreTools {
         return $rounds;
     }
 
-    static function processScores() {
+    static function processScores($parnett = false) {
         $proGame = GSubmission::forForm ( "Game" )->find ( 'name = :name', array (
             ":name" => 'Professional'
         ) );
@@ -241,7 +257,7 @@ class ScoreTools {
         foreach ( $players as $player ) {
             $rounds = ScoreTools::playerScore ( array (
                 $player
-            ), 2,  $scores, $courses, $holes, $rules );
+            ), 2, $courses, $holes, $rules );
             $data [] = array (
                 'player' => $player,
                 'total' => $rounds ['total'] ['player']
@@ -267,7 +283,7 @@ class ScoreTools {
             foreach ( $players as $player ) {
                 $rounds = ScoreTools::playerScore ( array (
                     $player
-                ), 2,  $scores, $courses, $holes, $rules );
+                ), 2,  $courses, $holes, $rules );
                 $flightingsData [] = $playerData [] = array (
                     'player' => $player,
                     'total' => $rounds ['total'] ['player']
@@ -287,7 +303,7 @@ class ScoreTools {
 
         $data = array();
         foreach($teams as $team) {
-            $rounds = ScoreTools::playerScore($team->players, 2, $scores, $courses, $holes, $rules);
+            $rounds = ScoreTools::playerScore($team->players, 2, $courses, $holes, $rules);
 
             //gc_collect_cycles();
             $players = array();

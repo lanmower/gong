@@ -43,17 +43,17 @@ class GScoreRankingFlighting extends GTag {
         $flightings = GSubmission::forForm ( 'Flighting' )->findAll ();
         foreach ($data as $key => $flightingData) {
             $flighting = $flightings[$key];
-            echo "<tr><td colspan='9'>$flighting->name</td></tr>";
+            echo "<tr style='background:gray;'><td colspan='9'>Flighting: $flighting->name</td></tr>";
             foreach ($flightingData as $playerData) {
                 $player = $playerData ['player'];
-                $total = $playerData ['total'] ['strokes'];
+                $total = $playerData ['total'] ['shots'];
                 echo "<tr>";
                 echo "<td>";
                 ++$pos;
-                if ($lastTotal != $playerData ['total'] ['strokes']) {
+                if ($lastTotal != $playerData ['total'] ['shots']) {
                     echo $pos;
                 }
-                $lastTotal = $playerData ['total'] ['strokes'];
+                $lastTotal = $playerData ['total'] ['shots'];
                 echo "</td>";
                 echo "<td>";
                 if (isset ($player->country)) {
@@ -65,8 +65,8 @@ class GScoreRankingFlighting extends GTag {
                 echo CHtml::tag('td', array(), isset ($playerData ['total'] ['days'] [0]) ? $playerData ['total'] ['days'] [0] : "");
                 echo CHtml::tag('td', array(), isset ($playerData ['total'] ['days'] [1]) ? $playerData ['total'] ['days'] [1] : "");
                 echo CHtml::tag('td', array(), isset ($playerData ['total'] ['days'] [2]) ? $playerData ['total'] ['days'] [2] : "");
-                echo CHtml::tag('td', array(), isset ($playerData ['total'] ['days'] [3]) ? $playerData ['total'] ['days'] [3] : "");
-                echo CHtml::tag('td', array(), isset ($playerData ['total'] ['days'] [4]) ? $playerData ['total'] ['days'] [4] : "");
+                //echo CHtml::tag('td', array(), isset ($playerData ['total'] ['days'] [3]) ? $playerData ['total'] ['days'] [3] : "");
+                //echo CHtml::tag('td', array(), isset ($playerData ['total'] ['days'] [4]) ? $playerData ['total'] ['days'] [4] : "");
                 echo CHtml::tag('td', array(), $total);
                 echo "</tr>";
             }
