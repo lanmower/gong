@@ -25,6 +25,9 @@ class GScoreRankingScore extends GTag {
             ScoreTools::processScores ();
             $data = Yii::app ()->cache->get ( 'proRankingData' );
         }
+        usort ( $data, function ($a, $b) {
+            return $a ['total']['parnett'] < $b ['total']['parnett'];
+        } );
         echo "<table class='table'>";
         echo "<tr>";
         echo "<th class='th1'>POS</th>";

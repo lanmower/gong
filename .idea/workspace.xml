@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0da6ab35-60d6-431c-b983-fee9e043dcdc" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/modules/golf/components/ScoreTools.php" afterPath="$PROJECT_DIR$/protected/modules/golf/components/ScoreTools.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/modules/golf/widgets/GScoreRankingScore.php" afterPath="$PROJECT_DIR$/protected/modules/golf/widgets/GScoreRankingScore.php" />
     </list>
     <ignored path="golf.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -90,22 +90,27 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ScoreTools.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ScoreTools.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/protected/modules/golf/components/ScoreTools.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7174312" vertical-offset="17" max-vertical-offset="5797">
-              <caret line="24" column="28" selection-start-line="24" selection-start-column="28" selection-end-line="24" selection-end-column="28" />
+            <state vertical-scroll-proportion="-9.653846" vertical-offset="3217" max-vertical-offset="5797">
+              <caret line="204" column="0" selection-start-line="201" selection-start-column="0" selection-end-line="204" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GScoreRankingScore.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="GScoreRankingScore.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/protected/modules/golf/widgets/GScoreRankingScore.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="1173">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
+            <state vertical-scroll-proportion="0.25137615" vertical-offset="339" max-vertical-offset="1224">
+              <caret line="28" column="57" selection-start-line="28" selection-start-column="57" selection-end-line="28" selection-end-column="57" />
+              <folding>
+                <marker date="1441921844398" expanded="true" signature="1157:1184" placeholder="..." />
+                <marker date="1441921844398" expanded="true" signature="1561:1871" placeholder="..." />
+                <marker date="1441921844398" expanded="true" signature="1586:1747" placeholder="..." />
+                <marker date="1441921844398" expanded="true" signature="1772:1871" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -159,8 +164,8 @@
         <option value="$PROJECT_DIR$/protected/modules/golf/widgets/GScoreRankingFlighting.php" />
         <option value="$PROJECT_DIR$/protected/modules/golf/widgets/GScoreRankingPro.php" />
         <option value="$PROJECT_DIR$/protected/modules/golf/widgets/GScoreFormScores.php" />
-        <option value="$PROJECT_DIR$/protected/modules/golf/widgets/GScoreRankingScore.php" />
         <option value="$PROJECT_DIR$/protected/modules/golf/components/ScoreTools.php" />
+        <option value="$PROJECT_DIR$/protected/modules/golf/widgets/GScoreRankingScore.php" />
       </list>
     </option>
   </component>
@@ -454,6 +459,32 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="widgets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="golf" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="golf" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="protected" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="golf" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controllers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -961,14 +992,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/protected/modules/golf/widgets/GScoreRankingScore.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="1173">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/protected/modules/golf/widgets/GScoreForm.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="4182">
@@ -979,9 +1002,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/protected/modules/golf/components/ScoreTools.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7174312" vertical-offset="17" max-vertical-offset="5797">
-          <caret line="24" column="28" selection-start-line="24" selection-start-column="28" selection-end-line="24" selection-end-column="28" />
+        <state vertical-scroll-proportion="-9.653846" vertical-offset="3217" max-vertical-offset="5797">
+          <caret line="204" column="0" selection-start-line="201" selection-start-column="0" selection-end-line="204" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/modules/golf/widgets/GScoreRankingScore.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.25137615" vertical-offset="339" max-vertical-offset="1224">
+          <caret line="28" column="57" selection-start-line="28" selection-start-column="57" selection-end-line="28" selection-end-column="57" />
+          <folding>
+            <marker date="1441921844398" expanded="true" signature="1157:1184" placeholder="..." />
+            <marker date="1441921844398" expanded="true" signature="1561:1871" placeholder="..." />
+            <marker date="1441921844398" expanded="true" signature="1586:1747" placeholder="..." />
+            <marker date="1441921844398" expanded="true" signature="1772:1871" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
