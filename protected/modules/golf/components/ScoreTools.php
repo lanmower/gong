@@ -281,7 +281,7 @@ class ScoreTools {
         $playerData = array ();
         $flightingRankings = array ();
         $x = 0;
-        foreach($flightings as $flighting) {
+        foreach($flightings as $key => $flighting) {
             $players = GSubmission::forForm ( 'Player' )->findAll ( 'flighting = :flighting', array (
                 ":flighting" => $flighting->id
             ) );
@@ -298,7 +298,7 @@ class ScoreTools {
             usort ( $flightingsData, function ($a, $b) {
                 return $a ['total']['shots'] > $b ['total']['shots'];
             } );
-            $flightingRankings[] = $flightingsData;
+            $flightingRankings[$key] = $flightingsData;
         }
 
 
