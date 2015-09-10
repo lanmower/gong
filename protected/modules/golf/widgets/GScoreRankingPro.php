@@ -33,8 +33,6 @@ class GScoreRankingPro extends GTag {
 		echo "<th class='th4'>Day 1</th>";
 		echo "<th class='th4'>Day 2</th>";
 		echo "<th class='th4'>Day 3</th>";
-		echo "<th class='th4'>Day 4</th>";
-		echo "<th class='th4'>Day 5</th>";
 		echo "<th class='th4'>Score</th>";
 		echo "</tr>";
 		$pos = 0;
@@ -61,8 +59,6 @@ class GScoreRankingPro extends GTag {
 			echo CHtml::tag ( 'td', array (), isset ( $playerData ['total'] ['days'] [0] ) ? $playerData ['total'] ['days'] [0] : "" );
 			echo CHtml::tag ( 'td', array (), isset ( $playerData ['total'] ['days'] [1] ) ? $playerData ['total'] ['days'] [1] : "" );
 			echo CHtml::tag ( 'td', array (), isset ( $playerData ['total'] ['days'] [2] ) ? $playerData ['total'] ['days'] [2] : "" );
-			echo CHtml::tag ( 'td', array (), isset ( $playerData ['total'] ['days'] [3] ) ? $playerData ['total'] ['days'] [3] : "" );
-			echo CHtml::tag ( 'td', array (), isset ( $playerData ['total'] ['days'] [4] ) ? $playerData ['total'] ['days'] [4] : "" );
 			echo CHtml::tag ( 'td', array (), $total );
 			echo "</tr>";
 		}

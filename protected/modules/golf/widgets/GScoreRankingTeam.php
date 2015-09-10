@@ -34,8 +34,6 @@ class GScoreRankingTeam extends GTag {
 		echo "<th>Day 1</th>";
 		echo "<th>Day 2</th>";
 		echo "<th>Day 3</th>";
-		echo "<th>Day 4</th>";
-		echo "<th>Day 5</th>";
 		echo "<th>Score</th>";
 		echo "</tr>";
 		$pos = 0;
@@ -67,8 +65,6 @@ class GScoreRankingTeam extends GTag {
 			echo CHtml::tag ( 'td', array (), isset ( $team ['days'] [0] ) ? $team ['days'] [0] : "" );
 			echo CHtml::tag ( 'td', array (), isset ( $team ['days'] [1] ) ? $team ['days'] [1] : "" );
 			echo CHtml::tag ( 'td', array (), isset ( $team ['days'] [2] ) ? $team ['days'] [2] : "" );
-			echo CHtml::tag ( 'td', array (), isset ( $team ['days'] [3] ) ? $team ['days'] [3] : "" );
-			echo CHtml::tag ( 'td', array (), isset ( $team ['days'] [4] ) ? $team ['days'] [4] : "" );
 			echo "</td>";
 			echo CHtml::tag ( 'td', array (), $team ['shots'] );
 		}
