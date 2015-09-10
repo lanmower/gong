@@ -72,6 +72,7 @@ class ScoreTools {
             $rounds ['total'] ['player'] [$player->id] = array (
                 'shots' => 0,
                 'gross' => 0,
+                'parnett' => 0,
                 'nett' => 0,
                 'par' => 0,
                 'hole' => 0,
@@ -136,8 +137,8 @@ class ScoreTools {
                 $rounds ['total'] ['player'] [$player->id] ['parnett'] += parnett($par, $nett);
                 $rounds ['total'] ['player'] [$player->id] ['nett'] += $nett;
                 $rounds ['total'] ['player'] [$player->id] ['gross'] += $gross;
-                $rounds ['total'] ['player'] [$player->id] ['hole'] == $newHoleNumber;
-                //$rounds ['total'] ['player'] [$player->id] ['handicap'] == $handicap;
+                $rounds ['total'] ['player'] [$player->id] ['hole'] = $newHoleNumber;
+                $rounds ['total'] ['player'] [$player->id] ['handicap'] = $handicap;
                 if (++ $holeNumber == 18) {
                     $holeNumber = 0;
                     $rounds ['total'] ['player'] [$player->id] ['days'] [] = $day;
@@ -228,7 +229,6 @@ class ScoreTools {
                 if (++ $holeNumber == 18) {
                     $holeNumber = 0;
                     $rounds ['total'] ['team'] ['days'] [] = $day;
-                    $rounds ['total'] ['team'] ['daysParnett'] [] = $day;
                     $day = 0;
                 }
             }
@@ -240,7 +240,7 @@ class ScoreTools {
         return $rounds;
     }
 
-    static function processScores($parnett = false) {
+    static function processScores() {
         $proGame = GSubmission::forForm ( "Game" )->find ( 'name = :name', array (
             ":name" => 'Professional'
         ) );
