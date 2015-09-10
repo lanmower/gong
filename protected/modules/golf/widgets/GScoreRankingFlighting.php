@@ -38,7 +38,7 @@ class GScoreRankingFlighting extends GTag {
         $pos = 0;
         $lastTotal = 0;
         $flightings = GSubmission::forForm ( 'Flighting' )->findAll ();
-        foreach ($flightings as $key => $flighting) {
+        foreach ($data as $key => $flighting) {
             $flighting = $flightings[$key];
             echo "<tr style='background:gray;'><th colspan='9'>Flighting: $flighting->name</th></tr>";
             foreach ($flighting as $playerData) {
