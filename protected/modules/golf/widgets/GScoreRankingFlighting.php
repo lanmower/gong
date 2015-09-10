@@ -33,8 +33,6 @@ class GScoreRankingFlighting extends GTag {
         echo "<th class='th4'>Day 1</th>";
         echo "<th class='th4'>Day 2</th>";
         echo "<th class='th4'>Day 3</th>";
-        echo "<th class='th4'>Day 4</th>";
-        echo "<th class='th4'>Day 5</th>";
         echo "<th class='th4'>Score</th>";
         echo "</tr>";
         $pos = 0;
@@ -45,7 +43,7 @@ class GScoreRankingFlighting extends GTag {
             echo "<tr style='background:gray;'><th colspan='9'>Flighting: $flighting->name</th></tr>";
             foreach ($flightingData as $playerData) {
                 $player = $playerData ['player'];
-                $total = $playerData ['total'] ['shots'];
+                $total = $playerData ['total']['shots'];
                 echo "<tr>";
                 echo "<td>";
                 ++$pos;

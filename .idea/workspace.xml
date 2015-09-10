@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/protected/modules/golf/widgets/GScoreRankingFlighting.php" line="46" mnemonic="9" />
+    <bookmark url="file://$PROJECT_DIR$/protected/modules/golf/widgets/GScoreRankingFlighting.php" line="44" mnemonic="9" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0da6ab35-60d6-431c-b983-fee9e043dcdc" name="Default" comment="" />
+    <list default="true" id="0da6ab35-60d6-431c-b983-fee9e043dcdc" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protected/modules/golf/widgets/GScoreRankingFlighting.php" afterPath="$PROJECT_DIR$/protected/modules/golf/widgets/GScoreRankingFlighting.php" />
+    </list>
     <ignored path="golf.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -78,10 +80,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ScoreTools.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ScoreTools.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/protected/modules/golf/components/ScoreTools.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7798165" vertical-offset="4794" max-vertical-offset="5797">
+            <state vertical-scroll-proportion="-16.346153" vertical-offset="4794" max-vertical-offset="5797">
               <caret line="307" column="34" selection-start-line="307" selection-start-column="34" selection-end-line="307" selection-end-column="34" />
               <folding />
             </state>
@@ -123,13 +125,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GScoreRankingFlighting.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="GScoreRankingFlighting.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/protected/modules/golf/widgets/GScoreRankingFlighting.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-19.653847" vertical-offset="730" max-vertical-offset="1411">
-              <caret line="73" column="0" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.906422" vertical-offset="662" max-vertical-offset="1377">
+              <caret line="68" column="0" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
               <folding>
-                <marker date="1441923375681" expanded="true" signature="1625:1641" placeholder="..." />
+                <marker date="1441923762293" expanded="true" signature="1539:1555" placeholder="..." />
+                <marker date="1441923762293" expanded="true" signature="1799:1902" placeholder="..." />
+                <marker date="1441923762293" expanded="true" signature="1828:1902" placeholder="..." />
+                <marker date="1441923762293" expanded="true" signature="2091:2192" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -163,8 +168,8 @@
         <option value="$PROJECT_DIR$/protected/modules/golf/widgets/GScoreFormScores.php" />
         <option value="$PROJECT_DIR$/protected/modules/golf/widgets/GScoreRankingScore.php" />
         <option value="$PROJECT_DIR$/protected/modules/golf/widgets/GScoreRankingTeam.php" />
-        <option value="$PROJECT_DIR$/protected/modules/golf/widgets/GScoreRankingFlighting.php" />
         <option value="$PROJECT_DIR$/protected/modules/golf/components/ScoreTools.php" />
+        <option value="$PROJECT_DIR$/protected/modules/golf/widgets/GScoreRankingFlighting.php" />
       </list>
     </option>
   </component>
@@ -633,7 +638,10 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1445">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1441923375681" expanded="true" signature="1625:1641" placeholder="..." />
+            <marker date="1441923762293" expanded="true" signature="1539:1555" placeholder="..." />
+            <marker date="1441923762293" expanded="true" signature="1799:1902" placeholder="..." />
+            <marker date="1441923762293" expanded="true" signature="1828:1902" placeholder="..." />
+            <marker date="1441923762293" expanded="true" signature="2091:2192" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -713,7 +721,10 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1445">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1441923375681" expanded="true" signature="1625:1641" placeholder="..." />
+            <marker date="1441923762293" expanded="true" signature="1539:1555" placeholder="..." />
+            <marker date="1441923762293" expanded="true" signature="1799:1902" placeholder="..." />
+            <marker date="1441923762293" expanded="true" signature="1828:1902" placeholder="..." />
+            <marker date="1441923762293" expanded="true" signature="2091:2192" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -793,7 +804,10 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1445">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1441923375681" expanded="true" signature="1625:1641" placeholder="..." />
+            <marker date="1441923762293" expanded="true" signature="1539:1555" placeholder="..." />
+            <marker date="1441923762293" expanded="true" signature="1799:1902" placeholder="..." />
+            <marker date="1441923762293" expanded="true" signature="1828:1902" placeholder="..." />
+            <marker date="1441923762293" expanded="true" signature="2091:2192" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -1006,21 +1020,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/protected/modules/golf/widgets/GScoreRankingFlighting.php">
+    <entry file="file://$PROJECT_DIR$/protected/modules/golf/components/ScoreTools.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-19.653847" vertical-offset="730" max-vertical-offset="1411">
-          <caret line="73" column="0" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
-          <folding>
-            <marker date="1441923375681" expanded="true" signature="1625:1641" placeholder="..." />
-          </folding>
+        <state vertical-scroll-proportion="-16.346153" vertical-offset="4794" max-vertical-offset="5797">
+          <caret line="307" column="34" selection-start-line="307" selection-start-column="34" selection-end-line="307" selection-end-column="34" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/protected/modules/golf/components/ScoreTools.php">
+    <entry file="file://$PROJECT_DIR$/protected/modules/golf/widgets/GScoreRankingFlighting.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7798165" vertical-offset="4794" max-vertical-offset="5797">
-          <caret line="307" column="34" selection-start-line="307" selection-start-column="34" selection-end-line="307" selection-end-column="34" />
-          <folding />
+        <state vertical-scroll-proportion="0.906422" vertical-offset="662" max-vertical-offset="1377">
+          <caret line="68" column="0" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
+          <folding>
+            <marker date="1441923762293" expanded="true" signature="1539:1555" placeholder="..." />
+            <marker date="1441923762293" expanded="true" signature="1799:1902" placeholder="..." />
+            <marker date="1441923762293" expanded="true" signature="1828:1902" placeholder="..." />
+            <marker date="1441923762293" expanded="true" signature="2091:2192" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
