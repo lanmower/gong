@@ -94,7 +94,7 @@ class GScoreForm extends GTag {
                                     }
                                 }
                                 if ($score > $scorePar + 4) {
-                                    $score = $scorePar + 4;
+                                    $score = $scorePar + 5;
                                 }
                                 if ($score < 0)
                                     $score = 0;

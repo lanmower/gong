@@ -82,6 +82,7 @@ class ScoreTools {
             $player_scores = $player->scores;
             $handicap = $player->handicap;
             $dayParnett = 0;
+            $maxed = 0;
             foreach ( $player_scores as $score ) {
                 // if($d) CVarDumper::dump($score->courseRelation, 1,true);
                 $course = filter ( $courses, 'id', $score->attributes['course']  );
@@ -106,6 +107,13 @@ class ScoreTools {
                 }
                 $nett = $gross + $adjustment;
                 $par = $hole->par;
+                if ($d)
+                    CVarDumper::dump ( "Gross $gross vs par $par\n", 1, true );
+
+                if ($gross > $par + 4) {
+                    ++$maxed;
+                }
+
 
                 if ($d)
                     CVarDumper::dump ( "Handicap adjustment for nett:" . $adjustment."\n", 1, true );
@@ -149,7 +157,10 @@ class ScoreTools {
                     $rounds ['total'] ['player'] [$player->id] ['days'] [] = $day;
                     $rounds ['total'] ['player'] [$player->id] ['days'] [] = $day;
                     $days = $rounds ['total'] ['player'] [$player->id] ['days'];
-                    if($player->lock != 'lock') {
+                    if ($d)
+                        CVarDumper::dump ( "Maxed: $maxed", 1, true );
+
+                    if($player->lock != 'lock' && $maxed < 18) {
                         foreach($rules as $rule) {
                             if ($d)
                                 CVarDumper::dump ( "Testing $day against $rule->min and $rule->max.\n", 1, true );
@@ -159,7 +170,11 @@ class ScoreTools {
                                     CVarDumper::dump ( "Handicap adjusted to $handicap.\n", 1, true );
                             }
                         }
+                    } else {
+                        if ($d && $maxed >= 18)
+                            CVarDumper::dump ( "DQ round, no handicap adjustment.", 1, true );
                     }
+                    $maxed = 0;
                     $day = 0;
                 }
                 $roundIndex ++;
@@ -254,7 +269,6 @@ class ScoreTools {
             ":game" => $proGame->id
         ) );
         $teams = GSubmission::forForm ( 'Team' )->findAll ();
-        $scores = GSubmission::forForm ( 'Score' )->findAll ();
         $courses = GSubmission::forForm ( 'Course' )->findAll ();
         $holes = GSubmission::forForm ( 'Hole' )->findAll ();
         $rules = GSubmission::forForm ( 'Rules' )->findAll ();
