@@ -7,12 +7,12 @@ class GScoreRankingFlighting extends GTag {
         if (isset ( $_GET ['scroll'] ))
             $this->script .= '$("html, body").animate({ scrollTop: $(document).height() }, 120000, "linear");
     setTimeout(function() {
-       $("html, body").animate({scrollTop:0}, 120000, "linear"); 
+       $("html, body").animate({scrollTop:0}, 120000, "linear");
     },120000);
   var scrolltopbottom =  setInterval(function(){
     $("html, body").animate({ scrollTop: $(document).height() }, 120000, "linear");
     setTimeout(function() {
-       $("html, body").animate({scrollTop:0}, 120000, "linear"); 
+       $("html, body").animate({scrollTop:0}, 120000, "linear");
     },120000);
 
     },240000);
@@ -22,8 +22,8 @@ class GScoreRankingFlighting extends GTag {
     public function run()
     {
         $data = Yii::app()->cache->get('flightingRankingData');
-        if ($data === false) {
-            ScoreTools::processScores();
+        if ($data === false || isset($_GET['nocache'])) {
+    			ScoreTools::processScores ();
             $data = Yii::app()->cache->get('flightingRankingData');
         }
         echo "<table class='table'>";

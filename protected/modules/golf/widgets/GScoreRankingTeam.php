@@ -7,12 +7,12 @@ class GScoreRankingTeam extends GTag {
 		if (isset ( $_GET ['scroll'] ))
 			$this->script .= '$("html, body").animate({ scrollTop: $(document).height() }, 120000, "linear");
     setTimeout(function() {
-       $("html, body").animate({scrollTop:0}, 120000, "linear"); 
+       $("html, body").animate({scrollTop:0}, 120000, "linear");
     },120000);
   var scrolltopbottom =  setInterval(function(){
     $("html, body").animate({ scrollTop: $(document).height() }, 120000, "linear");
     setTimeout(function() {
-       $("html, body").animate({scrollTop:0}, 120000, "linear"); 
+       $("html, body").animate({scrollTop:0}, 120000, "linear");
     },120000);
 
     },240000);
@@ -21,11 +21,11 @@ class GScoreRankingTeam extends GTag {
 	}
 	public function run() {
 		$data = Yii::app ()->cache->get ( 'teamRankingData' );
-		if ($data === false) {
+		if ($data === false || isset($_GET['nocache'])) {
 			ScoreTools::processScores ();
 			$data = Yii::app ()->cache->get ( 'teamRankingData' );
 		}
-		
+
 		echo "<table class='table'>";
 		echo "<tr>";
 		echo "<th>POS</th>";
@@ -43,7 +43,7 @@ class GScoreRankingTeam extends GTag {
 				continue;
 			echo "<tr>";
 			echo "<td>";
-			
+
 			++ $pos;
 			if ($lastTotal != $team ['shots']) {
 				echo $pos;
@@ -54,7 +54,7 @@ class GScoreRankingTeam extends GTag {
 			echo "<td>";
 			foreach ( $team ['players'] as $player ) {
 				echo CHtml::openTag ( 'div', array (
-						'class' => 'scorelistplayer' 
+						'class' => 'scorelistplayer'
 				) );
 				if (isset ( $player->country )) {
 					echo CHtml::image ( str_replace ( 'protected/data/form_uploads/GSubmission/', '/protected/data/form_uploads/GSubmission//', $player->country->flag ) );
