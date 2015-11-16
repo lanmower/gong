@@ -118,6 +118,8 @@ class ScoreTools {
                 if ($d)
                     CVarDumper::dump ( "Handicap adjustment for nett:" . $adjustment."\n", 1, true );
                 // find a matching score rule
+                $parComparison = $nett - $par;
+
                 if ($d)
                     CVarDumper::dump ( "Par comparison:" . $parComparison."\n", 1, true );
                 if($scoreRules) {
