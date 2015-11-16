@@ -32,7 +32,7 @@ function parnett($par, $nett) {
 }
 
 class ScoreTools {
-    public static function playerScore(array $calcPlayers, $max = 4, $courses, $holes, $rules) {
+    public static function playerScore(array $calcPlayers, $max = 4, $courses, $holes, $rules, $scoreRules = null) {
         $d = isset ( $_GET ['debug'] );
         $rounds = array (
             'player' => array (),
@@ -118,7 +118,18 @@ class ScoreTools {
                 if ($d)
                     CVarDumper::dump ( "Handicap adjustment for nett:" . $adjustment."\n", 1, true );
                 // find a matching score rule
-                $shots = $nett;
+                if($scoreRules) {
+                  $shots = 0;
+                  foreach ( $scoreRules as $rule ) {
+          					if ($parComparison == $rule->parComparison) {
+          						$shots = $rule->point;
+                      if ($d)
+                          CVarDumper::dump ( "Par comparison:" . $parComparison."\n", 1, true );
+                    }
+          				}
+                } else {
+                  $shots = $nett;
+                }
 
                 if ($d)
                     CVarDumper::dump ( "A score of $shots was calculated.\n", 1, true );
@@ -275,12 +286,13 @@ class ScoreTools {
         $courses = GSubmission::forForm ( 'Course' )->findAll ();
         $holes = GSubmission::forForm ( 'Hole' )->findAll ();
         $rules = GSubmission::forForm ( 'Rules' )->findAll ();
+        $scoreRules = GSubmission::forForm ( 'ScoreRules' )->findAll ();
         $data = array ();
         $x = 0;
         foreach ( $players as $player ) {
             $rounds = ScoreTools::playerScore ( array (
                 $player
-            ), 2, $courses, $holes, $rules );
+            ), 2, $courses, $holes, $rules, $scoreRules );
             $data [] = array (
                 'player' => $player,
                 'total' => $rounds ['total'] ['player']
@@ -306,7 +318,7 @@ class ScoreTools {
             foreach ( $players as $player ) {
                 $rounds = ScoreTools::playerScore ( array (
                     $player
-                ), 2,  $courses, $holes, $rules );
+                ), 2,  $courses, $holes, $rules, $scoreRules );
                 $flightingsData [] = $playerData [] = array (
                     'player' => $player,
                     'total' => $rounds ['total'] ['player']
@@ -326,7 +338,7 @@ class ScoreTools {
 
         $data = array();
         foreach($teams as $team) {
-            $rounds = ScoreTools::playerScore($team->players, 2, $courses, $holes, $rules);
+            $rounds = ScoreTools::playerScore($team->players, 2, $courses, $holes, $rules, $scoreRules);
 
             //gc_collect_cycles();
             $players = array();
@@ -346,6 +358,25 @@ class ScoreTools {
         } );
         Yii::app()->cache->delete('teamRankingData');
         Yii::app ()->cache->set ( 'teamRankingData', $data );
+
+        $data = array ();
+        $x = 0;
+        foreach ( $players as $player ) {
+            $rounds = ScoreTools::playerScore ( array (
+                $player
+            ), 2, $courses, $holes, $rules );
+            $data [] = array (
+                'player' => $player,
+                'total' => $rounds ['total'] ['player']
+            );
+        }
+
+        usort ( $data, function ($a, $b) {
+            return $a ['total'] < $b ['total'];
+        } );
+
+        Yii::app()->cache->delete('scoreRankingData');
+        Yii::app ()->cache->set ( 'scoreRankingData', $data );
     }
 }
 
