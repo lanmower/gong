@@ -83,6 +83,7 @@ class ScoreTools {
             $handicap = $player->handicap;
             $dayParnett = 0;
             $maxed = 0;
+            $coursePar = 0;
             foreach ( $player_scores as $score ) {
                 // if($d) CVarDumper::dump($score->courseRelation, 1,true);
                 $course = filter ( $courses, 'id', $score->attributes['course']  );
@@ -114,7 +115,6 @@ class ScoreTools {
                     ++$maxed;
                 }
 
-
                 if ($d)
                     CVarDumper::dump ( "Handicap adjustment for nett:" . $adjustment."\n", 1, true );
                 // find a matching score rule
@@ -124,6 +124,7 @@ class ScoreTools {
                     CVarDumper::dump ( "A score of $shots was calculated.\n", 1, true );
                 $total += $shots;
                 $day += $shots;
+                $coursePar += $par;
                 $nettTotal += $nett;
                 $grossTotal += $gross;
                 if ($d)
@@ -162,9 +163,10 @@ class ScoreTools {
 
                     if($player->lock != 'lock' && $maxed < 18) {
                         foreach($rules as $rule) {
-                            if ($d)
-                                CVarDumper::dump ( "Testing $day against $rule->min and $rule->max.\n", 1, true );
-                            if($nettTotal >= $rule->min && $nettTotal <= $rule->max) {
+                            $calc = $nettTotal - $coursePar;
+                             if ($d)
+                                CVarDumper::dump ( "Testing $calc against $rule->min and $rule->max.\n", 1, true );
+                            if($calc >= $rule->min && $calc <= $rule->max) {
                                 $handicap += $rule->point;
                                 if ($d)
                                     CVarDumper::dump ( "Handicap adjusted to $handicap.\n", 1, true );
@@ -176,6 +178,7 @@ class ScoreTools {
                     }
                     $maxed = 0;
                     $day = 0;
+                    $coursePar = 0;
                 }
                 $roundIndex ++;
             }
