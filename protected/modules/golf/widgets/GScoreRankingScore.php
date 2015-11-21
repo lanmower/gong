@@ -24,7 +24,7 @@ class GScoreRankingScore extends GTag {
         $data = Yii::app ()->cache->get ( 'scoreRankingData' );
         if ($data === false || isset($_GET['nocache'])) {
             ScoreTools::processScores ();
-            $data = Yii::app ()->cache->get ( 'scoreRankingData' );
+            $data = Yii::app ()->cache->get ( 'playerRankingData' );
         }
         if($d) {
           CVarDumper::dump ( "Dumping cache", 1, true );
