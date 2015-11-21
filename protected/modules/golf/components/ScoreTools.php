@@ -20,7 +20,7 @@ function filter_all($array, $attr, $compare) {
 }
 
 function parnett($par, $nett) {
-    $diff = $nett-$par;
+f    $diff = $nett-$par;
 
     if ($diff >= 2) return 0;
     if ($diff == 1) return 1;
@@ -122,6 +122,7 @@ class ScoreTools {
 
                 if ($d)
                     CVarDumper::dump ( "Par comparison:" . $parComparison."\n", 1, true );
+
                 if($scoreRules) {
                   $shots = 0;
                   foreach ( $scoreRules as $rule ) {
@@ -366,7 +367,7 @@ class ScoreTools {
         foreach ( $players as $player ) {
             $rounds = ScoreTools::playerScore ( array (
                 $player
-            ), 2, $courses, $holes, $rules );
+            ), 2, $courses, $holes, $rules, $scoreRules );
             $data [] = array (
                 'player' => $player,
                 'total' => $rounds ['total'] ['player']
