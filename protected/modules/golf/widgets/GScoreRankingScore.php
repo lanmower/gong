@@ -20,10 +20,15 @@ class GScoreRankingScore extends GTag {
         parent::init ();
     }
     public function run() {
+        $d = isset ( $_GET ['debug'] );
         $data = Yii::app ()->cache->get ( 'scoreRankingData' );
         if ($data === false || isset($_GET['nocache'])) {
             ScoreTools::processScores ();
             $data = Yii::app ()->cache->get ( 'scoreRankingData' );
+        }
+        if($d) {
+          CVarDumper::dump ( "Dumping cache", 1, true );
+          CVarDumper::dump ( $data, 1, true );
         }
         usort ( $data, function ($a, $b) {
             return $a ['total']['parnett'] < $b ['total']['parnett'];
