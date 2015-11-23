@@ -251,19 +251,22 @@ class ScoreTools {
                 if (++ $holeNumber == 18) {
                     $holeNumber = 0;
                     usort ( $dayPlayers, function ($a, $b) {
-                        return $a  < $b ;
+                        return $a > $b ;
                     } );
+                    $day = 0;
+                    $x = 0;
                     if ($d) {
                       CVarDumper::dump ( "using day totals: \n", 1, true );
                       CVarDumper::dump ( $dayPlayers, 1, true );
                     }
-                    $day = 0;
-                    $x = 0;
 
                     foreach ( $dayPlayers as $pscore ) {
                       if (++ $x > $max)
                           break;
                       $day += $pscore;
+                    }
+                    if ($d) {
+                      CVarDumper::dump ( "day total: $day\n", 1, true );
                     }
                     $rounds ['total'] ['team'] ['days'] [] = $day;
                     $total += $day;
