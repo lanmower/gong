@@ -111,9 +111,9 @@ class ScoreTools {
                         CVarDumper::dump ( "Handicap: {$handicap} is more or equal to 18 over stroke: {$hole->stroke}, nett - 1\n", 1, true );
                     -- $adjustment;
                 }
-                if (($handicap < 0) && $handicap <= $hole->stroke - 18) {
+                if ($handicap < $hole->stroke - 18) {
                     if ($d)
-                        CVarDumper::dump ( "Handicap: {$handicap} is more or equal to 18 over stroke: {$hole->stroke}, nett - 1\n", 1, true );
+                        CVarDumper::dump ( "Handicap: {$handicap} is more or equal to 18 under stroke: {$hole->stroke}, nett + 1\n", 1, true );
                     ++$adjustment;
                 }
                 $nett = $gross + $adjustment;
