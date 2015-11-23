@@ -239,7 +239,6 @@ class ScoreTools {
                 $shots = 0;
                 $gross = 0;
                 $nett = 0;
-                $dayPlayers = array();
                 $x = 0;
                 foreach ( $round as $roundPlayer ) {
                   if ($d)
@@ -250,12 +249,17 @@ class ScoreTools {
                 }
                 $min = sizeof ( $round );
                 if (++ $holeNumber == 18) {
+                    if ($d) {
+                      CVarDumper::dump ( "using day totals: \n", 1, true );
+                      CVarDumper::dump ( $dayPlayers, 1, true );
+                    }
                     $holeNumber = 0;
                     usort ( $dayPlayers, function ($a, $b) {
                         return $a  < $b ;
                     } );
                     $day = 0;
                     $x = 0;
+
                     foreach ( $dayPlayers as $pscore ) {
                       if (++ $x > $max)
                           break;
