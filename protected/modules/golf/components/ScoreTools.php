@@ -229,10 +229,6 @@ class ScoreTools {
                 CVarDumper::dump ( $rounds, 3, true );
 
             foreach ( $rounds ['player'] as $round ) {
-                if ($d) {
-                    CVarDumper::dump ( "Running round:\n", 3, true );
-                    CVarDumper::dump ( $round, 1, true );
-                }
                 if ($min = 0)
                     $min = sizeof ( $round );
                 if (sizeof ( $round ) < $min) {
@@ -246,14 +242,10 @@ class ScoreTools {
                 $dayPlayers = array();
                 $x = 0;
                 foreach ( $round as $roundPlayer ) {
-                  if ($d) {
-                      CVarDumper::dump ( "Running round player:\n", 3, true );
-                      CVarDumper::dump ( $roundPlayer, 1, true );
-                  }
                   if ($d)
                     CVarDumper::dump ( "{$roundPlayer['name']} with {$roundPlayer['shots']}\n", 1, true );
                   if(!isset($dayPlayers[$x])) $dayPlayers[$x]=0;
-                  $dayPlayers[$x] += $shots;
+                  $dayPlayers[$x] += $roundPlayer['shots'];
                   $x++;
                 }
                 $min = sizeof ( $round );
