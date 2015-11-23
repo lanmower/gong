@@ -153,11 +153,11 @@ class ScoreTools {
 
                 $rounds ['player'] [$roundIndex] [$player->id] = array (
                     //"course" => $course,
-                    "handicap" => $handicap,
+                    //"handicap" => $handicap,
                     "name" => $player->name,
                     //'gross' => $gross,
                     //"adjustment" => $adjustment,
-                    'nett' => $nett,
+                    //'nett' => $nett,
                     //"par" => $par,
                     //"parnett" => parnett($par, $nett),
                     'shots' => $shots,
@@ -165,8 +165,8 @@ class ScoreTools {
                 );
                 $rounds ['total'] ['player'] [$player->id] ['shots'] += $shots;
                 $dayParnett += $rounds ['total'] ['player'] [$player->id] ['parnett'] += parnett($par, $nett);
-                $rounds ['total'] ['player'] [$player->id] ['nett'] += $nett;
-                $rounds ['total'] ['player'] [$player->id] ['gross'] += $gross;
+                //$rounds ['total'] ['player'] [$player->id] ['nett'] += $nett;
+                //$rounds ['total'] ['player'] [$player->id] ['gross'] += $gross;
                 $rounds ['total'] ['player'] [$player->id] ['hole'] = $newHoleNumber;
                 $rounds ['total'] ['player'] [$player->id] ['handicap'] = $handicap;
                 if ($d)
