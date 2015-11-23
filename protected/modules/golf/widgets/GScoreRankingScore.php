@@ -28,7 +28,7 @@ class GScoreRankingScore extends GTag {
         }
         if($d) {
           CVarDumper::dump ( "Dumping cache", 1, true );
-          CVarDumper::dump ( $data, 1, true );
+          CVarDumper::dump ( $data, 4, true );
         }
         usort ( $data, function ($a, $b) {
             return $a ['total']['parnett'] < $b ['total']['parnett'];
