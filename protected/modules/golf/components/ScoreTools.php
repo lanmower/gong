@@ -258,7 +258,7 @@ class ScoreTools {
                 $min = sizeof ( $round );
                 if (++ $holeNumber == 18) {
                     $holeNumber = 0;
-                    usort ( $dayPlayer, function ($a, $b) {
+                    usort ( $dayPlayers, function ($a, $b) {
                         return $a  < $b ;
                     } );
                     $day = 0;
