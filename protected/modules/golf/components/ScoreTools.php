@@ -152,16 +152,16 @@ class ScoreTools {
                     CVarDumper::dump ( "\n", 1, true );
 
                 $rounds ['player'] [$roundIndex] [$player->id] = array (
-                    "course" => $course,
+                    //"course" => $course,
                     "handicap" => $handicap,
                     "name" => $player->name,
-                    'gross' => $gross,
-                    "adjustment" => $adjustment,
+                    //'gross' => $gross,
+                    //"adjustment" => $adjustment,
                     'nett' => $nett,
-                    "par" => $par,
-                    "parnett" => parnett($par, $nett),
+                    //"par" => $par,
+                    //"parnett" => parnett($par, $nett),
                     'shots' => $shots,
-                    "total" => $total
+                    //"total" => $total
                 );
                 $rounds ['total'] ['player'] [$player->id] ['shots'] += $shots;
                 $dayParnett += $rounds ['total'] ['player'] [$player->id] ['parnett'] += parnett($par, $nett);
