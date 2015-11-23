@@ -264,14 +264,15 @@ class ScoreTools {
                     }
 
                     foreach ( $dayPlayers as $pscore ) {
-                      if (++ $x > $max)
+                      if (++ $x > $max) {
+                          $rounds ['total'] ['team'] ['days'] [] = $day;
                           break;
+                      }
                       $day += $pscore;
                     }
                     if ($d) {
                       CVarDumper::dump ( "team day total: $day\n", 1, true );
                     }
-                    $rounds ['total'] ['team'] ['days'] [] = $day;
                     $total += $day;
                     $dayPlayer = array();
                 }
