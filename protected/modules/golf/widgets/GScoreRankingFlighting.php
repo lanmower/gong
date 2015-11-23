@@ -21,6 +21,7 @@ class GScoreRankingFlighting extends GTag {
     }
     public function run()
     {
+      $d = isset ( $_GET ['debug'] );
         $data = Yii::app()->cache->get('flightingRankingData');
         if ($data === false || isset($_GET['nocache'])) {
     			ScoreTools::processScores ();
