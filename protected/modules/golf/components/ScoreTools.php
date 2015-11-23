@@ -282,7 +282,7 @@ class ScoreTools {
         return $rounds;
     }
 
-    static function processScores() {
+    static function processScores($max = 4) {
       $d = isset ( $_GET ['debug'] );
         if ($d)
             CVarDumper::dump ( "PRO\n\n-----------------------------------------\n", 1, true );
@@ -353,7 +353,7 @@ class ScoreTools {
             CVarDumper::dump ( "TEAM\n\n-----------------------------------------\n", 1, true );
         $data = array();
         foreach($teams as $team) {
-            $rounds = ScoreTools::playerScore($team->players, 2, $courses, $holes, $rules, $scoreRules);
+            $rounds = ScoreTools::playerScore($team->players, $max, $courses, $holes, $rules, $scoreRules);
 
             //gc_collect_cycles();
             $players = array();

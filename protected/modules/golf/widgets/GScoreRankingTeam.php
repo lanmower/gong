@@ -1,5 +1,6 @@
 <?php
 class GScoreRankingTeam extends GTag {
+	public $max = 4;
 	public function init() {
 		$this->script = '
 						setTimeout("location.reload(true);", 240000);
@@ -22,7 +23,7 @@ class GScoreRankingTeam extends GTag {
 	public function run() {
 		$data = Yii::app ()->cache->get ( 'teamRankingData' );
 		if ($data === false || isset($_GET['nocache'])) {
-			ScoreTools::processScores ();
+			ScoreTools::processScores ($this->max);
 			$data = Yii::app ()->cache->get ( 'teamRankingData' );
 		}
 
