@@ -156,7 +156,7 @@ class ScoreTools {
                     //"handicap" => $handicap,
                     "name" => $player->name,
                     //'gross' => $gross,
-                    //"adjustment" => $adjustment,
+                    "adjustment" => $adjustment,
                     //'nett' => $nett,
                     //"par" => $par,
                     //"parnett" => parnett($par, $nett),
