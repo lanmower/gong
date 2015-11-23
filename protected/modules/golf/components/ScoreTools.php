@@ -244,15 +244,17 @@ class ScoreTools {
                 $gross = 0;
                 $nett = 0;
                 $round = array();
-                foreach ( $round as $key => $roundPlayer ) {
+                $x = 0;
+                foreach ( $round as $roundPlayer ) {
                   if ($d) {
                       CVarDumper::dump ( "Running round player:\n", 3, true );
                       CVarDumper::dump ( $roundPlayer, 1, true );
                   }
                   if ($d)
                     CVarDumper::dump ( "{$roundPlayer['name']} with {$roundPlayer['shots']}\n", 1, true );
-                  if(!isset($dayPlayers[$key])) $dayPlayers[$key]=0;
-                  $dayPlayers[$key] += $shots;
+                  if(!isset($dayPlayers[$x])) $dayPlayers[$x]=0;
+                  $dayPlayers[$x] += $shots;
+                  $x++;
                 }
                 $min = sizeof ( $round );
                 if (++ $holeNumber == 18) {
