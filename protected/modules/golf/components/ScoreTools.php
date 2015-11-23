@@ -263,7 +263,7 @@ class ScoreTools {
                     } );
                     $day = 0;
                     $x = 0;
-                    foreach ( $dayPlayer as $pscore ) {
+                    foreach ( $dayPlayers as $pscore ) {
                       if (++ $x > $max)
                           break;
                       $day += $pscore;
