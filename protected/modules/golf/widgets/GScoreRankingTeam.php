@@ -23,6 +23,7 @@ class GScoreRankingTeam extends GTag {
 	public function run() {
 		$data = Yii::app ()->cache->get ( 'teamRankingData' );
 		if ($data === false || isset($_GET['nocache'])) {
+			if(isset(Yii::app()->params['max'])) $this->max = Yii::app()->params['max'];
 			ScoreTools::processScores ($this->max);
 			$data = Yii::app ()->cache->get ( 'teamRankingData' );
 		}

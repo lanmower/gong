@@ -14,7 +14,8 @@ Yii::import ( 'gong.modules.user.widgets.*' );
 Yii::import ( 'gong.modules.site.widgets.*' );
 class ProcessScoresCommand extends CConsoleCommand {
 	public function actionIndex() {
-		ScoreTools::processScores ();
+		if(isset(Yii::app()->params['max'])) ScoreTools::processScores (Yii::app()->params['max']);
+		else ScoreTools::processScores ();
 	}
 }
 
