@@ -225,6 +225,9 @@ class ScoreTools {
                 'days' => array ()
             );
             $dayPlayers = array();
+            if ($d)
+                CVarDumper::dump ( $rounds, 3, true );
+
             foreach ( $rounds ['player'] as $round ) {
                 if ($min = 0)
                     $min = sizeof ( $round );
@@ -237,23 +240,11 @@ class ScoreTools {
                 $gross = 0;
                 $nett = 0;
                 $round = array();
-                if ($d) {
-                    foreach ( $round as $roundPlayer ) {
-                        CVarDumper::dump ( "{$roundPlayer['name']} with {$roundPlayer['shots']}\n", 1, true );
-                    }
-                }
                 foreach ( $round as $key => $roundPlayer ) {
+                    CVarDumper::dump ( "{$froundPlayer['name']} with {$roundPlayer['shots']}\n", 1, true );
                     if(!isset($round[$key])) $round[$key] = 0;
-                    if(!isset($day[$key]))$day[$key]=0;
-                    $shots = $roundPlayer ['shots'];
-                    $total += $shots;
+                    if(!isset($day[$key])) $day[$key]=0;
                     $dayPlayers[$key] += $shots;
-                    $gross = $roundPlayer ['gross'];
-                    $nett = $roundPlayer ['nett'];
-                    $grossTotal += $gross;
-                    $nettTotal += $nett;
-                    if ($d)
-                        CVarDumper::dump ( "Added: {$roundPlayer['shots']} from player {$roundPlayer['name']}, new team total: $total.\n", 3, true );
                 }
                 $min = sizeof ( $round );
                 if (++ $holeNumber == 18) {
@@ -269,11 +260,11 @@ class ScoreTools {
                       $day += $pscore;
                     }
                     $rounds ['total'] ['team'] ['days'] [] = $day;
+                    $total += $day;
                     $dayPlayer = array();
                 }
             }
             $rounds ['total'] ['team'] ['shots'] = $total;
-            $rounds ['total'] ['team'] ['days'] [] = $day;
         }
         unset ( $rounds ['player'] );
         // unset($rounds['team']);
