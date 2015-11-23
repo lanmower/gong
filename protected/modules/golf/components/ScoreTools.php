@@ -99,7 +99,7 @@ class ScoreTools {
                     CVarDumper::dump ( 'Gross: ' . $score->shots . "\n", 1, true );
                 if ($d)
                     CVarDumper::dump ( 'Player handicap: ' . $handicap . "\n", 1, true );
-                  }
+                  
                 $adjustment = 0;
                 if ($handicap >= $hole->stroke) {
                     if ($d)
