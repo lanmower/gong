@@ -229,6 +229,8 @@ class ScoreTools {
                 CVarDumper::dump ( $rounds, 3, true );
 
             foreach ( $rounds ['player'] as $round ) {
+                if ($d)
+                    CVarDumper::dump ( "Running hole: $holeNumber\n"+, 3, true );
                 if ($min = 0)
                     $min = sizeof ( $round );
                 if (sizeof ( $round ) < $min) {
@@ -241,6 +243,7 @@ class ScoreTools {
                 $nett = 0;
                 $round = array();
                 foreach ( $round as $key => $roundPlayer ) {
+                  if ($d)
                     CVarDumper::dump ( "{$froundPlayer['name']} with {$roundPlayer['shots']}\n", 1, true );
                     if(!isset($round[$key])) $round[$key] = 0;
                     if(!isset($day[$key])) $day[$key]=0;
