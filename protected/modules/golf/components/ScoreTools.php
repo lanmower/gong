@@ -256,7 +256,6 @@ class ScoreTools {
                     usort ( $dayPlayers, function ($a, $b) {
                         return $a > $b ;
                     } );
-                    $day = 0;
                     $x = 0;
                     if ($d) {
                       CVarDumper::dump ( "using day totals: \n", 1, true );
@@ -274,6 +273,7 @@ class ScoreTools {
                       CVarDumper::dump ( "team day total: $day\n", 1, true );
                     }
                     $total += $day;
+                    $day = 0;
                     $dayPlayers = array();
                 }
             }
