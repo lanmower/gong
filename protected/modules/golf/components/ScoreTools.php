@@ -175,7 +175,6 @@ class ScoreTools {
                 if (++ $holeNumber == 18) {
                     $holeNumber = 0;
                     $rounds ['total'] ['player'] [$player->id] ['days'] [] = $day;
-                    $rounds ['total'] ['player'] [$player->id] ['days'] [] = $day;
                     $days = $rounds ['total'] ['player'] [$player->id] ['days'];
                     if ($d)
                         CVarDumper::dump ( "Maxed: $maxed", 1, true );
