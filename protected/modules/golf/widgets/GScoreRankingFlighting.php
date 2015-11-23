@@ -26,6 +26,11 @@ class GScoreRankingFlighting extends GTag {
     			ScoreTools::processScores ();
             $data = Yii::app()->cache->get('flightingRankingData');
         }
+        if ($d)
+            CVarDumper::dump ( "Data dump", 6, true );
+        if ($d)
+            CVarDumper::dump ( $data, 6, true );
+
         echo "<table class='table'>";
         echo "<tr>";
         echo "<th class='th1'>POS</th>";

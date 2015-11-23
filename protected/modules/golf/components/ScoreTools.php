@@ -88,7 +88,7 @@ class ScoreTools {
                 CVarDumper::dump ( 'Player holes: ' . sizeof($player_scores) . "\n", 1, true );
             foreach ( $player_scores as $score ) {
               if ($d)
-                  CVarDumper::dump ( 'Hole number: ' . sizeof($player_scores) . "\n", 1, true );
+                  CVarDumper::dump ( 'Hole number: ' . sizeof($holeNumber) . "\n", 1, true );
                 // if($d) CVarDumper::dump($score->courseRelation, 1,true);
                 $course = filter ( $courses, 'id', $score->attributes['course']  );
                 $hole = filter ( $holes, 'id', $score->attributes['hole'] );
