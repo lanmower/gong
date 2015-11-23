@@ -230,7 +230,7 @@ class ScoreTools {
 
             foreach ( $rounds ['player'] as $round ) {
                 if ($d)
-                    CVarDumper::dump ( "Running hole: $holeNumber\n"+, 3, true );
+                    CVarDumper::dump ( "Running hole: $holeNumber\n", 3, true );
                 if ($min = 0)
                     $min = sizeof ( $round );
                 if (sizeof ( $round ) < $min) {
