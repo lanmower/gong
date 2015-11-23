@@ -1,6 +1,4 @@
 <?php
-Yii::import ( 'application.modules.pga.components.*' );
-Yii::import ( 'application.modules.pga.components.*' );
 Yii::import ( 'application.models.*' );
 Yii::import ( 'application.components.*' );
 Yii::import ( 'application.vendors.*' );
