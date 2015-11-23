@@ -361,25 +361,6 @@ class ScoreTools {
         } );
         Yii::app()->cache->delete('teamRankingData');
         Yii::app ()->cache->set ( 'teamRankingData', $data );
-
-        $data = array ();
-        $x = 0;
-        foreach ( $players as $player ) {
-            $rounds = ScoreTools::playerScore ( array (
-                $player
-            ), 2, $courses, $holes, $rules, $scoreRules );
-            $data [] = array (
-                'player' => $player,
-                'total' => $rounds ['total'] ['player']
-            );
-        }
-
-        usort ( $data, function ($a, $b) {
-            return $a ['total'] < $b ['total'];
-        } );
-
-        Yii::app()->cache->delete('scoreRankingData');
-        Yii::app ()->cache->set ( 'scoreRankingData', $data );
     }
 }
 
