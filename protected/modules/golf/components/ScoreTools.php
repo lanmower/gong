@@ -243,7 +243,7 @@ class ScoreTools {
                 $shots = 0;
                 $gross = 0;
                 $nett = 0;
-                $round = array();
+                $dayPlayers = array();
                 $x = 0;
                 foreach ( $round as $roundPlayer ) {
                   if ($d) {
