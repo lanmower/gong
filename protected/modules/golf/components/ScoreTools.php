@@ -284,6 +284,9 @@ class ScoreTools {
     }
 
     static function processScores() {
+        if ($d)
+            CVarDumper::dump ( "PRO\n\n-----------------------------------------\n", 1, true );
+
         $proGame = GSubmission::forForm ( "Game" )->find ( 'name = :name', array (
             ":name" => 'Professional'
         ) );
@@ -314,6 +317,8 @@ class ScoreTools {
         Yii::app()->cache->delete('proRankingData');
         Yii::app ()->cache->set ( 'proRankingData', $data );
 
+        if ($d)
+            CVarDumper::dump ( "FLIGHTING/SCORE\n\n-----------------------------------------\n", 1, true );
         $flightings = GSubmission::forForm ( 'Flighting' )->findAll ();
         $playerData = array ();
         $flightingRankings = array ();
@@ -344,6 +349,8 @@ class ScoreTools {
         Yii::app()->cache->delete('playerRankingData');
         Yii::app ()->cache->set ( 'playerRankingData', $playerData);
 
+        if ($d)
+            CVarDumper::dump ( "TEAM\n\n-----------------------------------------\n", 1, true );
         $data = array();
         foreach($teams as $team) {
             $rounds = ScoreTools::playerScore($team->players, 2, $courses, $holes, $rules, $scoreRules);
