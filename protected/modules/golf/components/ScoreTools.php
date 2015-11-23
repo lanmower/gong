@@ -182,11 +182,11 @@ class ScoreTools {
                     $rounds ['total'] ['player'] [$player->id] ['days'] [] = $day;
                     $days = $rounds ['total'] ['player'] [$player->id] ['days'];
                     if ($d)
-                        CVarDumper::dump ( "Maxed: $maxed", 1, true );
+                        CVarDumper::dump ( "nett total: $day, course par: $coursePar", 1, true );
 
                     if($player->lock != 'lock' && $maxed < 18) {
                         foreach($rules as $rule) {
-                            $calc = $nettTotal - $coursePar;
+                            $calc = $day - $coursePar;
                              if ($d)
                                 CVarDumper::dump ( "Testing $calc against $rule->min and $rule->max.\n", 1, true );
                             if($calc >= $rule->min && $calc <= $rule->max) {
