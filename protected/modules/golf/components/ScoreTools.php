@@ -284,6 +284,7 @@ class ScoreTools {
     }
 
     static function processScores() {
+      $d = isset ( $_GET ['debug'] );
         if ($d)
             CVarDumper::dump ( "PRO\n\n-----------------------------------------\n", 1, true );
 
