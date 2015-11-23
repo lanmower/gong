@@ -85,10 +85,10 @@ class ScoreTools {
             $maxed = 0;
             $coursePar = 0;
             if ($d)
-                CVarDumper::dump ( 'Player holes: ' . $player_scores->length . "\n", 1, true );
+                CVarDumper::dump ( 'Player holes: ' . sizeof($player_scores) . "\n", 1, true );
             foreach ( $player_scores as $score ) {
               if ($d)
-                  CVarDumper::dump ( 'Hole number: ' . $player_scores->length . "\n", 1, true );
+                  CVarDumper::dump ( 'Hole number: ' . sizeof($player_scores) . "\n", 1, true );
                 // if($d) CVarDumper::dump($score->courseRelation, 1,true);
                 $course = filter ( $courses, 'id', $score->attributes['course']  );
                 $hole = filter ( $holes, 'id', $score->attributes['hole'] );
@@ -99,7 +99,7 @@ class ScoreTools {
                     CVarDumper::dump ( 'Gross: ' . $score->shots . "\n", 1, true );
                 if ($d)
                     CVarDumper::dump ( 'Player handicap: ' . $handicap . "\n", 1, true );
-                  
+
                 $adjustment = 0;
                 if ($handicap >= $hole->stroke) {
                     if ($d)
