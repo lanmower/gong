@@ -26,10 +26,6 @@ class GScoreRankingScore extends GTag {
             ScoreTools::processScores ();
             $data = Yii::app ()->cache->get ( 'playerRankingData' );
         }
-        if($d) {
-          CVarDumper::dump ( "Dumping cache", 1, true );
-          CVarDumper::dump ( $data, 4, true );
-        }
         usort ( $data, function ($a, $b) {
             return $a ['total']['shots'] < $b ['total']['shots'];
         } );
