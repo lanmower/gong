@@ -249,14 +249,14 @@ class ScoreTools {
                 }
                 $min = sizeof ( $round );
                 if (++ $holeNumber == 18) {
-                    if ($d) {
-                      CVarDumper::dump ( "using day totals: \n", 1, true );
-                      CVarDumper::dump ( $dayPlayers, 1, true );
-                    }
                     $holeNumber = 0;
                     usort ( $dayPlayers, function ($a, $b) {
                         return $a  < $b ;
                     } );
+                    if ($d) {
+                      CVarDumper::dump ( "using day totals: \n", 1, true );
+                      CVarDumper::dump ( $dayPlayers, 1, true );
+                    }
                     $day = 0;
                     $x = 0;
 
