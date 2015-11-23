@@ -31,7 +31,7 @@ class GScoreRankingScore extends GTag {
           CVarDumper::dump ( $data, 4, true );
         }
         usort ( $data, function ($a, $b) {
-            return $a ['total']['parnett'] < $b ['total']['parnett'];
+            return $a ['total']['shots'] < $b ['total']['shots'];
         } );
         echo "<table class='table'>";
         echo "<tr>";
@@ -44,7 +44,7 @@ class GScoreRankingScore extends GTag {
         $lastTotal = 0;
         foreach ( $data as $playerData ) {
             $player = $playerData ['player'];
-            $total = $playerData ['total'] ['parnett'];
+            $total = $playerData ['total'] ['shots'];
             if($total == 0) continue;
             echo "<tr>";
             echo "<td>";
