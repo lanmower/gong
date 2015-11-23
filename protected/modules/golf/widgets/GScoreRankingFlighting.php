@@ -41,11 +41,11 @@ class GScoreRankingFlighting extends GTag {
         echo "<th class='th4'>Day 3</th>";
         echo "<th class='th4'>Score</th>";
         echo "</tr>";
-        $pos = 0;
         $lastTotal = 0;
         $flightings = GSubmission::forForm ( 'Flighting' )->findAll ();
         foreach ($data as $key => $flightingData) {
 
+            $pos = 0;
             if (isset($flightings[$key])) {
                 $flighting = $flightings[$key];
                 echo "<tr style='background:gray;'><th colspan='9'>Flighting: $flighting->name</th></tr>";
