@@ -163,7 +163,7 @@ class ScoreTools {
                     //'gross' => $gross,
                     "adjustment" => $adjustment,
                     //'nett' => $nett,
-                    //"par" => $par,
+                    "par" => $par,
                     //"parnett" => parnett($par, $nett),
                     'shots' => $shots,
                     //"total" => $total
