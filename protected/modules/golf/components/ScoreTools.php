@@ -274,7 +274,7 @@ class ScoreTools {
                       CVarDumper::dump ( "team day total: $day\n", 1, true );
                     }
                     $total += $day;
-                    $dayPlayer = array();
+                    $dayPlayers = array();
                 }
             }
             $rounds ['total'] ['team'] ['shots'] = $total;
