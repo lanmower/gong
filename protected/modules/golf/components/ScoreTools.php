@@ -241,8 +241,6 @@ class ScoreTools {
                 $nett = 0;
                 $x = 0;
                 foreach ( $round as $roundPlayer ) {
-                  if ($d)
-                    CVarDumper::dump ( "{$roundPlayer['name']} with {$roundPlayer['shots']}\n", 1, true );
                   if(!isset($dayPlayers[$x])) $dayPlayers[$x]=0;
                   $dayPlayers[$x] += $roundPlayer['shots'];
                   $x++;
@@ -266,7 +264,7 @@ class ScoreTools {
                       $day += $pscore;
                     }
                     if ($d) {
-                      CVarDumper::dump ( "day total: $day\n", 1, true );
+                      CVarDumper::dump ( "team day total: $day\n", 1, true );
                     }
                     $rounds ['total'] ['team'] ['days'] [] = $day;
                     $total += $day;
