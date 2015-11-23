@@ -224,6 +224,7 @@ class ScoreTools {
                 'shots' => 0,
                 'days' => array ()
             );
+            $dayPlayers = array();
             foreach ( $rounds ['player'] as $round ) {
                 if ($min = 0)
                     $min = sizeof ( $round );
@@ -232,27 +233,21 @@ class ScoreTools {
                         CVarDumper::dump ( "Skipping partial round.\n", 3, true );
                     continue;
                 }
-                if ($d) {
-                    CVarDumper::dump ( "Sorting team round:\n", 3, true );
-                }
-                usort ( $round, function ($a, $b) {
-                    return $a ['shots'] < $b ['shots'];
-                } );
                 $shots = 0;
                 $gross = 0;
                 $nett = 0;
-                $x = 0;
+                $round = array();
                 if ($d) {
                     foreach ( $round as $roundPlayer ) {
                         CVarDumper::dump ( "{$roundPlayer['name']} with {$roundPlayer['shots']}\n", 1, true );
                     }
                 }
-                foreach ( $round as $roundPlayer ) {
-                    if (++ $x > $max)
-                        break;
+                foreach ( $round as $key => $roundPlayer ) {
+                    if(!isset($round[$key])) $round[$key] = 0;
+                    if(!isset($day[$key]))$day[$key]=0;
                     $shots = $roundPlayer ['shots'];
                     $total += $shots;
-                    $day += $shots;
+                    $dayPlayers[$key] += $shots;
                     $gross = $roundPlayer ['gross'];
                     $nett = $roundPlayer ['nett'];
                     $grossTotal += $gross;
@@ -260,18 +255,21 @@ class ScoreTools {
                     if ($d)
                         CVarDumper::dump ( "Added: {$roundPlayer['shots']} from player {$roundPlayer['name']}, new team total: $total.\n", 3, true );
                 }
-                /*
-                 * $rounds['team'][] = array(
-                 * 'gross' =>$gross,
-                 * 'nett'=>$nett,
-                 * 'shots'=>$total
-                 * );
-                 */
                 $min = sizeof ( $round );
                 if (++ $holeNumber == 18) {
                     $holeNumber = 0;
-                    $rounds ['total'] ['team'] ['days'] [] = $day;
+                    usort ( $dayPlayer, function ($a, $b) {
+                        return $a  < $b ;
+                    } );
                     $day = 0;
+                    $x = 0;
+                    foreach ( $dayPlayer as $pscore ) {
+                      if (++ $x > $max)
+                          break;
+                      $day += $pscore;
+                    }
+                    $rounds ['total'] ['team'] ['days'] [] = $day;
+                    $dayPlayer = array();
                 }
             }
             $rounds ['total'] ['team'] ['shots'] = $total;
