@@ -9,3 +9,5 @@
 /.settings
 /.metadata
 /.project
+config.bat
+node_modules
